@@ -3,21 +3,19 @@
 
 #include <iostream>
 #include "BaseUsr.h"
-#include <openssl/sha.h>
+#include"Customer.h"
 
-void BaseUsr::storage()
-{
 
-}
-
-string BaseUsr::encryp(string)
-{
-    return string();
-}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Customer test=Customer();
+    test.tosting();
+    Customer te=Customer("shabi","qwer");
+    te.tosting();
+
+
+    std::cout << "Hello World!\n right :    "<<te.auth("qwer")<<"           wrong:   "<<te.auth("sdsd")<<std::endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

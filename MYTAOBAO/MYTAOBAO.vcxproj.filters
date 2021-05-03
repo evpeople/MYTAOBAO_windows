@@ -21,9 +21,21 @@
     <ClCompile Include="BaseUsr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="BaseGoods.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Customer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUsr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGoods.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Customer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
