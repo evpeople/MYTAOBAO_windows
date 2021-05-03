@@ -2,6 +2,18 @@
 //
 
 #include <iostream>
+#include "BaseUsr.h"
+#include <openssl/sha.h>
+
+void BaseUsr::storage()
+{
+
+}
+
+string BaseUsr::encryp(string)
+{
+    return string();
+}
 
 int main()
 {

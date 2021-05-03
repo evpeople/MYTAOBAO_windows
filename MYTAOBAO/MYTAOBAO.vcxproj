@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseUsr.cpp" />
     <ClCompile Include="MYTAOBAO.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseUsr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
