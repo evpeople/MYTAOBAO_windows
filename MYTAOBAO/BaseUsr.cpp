@@ -4,11 +4,6 @@
 #include <openssl/sha.h>
 #include<json/json.h>
 //long long int BaseUsr::totalNum = 0;
-auto enumToString = [](USRTYPE a)->string {switch (a) {
-case USRTYPE::customer:return "customer";
-case USRTYPE::businessman:return"businessman";
-case USRTYPE::newUsr: return "sd";
-}};
 void BaseUsr::storage()
 {
     Json::Value temp;
@@ -16,8 +11,13 @@ void BaseUsr::storage()
     temp["usrID"] = usrId;
 
     temp["usrName"] = usrName;
-    temp["usrPass"] = usrPassWord;
-    temp["usrType"] = enumToString(usrType);
+    temp["usrPass"] = usrPassWord;//Ê¹ÓÃ¹þÏ£±í£¡
+    auto enumToString = [this]()->string {switch (this->usrType) {
+                                            case USRTYPE::customer:return "customer";
+                                            case USRTYPE::businessman:return"businessman";
+                                            case USRTYPE::newUsr: return "sd";
+}};
+    temp["usrType"] = enumToString();
     //string out = temp.toStyledString();
     ofstream fout{"ALL_USR.txt",ios_base::app};
     auto jsonWriter(fwbuilder.newStreamWriter());
@@ -59,7 +59,14 @@ string BaseUsr::encryp(const string passwd)
 
 string BaseUsr::tosting()
 {
-    std::cout << "ID:   " << usrId << "\nName:  " << usrName << "\nType:    " << enumToString(usrType) <<"\npd"<<usrPassWord<< std::endl;
+    auto enumToString = [usrType=this->usrType]()->string {switch (usrType) {
+                                            case USRTYPE::customer:return "customer";
+                                            case USRTYPE::businessman:return"businessman";
+                                            case USRTYPE::newUsr: return "sd";
+
+}};  
+    std::cout << "ID:   " << usrId << "\nName:  " << usrName << "\nType:    " << enumToString() <<"\npd"<<usrPassWord<< std::endl;
+
     return string();
 }
 
