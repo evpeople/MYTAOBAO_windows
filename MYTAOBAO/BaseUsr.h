@@ -34,8 +34,8 @@ public:
 	BaseUsr(string name,string pd);
 	virtual ~BaseUsr();
 	void storage();
-	bool auth(string);
-	string encryp(const string passwd);
+	virtual bool auth(string)final;
+	virtual string encryp(const string passwd)final;
 	string tosting();
 private:
 	long long int usrId;
@@ -43,5 +43,5 @@ private:
 	string usrPassWord;
 	USRTYPE usrType;
 	bool isLogin;
-	static long long int totalNum;
+	inline static long long int totalNum=1;
 };

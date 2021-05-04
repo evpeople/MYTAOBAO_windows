@@ -1,21 +1,35 @@
 ﻿// MYTAOBAO.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
-#include <iostream>
+#include <fstream>
+#include<iostream>
 #include "BaseUsr.h"
 #include"Customer.h"
+#include<json/json.h>
 
 
 
 int main()
 {
-    Customer test=Customer();
-    test.tosting();
-    Customer te=Customer("shabi","qwer");
-    te.tosting();
-
-
-    std::cout << "Hello World!\n right :    "<<te.auth("qwer")<<"           wrong:   "<<te.auth("sdsd")<<std::endl;
+    cout << "欢迎来到我的淘宝世界！！！";
+    ifstream fstream;
+    fstream.open("logo.txt");
+    if (fstream.is_open())
+    {
+        while (!fstream.eof())
+        {
+            string line;
+            getline(fstream, line);
+            cout << line << endl;
+        }
+    }
+    fstream.close();
+    char event;
+    while (1)
+    {
+        
+        cin >> event;
+    }
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

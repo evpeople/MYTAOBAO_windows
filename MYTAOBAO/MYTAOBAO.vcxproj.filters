@@ -27,6 +27,9 @@
     <ClCompile Include="Customer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUsr.h">
@@ -38,5 +41,16 @@
     <ClInclude Include="Customer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="tes.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="logo.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>
