@@ -91,19 +91,19 @@ std::string BaseUsr::encryp(const std::string passwd)
     std::string en_passwd = e.str();
     return en_passwd;
 }
-
-string BaseUsr::tosting()
-{
-    auto enumToString = [usrType=this->usrType]()->string {switch (usrType) {
-                                            case USRTYPE::customer:return "customer";
-                                            case USRTYPE::businessman:return"businessman";
-                                            case USRTYPE::newUsr: return "sd";
-
-}};  
-    std::cout << "ID:   " << usrId << "\nName:  " << usrName << "\nType:    " << enumToString() <<"\npd"<<usrPassWord<< std::endl;
-
-    return string();
-}
+//
+//string BaseUsr::tosting()
+//{
+//    auto enumToString = [usrType=this->usrType]()->string {switch (usrType) {
+//                                            case USRTYPE::customer:return "customer";
+//                                            case USRTYPE::businessman:return"businessman";
+//                                            case USRTYPE::newUsr: return "sd";
+//
+//}};  
+//    std::cout << "ID:   " << usrId << "\nName:  " << usrName << "\nType:    " << enumToString() <<"\npd"<<usrPassWord<< std::endl;
+//
+//    return string();
+//}
 
 BaseUsr::BaseUsr(std::string name, std::string pd)
 {

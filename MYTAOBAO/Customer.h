@@ -11,6 +11,9 @@ public:
     virtual USRTYPE getType()override;
     virtual void balance()override;
     virtual void buySomeThing(double)override;
+    virtual int getId();
+    void static setAddress(std::string newAddress);
+    std::string static getAddress();
     ~Customer();
 private:
     long long int id;

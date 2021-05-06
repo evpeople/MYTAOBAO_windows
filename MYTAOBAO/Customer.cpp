@@ -6,6 +6,7 @@
 
 long long int Customer::totalId = 0;
 USRTYPE Customer::type = USRTYPE::customer;
+std::string Customer::storageAddress = "as";
 Customer::Customer(std::string name, std::string PassWd):BaseUsr{ name, PassWd
 }
 {
@@ -28,10 +29,10 @@ void Customer::storage()
     Json::StreamWriterBuilder fwbuilder;
     temp["usrID"] = id;
     temp["usrName"] = getUsrName();
-    temp["usrPass"] = getUsrPassWord();//使用哈希表！
+    temp["usrPass"] = getUsrPassWord();
     temp["usrType"] = "Customer";
     temp["money"] = money;
-    std::string outFile = Customer::storageAddress + getUsrName()+"usr";
+    std::string outFile = Customer::storageAddress + getUsrName()+".usr";
     std::ofstream fout{outFile ,std::ios_base::app };
     auto jsonWriter(fwbuilder.newStreamWriter());
     jsonWriter->write(temp, &fout);
@@ -44,21 +45,26 @@ bool Customer::login()
     std::string tempUsr;
     std::cin >> tempUsr;
 
-    std::string inPath = Customer::storageAddress + "*.usr";
+    std::string inPath = Customer::storageAddress + tempUsr+"*.usr";
 
-    std::ifstream fout;
-    fout.open(inPath);
-    if (fout.is_open())
+    std::ifstream fin;
+    fin.open(inPath);
+    if (fin.is_open())
     {
-        Json::Reader reader;
+        Json::CharReaderBuilder reader;
+        JSONCPP_STRING errs;
+
         Json::Value root;
-        if (reader.parse(fout,root))
+        if (!Json::parseFromStream(reader, fin, &root, &errs))
         {
+            std::cout << errs << std::endl;
+        }
+
             id = root["usrID"].asInt64();
             setUsrName( root["usrName"].asString());
             setUsrPassWord(root["usrPass"].asString());
             money = root["money"].asDouble();
-        }
+        fin.close();
     }
     else
     {
@@ -97,6 +103,21 @@ void Customer::buySomeThing(double price)
         money -= price;
         std::cout << "已购买，你还剩" << money << "这么多钱" << std::endl;
     }
+}
+
+int Customer::getId()
+{
+    return id;
+}
+
+void Customer::setAddress(std::string newAddress)
+{
+    Customer::storageAddress = newAddress;
+}
+
+std::string Customer::getAddress()
+{
+    return Customer::storageAddress;
 }
 
 //_finddata_t fileInfo;

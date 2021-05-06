@@ -12,22 +12,23 @@
 
 int main()
 {
-    cout << "欢迎来到我的淘宝世界！！！";
-    ifstream fstream;
+    std::cout << "欢迎来到我的淘宝世界！！！";
+    std::ifstream fstream;
     fstream.open("./baseFile/logo.txt");
     if (fstream.is_open())
     {
         while (!fstream.eof())
         {
-            string line;
+           std::string line;
             getline(fstream, line);
-            cout << line << endl;
+            std::cout << line << std::endl;
         }
     }
     fstream.close();
     char event;
-//    Server();
-//    while (1)
+    Server a = Server();
+    a.start();
+    //    while (1)
 //    {
 //        
 //        cin >> event;
