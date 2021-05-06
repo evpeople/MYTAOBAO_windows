@@ -31,15 +31,16 @@ class BaseUsr
 public:
 	BaseUsr(std::string name,std::string pd);
 	virtual ~BaseUsr();
-	virtual void getMoney();
+	virtual void balance();
 	virtual void getGoods();
+	virtual void buySomeThing(double);
 	virtual void changeGoods();
 	virtual void discount();
 	virtual bool changePassWord();
 
 	virtual void storage()=0;
 	virtual bool login() = 0;
-	USRTYPE virtual getType() = 0;
+	virtual USRTYPE getType() = 0;
 	
 	std::string tosting();
 protected:
@@ -47,6 +48,9 @@ protected:
 	virtual bool auth(std::string)final;//”…login π”√
 	std::string getUsrPassWord();
 	std::string getUsrName();
+	void setUsrName(std::string newName);
+	void setUsrPassWord(std::string newPassWord);
+
 private:
     std::string usrName;
 	std::string usrPassWord;

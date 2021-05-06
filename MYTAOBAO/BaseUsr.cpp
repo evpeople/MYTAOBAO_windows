@@ -17,6 +17,8 @@ bool BaseUsr::changePassWord()
         std::cout << "请输入您的新密码" << std::endl;
         std::cin >> pass;
         usrPassWord = encryp(pass);
+        std::cout << "!!!!!!!!!!!!保存有可能出问题\n\n\n" << std::endl;
+        this->storage();
         return true;
     }
     else
@@ -27,23 +29,13 @@ bool BaseUsr::changePassWord()
 //long long int BaseUsr::totalNum = 0;
 void BaseUsr::storage()
 {
+    std::cout << "错误的调用" << std::endl;
+    return;
     Json::Value temp;
     Json::StreamWriterBuilder fwbuilder;
-    temp["usrID"] = usrId;
 
     temp["usrName"] = usrName;
     temp["usrPass"] = usrPassWord;//使用哈希表！
-    auto enumToString = [this]()->string {switch (this->usrType) {
-                                            case USRTYPE::customer:return "customer";
-                                            case USRTYPE::businessman:return"businessman";
-                                            case USRTYPE::newUsr: return "sd";
-}};
-    temp["usrType"] = enumToString();
-    //string out = temp.toStyledString();
-    std::ofstream fout{"ALL_USR.txt",std::ios_base::app};
-    auto jsonWriter(fwbuilder.newStreamWriter());
-    jsonWriter->write(temp,&fout);
-    fout.close();
 }
 
 bool BaseUsr::auth(std::string passwd)
@@ -72,6 +64,16 @@ std::string BaseUsr::getUsrPassWord()
 std::string BaseUsr::getUsrName()
 {
     return usrName;
+}
+
+void BaseUsr::setUsrName(std::string newName)
+{
+    usrName = newName;
+}
+
+void BaseUsr::setUsrPassWord(std::string newPassWord)
+{
+    usrPassWord = newPassWord;
 }
 
 std::string BaseUsr::encryp(const std::string passwd)
@@ -113,7 +115,7 @@ BaseUsr::~BaseUsr()
 {}
 
 
-void BaseUsr::getMoney()
+void BaseUsr::balance()
 {
     std::cout << "只有用户用钱！！"<<std::endl;
 }
@@ -121,6 +123,10 @@ void BaseUsr::getMoney()
 void BaseUsr::getGoods()
 {
     std::cout << "只有商家有货物" << std::endl;
+}
+
+void BaseUsr::buySomeThing(double)
+{
 }
 
 void BaseUsr::changeGoods()
