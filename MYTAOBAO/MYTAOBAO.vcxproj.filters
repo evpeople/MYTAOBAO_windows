@@ -46,10 +46,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="tes.txt">
-      <Filter>资源文件</Filter>
-    </Text>
-    <Text Include="logo.txt">
+    <Text Include="baseFile\logo.txt">
       <Filter>资源文件</Filter>
     </Text>
   </ItemGroup>

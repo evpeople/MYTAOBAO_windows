@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-using namespace std;
 enum class USRTYPE { businessman, customer, newUsr
 };
 //std::ostream& operator<<(std::ostream& os, const USRTYPE& ec)
@@ -30,18 +29,26 @@ enum class USRTYPE { businessman, customer, newUsr
 class BaseUsr
 {
 public:
-	BaseUsr();
-	BaseUsr(string name,string pd);
+	BaseUsr(std::string name,std::string pd);
 	virtual ~BaseUsr();
-	void storage();
-	virtual bool auth(string)final;
-	virtual string encryp(const string passwd)final;
-	string tosting();
+	virtual void getMoney();
+	virtual void getGoods();
+	virtual void changeGoods();
+	virtual void discount();
+	virtual bool changePassWord();
+
+	virtual void storage()=0;
+	virtual bool login() = 0;
+	USRTYPE virtual getType() = 0;
+	
+	std::string tosting();
+protected:
+	virtual std::string encryp(const  std::string passwd)final;
+	virtual bool auth(std::string)final;//ÓÉloginÊ¹ÓÃ
+	std::string getUsrPassWord();
+	std::string getUsrName();
 private:
-	long long int usrId;
-	string usrName;
-	string usrPassWord;
-	USRTYPE usrType;
+    std::string usrName;
+	std::string usrPassWord;
 	bool isLogin;
-	inline static long long int totalNum=1;
 };

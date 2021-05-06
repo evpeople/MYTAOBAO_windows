@@ -6,6 +6,7 @@
 #include "BaseUsr.h"
 #include"Customer.h"
 #include<json/json.h>
+#include "Server.h"
 
 
 
@@ -13,7 +14,7 @@ int main()
 {
     cout << "欢迎来到我的淘宝世界！！！";
     ifstream fstream;
-    fstream.open("logo.txt");
+    fstream.open("./baseFile/logo.txt");
     if (fstream.is_open())
     {
         while (!fstream.eof())
@@ -25,11 +26,12 @@ int main()
     }
     fstream.close();
     char event;
-    while (1)
-    {
-        
-        cin >> event;
-    }
+//    Server();
+//    while (1)
+//    {
+//        
+//        cin >> event;
+//    }
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

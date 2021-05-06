@@ -3,6 +3,27 @@
 #include<fstream>
 #include <openssl/sha.h>
 #include<json/json.h>
+void BaseUsr::discount()
+{
+    std::cout << "只有商家可以打折" << std::endl;
+}
+bool BaseUsr::changePassWord()
+{
+    std::cout << "请输入你原本的密码" << std::endl;
+    std::string pass;
+    std::cin >> pass;
+    if (auth(pass))
+    {
+        std::cout << "请输入您的新密码" << std::endl;
+        std::cin >> pass;
+        usrPassWord = encryp(pass);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 //long long int BaseUsr::totalNum = 0;
 void BaseUsr::storage()
 {
@@ -19,41 +40,53 @@ void BaseUsr::storage()
 }};
     temp["usrType"] = enumToString();
     //string out = temp.toStyledString();
-    ofstream fout{"ALL_USR.txt",ios_base::app};
+    std::ofstream fout{"ALL_USR.txt",std::ios_base::app};
     auto jsonWriter(fwbuilder.newStreamWriter());
     jsonWriter->write(temp,&fout);
     fout.close();
 }
 
-bool BaseUsr::auth(string passwd)
+bool BaseUsr::auth(std::string passwd)
 {
-    unsigned char hash[SHA256_DIGEST_LENGTH];
+    /*unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
     SHA256_Init(&sha256);
     SHA256_Update(&sha256, passwd.c_str(), passwd.size());
     SHA256_Final(hash, &sha256);
-    ostringstream e;
+    std::ostringstream e;
     for (size_t i = 0; i < SHA256_DIGEST_LENGTH; i++)
     {
         e.put(hash[i]);
     }
-    string en_passwd = e.str();
-    return usrPassWord==en_passwd;
+    std::string en_passwd = e.str();
+    return usrPassWord==en_passwd;*/
+    std::string enPassWord=encryp(passwd);
+    return usrPassWord == enPassWord;
 }
 
-string BaseUsr::encryp(const string passwd)
+std::string BaseUsr::getUsrPassWord()
+{
+    return usrPassWord;
+}
+
+std::string BaseUsr::getUsrName()
+{
+    return usrName;
+}
+
+std::string BaseUsr::encryp(const std::string passwd)
 {
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
     SHA256_Init(&sha256);
     SHA256_Update(&sha256, passwd.c_str(), passwd.size());
     SHA256_Final(hash, &sha256);
-    ostringstream e;
+    std::ostringstream e;
     for (size_t i = 0; i < SHA256_DIGEST_LENGTH; i++)
     {
         e.put(hash[i]);
     }
-    string en_passwd = e.str();
+    std::string en_passwd = e.str();
     return en_passwd;
 }
 
@@ -70,22 +103,27 @@ string BaseUsr::tosting()
     return string();
 }
 
-BaseUsr::BaseUsr()
+BaseUsr::BaseUsr(std::string name, std::string pd)
 {
-    usrId = 0;
-    usrName = "new_usr";
-    usrPassWord = "0";
-    usrType = USRTYPE::newUsr;
-    isLogin = false;
-}
-BaseUsr::BaseUsr(string name, string pd)
-{
-    usrId = BaseUsr::totalNum;
     usrName = name;
     usrPassWord = encryp(pd);
-    usrType = USRTYPE::newUsr;
     isLogin = true;
-    BaseUsr::totalNum++;
 }
 BaseUsr::~BaseUsr()
 {}
+
+
+void BaseUsr::getMoney()
+{
+    std::cout << "只有用户用钱！！"<<std::endl;
+}
+
+void BaseUsr::getGoods()
+{
+    std::cout << "只有商家有货物" << std::endl;
+}
+
+void BaseUsr::changeGoods()
+{
+    std::cout << "只有商家能改货" << std::endl;
+}
