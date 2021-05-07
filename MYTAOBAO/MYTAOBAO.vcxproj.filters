@@ -30,6 +30,18 @@
     <ClCompile Include="Server.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Book.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Cloths.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="eleProduct.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Businessman.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUsr.h">
@@ -42,6 +54,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Server.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Book.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Cloths.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="eleProduct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Businessman.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

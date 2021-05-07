@@ -143,14 +143,22 @@
   <ItemGroup>
     <ClCompile Include="BaseGoods.cpp" />
     <ClCompile Include="BaseUsr.cpp" />
+    <ClCompile Include="Book.cpp" />
+    <ClCompile Include="Businessman.cpp" />
+    <ClCompile Include="Cloths.cpp" />
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="eleProduct.cpp" />
     <ClCompile Include="MYTAOBAO.cpp" />
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGoods.h" />
     <ClInclude Include="BaseUsr.h" />
+    <ClInclude Include="Book.h" />
+    <ClInclude Include="Businessman.h" />
+    <ClInclude Include="Cloths.h" />
     <ClInclude Include="Customer.h" />
+    <ClInclude Include="eleProduct.h" />
     <ClInclude Include="Server.h" />
   </ItemGroup>
   <ItemGroup>
