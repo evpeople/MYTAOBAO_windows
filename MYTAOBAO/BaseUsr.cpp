@@ -40,18 +40,18 @@ void BaseUsr::storage()
 
 bool BaseUsr::auth(std::string passwd)
 {
-    /*unsigned char hash[SHA256_DIGEST_LENGTH];
-    SHA256_CTX sha256;
-    SHA256_Init(&sha256);
-    SHA256_Update(&sha256, passwd.c_str(), passwd.size());
-    SHA256_Final(hash, &sha256);
-    std::ostringstream e;
-    for (size_t i = 0; i < SHA256_DIGEST_LENGTH; i++)
-    {
-        e.put(hash[i]);
-    }
-    std::string en_passwd = e.str();
-    return usrPassWord==en_passwd;*/
+    //unsigned char hash[SHA256_DIGEST_LENGTH];
+    //SHA256_CTX sha256;
+    //SHA256_Init(&sha256);
+    //SHA256_Update(&sha256, passwd.c_str(), passwd.size());
+    //SHA256_Final(hash, &sha256);
+    //std::ostringstream e;
+    //for (size_t i = 0; i < SHA256_DIGEST_LENGTH; i++)
+    //{
+    //    e.put(hash[i]);
+    //}
+    //std::string en_passwd = e.str();
+    //return usrPassWord==en_passwd;
     std::string enPassWord=encryp(passwd);
     return usrPassWord == enPassWord;
 }
@@ -86,7 +86,7 @@ std::string BaseUsr::encryp(const std::string passwd)
     std::ostringstream e;
     for (size_t i = 0; i < SHA256_DIGEST_LENGTH; i++)
     {
-        e.put(hash[i]);
+        e << std::hex << (int)hash[i];
     }
     std::string en_passwd = e.str();
     return en_passwd;

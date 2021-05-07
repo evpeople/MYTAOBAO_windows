@@ -45,7 +45,7 @@ bool Customer::login()
     std::string tempUsr;
     std::cin >> tempUsr;
 
-    std::string inPath = Customer::storageAddress + tempUsr+"*.usr";
+    std::string inPath = Customer::storageAddress + tempUsr+".usr";
 
     std::ifstream fin;
     fin.open(inPath);
@@ -65,6 +65,20 @@ bool Customer::login()
             setUsrPassWord(root["usrPass"].asString());
             money = root["money"].asDouble();
         fin.close();
+        std::cout << "ÇëÊäÈëÄúµÄÃÜÂë" << std::endl;
+        std::string passWord;
+        std::cin >> passWord;
+        //passWord = "evp";
+        if (auth(passWord))
+        {
+            std::cout << "µÇÂ½³É¹¦" << std::endl;
+            return true;
+        }
+        else
+        {
+            std::cout << "ÃÜÂë´íÎó" << std::endl;
+            return false;
+        }
     }
     else
     {
@@ -89,7 +103,12 @@ void Customer::balance()
         std::cin >> choice;
         money += choice;
     }
-    return;
+    else
+    {
+        std::cin.clear();
+        std::cin.ignore();
+        return;
+    }
 }
 
 void Customer::buySomeThing(double price)
