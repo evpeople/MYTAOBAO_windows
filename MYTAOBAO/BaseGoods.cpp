@@ -1,4 +1,5 @@
 #include "BaseGoods.h"
+using namespace std;
 
 double BaseGoods::getOriginalPrice()
 {
@@ -10,17 +11,17 @@ long long int BaseGoods::getRemain()
     return numberRemain;
 }
 
-std::string BaseGoods::getName()
+string BaseGoods::getName()
 {
     return name;
 }
 
 void BaseGoods::getDescription()
 {
-    std::cout << "这只是一本名为" << name << "的普通的"<<BaseGoods::Description<<"！" << std::endl;
+    cout << "这只是一本名为" << name << "的普通的"<<BaseGoods::Description<<"！" << endl;
 }
 
-void BaseGoods::setDescription(std::string newDescription)
+void BaseGoods::setDescription(string newDescription)
 {
     BaseGoods::Description = newDescription;
 }

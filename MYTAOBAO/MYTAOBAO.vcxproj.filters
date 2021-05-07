@@ -36,7 +36,7 @@
     <ClCompile Include="Cloths.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="eleProduct.cpp">
+    <ClCompile Include="EleProduct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Businessman.cpp">
@@ -62,10 +62,13 @@
     <ClInclude Include="Cloths.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="eleProduct.h">
+    <ClInclude Include="EleProduct.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Businessman.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Goods.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

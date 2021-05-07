@@ -147,7 +147,7 @@
     <ClCompile Include="Businessman.cpp" />
     <ClCompile Include="Cloths.cpp" />
     <ClCompile Include="Customer.cpp" />
-    <ClCompile Include="eleProduct.cpp" />
+    <ClCompile Include="EleProduct.cpp" />
     <ClCompile Include="MYTAOBAO.cpp" />
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
@@ -158,8 +158,9 @@
     <ClInclude Include="Businessman.h" />
     <ClInclude Include="Cloths.h" />
     <ClInclude Include="Customer.h" />
-    <ClInclude Include="eleProduct.h" />
+    <ClInclude Include="EleProduct.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="Goods.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="baseFile\logo.txt" />

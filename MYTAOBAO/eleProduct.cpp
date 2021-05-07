@@ -1,18 +1,18 @@
-#include "eleProduct.h"
-double eleProduct::discount = 1;
-eleProduct::eleProduct(long long int newId, long long int newNumberRemain, double newPrice, std::string newName)
+#include "EleProduct.h"
+double EleProduct::discount = 1;
+EleProduct::EleProduct(long long int newId, long long int newNumberRemain, double newPrice, std::string newName)
     :BaseGoods(newId, newNumberRemain, newPrice, newName)
 {
     setDescription(" È");
 }
-double eleProduct::getPrice()
+double EleProduct::getPrice()
 {
-    return getOriginalPrice() * eleProduct::discount;
+    return getOriginalPrice() * EleProduct::discount;
 }
 
 
 
-void eleProduct::setDiscount(double newDiscount)
+void EleProduct::setDiscount(double newDiscount)
 {
-    Book::discount = newDiscount;
+    EleProduct::discount = newDiscount;
 }

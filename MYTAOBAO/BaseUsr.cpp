@@ -3,21 +3,22 @@
 #include<fstream>
 #include <openssl/sha.h>
 #include<json/json.h>
+using namespace std;
 void BaseUsr::discount()
 {
-    std::cout << "只有商家可以打折" << std::endl;
+    cout << "只有商家可以打折" <<  endl;
 }
 bool BaseUsr::changePassWord()
 {
-    std::cout << "请输入你原本的密码" << std::endl;
-    std::string pass;
-    std::cin >> pass;
+     cout << "请输入你原本的密码" <<  endl;
+     string pass;
+     cin >> pass;
     if (auth(pass))
     {
-        std::cout << "请输入您的新密码" << std::endl;
-        std::cin >> pass;
+         cout << "请输入您的新密码" <<  endl;
+         cin >> pass;
         usrPassWord = encryp(pass);
-        std::cout << "!!!!!!!!!!!!保存有可能出问题\n\n\n" << std::endl;
+         cout << "!!!!!!!!!!!!保存有可能出问题\n\n\n" <<  endl;
         this->storage();
         return true;
     }
@@ -29,7 +30,7 @@ bool BaseUsr::changePassWord()
 //long long int BaseUsr::totalNum = 0;
 void BaseUsr::storage()
 {
-    std::cout << "错误的调用" << std::endl;
+     cout << "错误的调用" <<  endl;
     return;
     Json::Value temp;
     Json::StreamWriterBuilder fwbuilder;
@@ -38,57 +39,57 @@ void BaseUsr::storage()
     temp["usrPass"] = usrPassWord;//使用哈希表！
 }
 
-bool BaseUsr::auth(std::string passwd)
+bool BaseUsr::auth( string passwd)
 {
     //unsigned char hash[SHA256_DIGEST_LENGTH];
     //SHA256_CTX sha256;
     //SHA256_Init(&sha256);
     //SHA256_Update(&sha256, passwd.c_str(), passwd.size());
     //SHA256_Final(hash, &sha256);
-    //std::ostringstream e;
+    // ostringstream e;
     //for (size_t i = 0; i < SHA256_DIGEST_LENGTH; i++)
     //{
     //    e.put(hash[i]);
     //}
-    //std::string en_passwd = e.str();
+    // string en_passwd = e.str();
     //return usrPassWord==en_passwd;
-    std::string enPassWord=encryp(passwd);
+     string enPassWord=encryp(passwd);
     return usrPassWord == enPassWord;
 }
 
-std::string BaseUsr::getUsrPassWord()
+ string BaseUsr::getUsrPassWord()
 {
     return usrPassWord;
 }
 
-std::string BaseUsr::getUsrName()
+ string BaseUsr::getUsrName()
 {
     return usrName;
 }
 
-void BaseUsr::setUsrName(std::string newName)
+void BaseUsr::setUsrName( string newName)
 {
     usrName = newName;
 }
 
-void BaseUsr::setUsrPassWord(std::string newPassWord)
+void BaseUsr::setUsrPassWord( string newPassWord)
 {
     usrPassWord = newPassWord;
 }
 
-std::string BaseUsr::encryp(const std::string passwd)
+ string BaseUsr::encryp(const  string passwd)
 {
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
     SHA256_Init(&sha256);
     SHA256_Update(&sha256, passwd.c_str(), passwd.size());
     SHA256_Final(hash, &sha256);
-    std::ostringstream e;
+     ostringstream e;
     for (size_t i = 0; i < SHA256_DIGEST_LENGTH; i++)
     {
-        e << std::hex << (int)hash[i];
+        e <<  hex << (int)hash[i];
     }
-    std::string en_passwd = e.str();
+     string en_passwd = e.str();
     return en_passwd;
 }
 //
@@ -100,12 +101,12 @@ std::string BaseUsr::encryp(const std::string passwd)
 //                                            case USRTYPE::newUsr: return "sd";
 //
 //}};  
-//    std::cout << "ID:   " << usrId << "\nName:  " << usrName << "\nType:    " << enumToString() <<"\npd"<<usrPassWord<< std::endl;
+//     cout << "ID:   " << usrId << "\nName:  " << usrName << "\nType:    " << enumToString() <<"\npd"<<usrPassWord<<  endl;
 //
 //    return string();
 //}
 
-BaseUsr::BaseUsr(std::string name, std::string pd)
+BaseUsr::BaseUsr( string name,  string pd)
 {
     usrName = name;
     usrPassWord = encryp(pd);
@@ -117,19 +118,20 @@ BaseUsr::~BaseUsr()
 
 void BaseUsr::balance()
 {
-    std::cout << "只有用户用钱！！"<<std::endl;
+     cout << "只有用户用钱！！"<< endl;
 }
 
 void BaseUsr::getGoods()
 {
-    std::cout << "只有商家有货物" << std::endl;
+     cout << "只有商家有货物" <<  endl;
 }
 
 void BaseUsr::buySomeThing(double)
 {
 }
 
-void BaseUsr::changeGoods()
+
+void BaseUsr::setGoods()
 {
-    std::cout << "只有商家能改货" << std::endl;
+     cout << "只有商家能改货" <<  endl;
 }

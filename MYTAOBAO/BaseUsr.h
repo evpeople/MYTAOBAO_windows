@@ -34,13 +34,14 @@ public:
 	virtual void balance();
 	virtual void getGoods();
 	virtual void buySomeThing(double);
-	virtual void changeGoods();
+	virtual void setGoods();
 	virtual void discount();
-	virtual bool changePassWord();
+	virtual bool changePassWord()final;
 
 	virtual void storage()=0;
 	virtual bool login() = 0;
 	virtual USRTYPE getType() = 0;
+
 	
 	std::string tosting();
 protected:

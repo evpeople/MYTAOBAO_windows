@@ -4,20 +4,26 @@
 #include<fstream>
 #include <io.h>
 
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+using std::ofstream;
+using std::ifstream;
+using std::ios_base;
 long long int Customer::totalId = 0;
 USRTYPE Customer::type = USRTYPE::customer;
-std::string Customer::storageAddress = "as";
-Customer::Customer(std::string name, std::string PassWd):BaseUsr{ name, PassWd
-}
+string Customer::storageAddress = ".";
+Customer::Customer(string name, string PassWd)
+    :BaseUsr{ name, PassWd }
 {
     id = totalId;
     totalId++;
-
-    std::cout << "您想充值多少钱" << std::endl;
-    std::cin >> money;
+    cout << "您想充值多少钱" << endl;
+    cin >> money;
 }
 
-Customer::Customer():BaseUsr{"defalut","0"}
+Customer::Customer() :BaseUsr{ "defalut","0" }
 {
     id = 0;
     money = 0;
@@ -32,8 +38,8 @@ void Customer::storage()
     temp["usrPass"] = getUsrPassWord();
     temp["usrType"] = "Customer";
     temp["money"] = money;
-    std::string outFile = Customer::storageAddress + getUsrName()+".usr";
-    std::ofstream fout{outFile ,std::ios_base::app };
+    string outFile = Customer::storageAddress + getUsrName() + ".usr";
+    ofstream fout{ outFile ,ios_base::app };
     auto jsonWriter(fwbuilder.newStreamWriter());
     jsonWriter->write(temp, &fout);
     fout.close();
@@ -41,13 +47,13 @@ void Customer::storage()
 
 bool Customer::login()
 {
-    std::cout << "请输入您的用户名" << std::endl;
-    std::string tempUsr;
-    std::cin >> tempUsr;
+    cout << "请输入您的用户名" << endl;
+    string tempUsr;
+    cin >> tempUsr;
 
-    std::string inPath = Customer::storageAddress + tempUsr+".usr";
+    string inPath = Customer::storageAddress + tempUsr + ".usr";
 
-    std::ifstream fin;
+    ifstream fin;
     fin.open(inPath);
     if (fin.is_open())
     {
@@ -57,32 +63,32 @@ bool Customer::login()
         Json::Value root;
         if (!Json::parseFromStream(reader, fin, &root, &errs))
         {
-            std::cout << errs << std::endl;
+            cout << errs << endl;
         }
 
-            id = root["usrID"].asInt64();
-            setUsrName( root["usrName"].asString());
-            setUsrPassWord(root["usrPass"].asString());
-            money = root["money"].asDouble();
+        id = root["usrID"].asInt64();
+        setUsrName(root["usrName"].asString());
+        setUsrPassWord(root["usrPass"].asString());
+        money = root["money"].asDouble();
         fin.close();
-        std::cout << "请输入您的密码" << std::endl;
-        std::string passWord;
-        std::cin >> passWord;
+        cout << "请输入您的密码" << endl;
+        string passWord;
+        cin >> passWord;
         //passWord = "evp";
         if (auth(passWord))
         {
-            std::cout << "登陆成功" << std::endl;
+            cout << "登陆成功" << endl;
             return true;
         }
         else
         {
-            std::cout << "密码错误" << std::endl;
+            cout << "密码错误" << endl;
             return false;
         }
     }
     else
     {
-        std::cout << "抱歉，此用户不存在！，请注册" << std::endl;
+        cout << "抱歉，此用户不存在！，请注册" << endl;
     }
     return false;
 }
@@ -94,33 +100,33 @@ USRTYPE Customer::getType()
 
 void Customer::balance()
 {
-    std::cout << "你现在还剩" << money << "元钱，充值请输入8" << std::endl;
+    cout << "你现在还剩" << money << "元钱，充值请输入8" << endl;
     int choice;
-    std::cin >> choice;
-    if (choice==8)
+    cin >> choice;
+    if (choice == 8)
     {
-        std::cout << "请输入充值多少钱" << std::endl;
-        std::cin >> choice;
+        cout << "请输入充值多少钱" << endl;
+        cin >> choice;
         money += choice;
     }
     else
     {
-        std::cin.clear();
-        std::cin.ignore();
+        cin.clear();
+        cin.ignore();
         return;
     }
 }
 
 void Customer::buySomeThing(double price)
 {
-    if (price>money)
+    if (price > money)
     {
-        std::cout << "抱歉，你的钱不够多" << std::endl;
+        cout << "抱歉，你的钱不够多" << endl;
     }
     else
     {
         money -= price;
-        std::cout << "已购买，你还剩" << money << "这么多钱" << std::endl;
+cout << "已购买，你还剩" << money << "这么多钱" << endl;
     }
 }
 
@@ -129,12 +135,12 @@ int Customer::getId()
     return id;
 }
 
-void Customer::setAddress(std::string newAddress)
+void Customer::setAddress(string newAddress)
 {
     Customer::storageAddress = newAddress;
 }
 
-std::string Customer::getAddress()
+string Customer::getAddress()
 {
     return Customer::storageAddress;
 }

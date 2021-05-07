@@ -3,10 +3,11 @@
 #include<json/json.h>
 #include<fstream>
 #include "Customer.h"
-std::string Server::Path = "config.json";
+using namespace std;
+string Server::Path = "config.json";
 Server::Server()
 {
-    std::ifstream fin;
+    ifstream fin;
     fin.open(Server::Path);
     if (fin.is_open())
     {
@@ -16,14 +17,14 @@ Server::Server()
         Json::Value root;
         if (!Json::parseFromStream(reader, fin, &root, &errs))
         {
-            std::cout << errs << std::endl;
+            cout << errs << endl;
         }
         Customer::setAddress(root["usrAddress"].asString());
         fin.close();
     }
     else
     {
-        std::cout << "配置文件不存在" << std::endl;
+        cout << "配置文件不存在" << endl;
     }
 
 }
@@ -36,11 +37,11 @@ void Server::start()
     while (true)
     {
         int choice;
-        std::cout << "1为登录，2为注册" << std::endl;
-        std::cin >> choice;
+        cout << "1为登录，2为注册" << endl;
+        cin >> choice;
         EVENT choiceEvent = (EVENT)choice;
-        std::cin.clear();
-        std::cin.ignore();
+        cin.clear();
+        cin.ignore();
         switch (choiceEvent)
         {
         case EVENT::login:
@@ -54,7 +55,7 @@ void Server::start()
             }*/
             if (!test->login())
             {
-                std::cout << "再重来一遍吧" << std::endl;
+                cout << "再重来一遍吧" << endl;
                 break;
             }
             switch (test->getType())
@@ -65,17 +66,17 @@ void Server::start()
 
             while (in)
             {
-                std::cout << "输入0为查看个人信息\n输入1为购买商品\n输入2为登出\n";
+                cout << "输入0为查看个人信息\n输入1为购买商品\n输入2为登出\n";
                 int choice;
                 
-                std::cin >> choice;
+                cin >> choice;
                 enum class CUSTOMERLOGIN
                 {
                     PERSONAL, GOODS, LOGOUT
                 };
                 CUSTOMERLOGIN temp = (CUSTOMERLOGIN)choice;
-                std::cin.clear();
-                std::cin.ignore();
+                cin.clear();
+                cin.ignore();
                 switch (temp)
                 {
                 case CUSTOMERLOGIN::PERSONAL:
@@ -84,12 +85,12 @@ void Server::start()
                 case CUSTOMERLOGIN::GOODS:
                 {
                     int choice;
-                    std::cout << "输入0为查看商品，输入1为搜索商品，输入2为购买商品\n";
-                    std::cin >> choice;
+                    cout << "输入0为查看商品，输入1为搜索商品，输入2为购买商品\n";
+                    cin >> choice;
                     enum class BUY { SEARCH=0, FIND, BUY };
                     BUY temp = (BUY)choice;
-                    std::cin.clear();
-                    std::cin.ignore();
+                    cin.clear();
+                    cin.ignore();
                     switch (temp)
                     {
                     case BUY::BUY:
@@ -124,17 +125,17 @@ void Server::start()
         case EVENT::signUp:
         {   enum class SIGNUP { NOUSRNAME, NOPASSWORD, NOUSRTYPE } signUpEnum = SIGNUP::NOUSRNAME;
         Json::Value signUpJson;
-        std::string usr[4];
+        string usr[4];
         while (true)
         {
             switch (signUpEnum)
             {
             case SIGNUP::NOUSRNAME:
-                std::cout << "请输入您的用户名" << std::endl;
-                std::cin >> usr[0];
+                cout << "请输入您的用户名" << endl;
+                cin >> usr[0];
                 if (!this->check(usr[0]))
                 {
-                    std::cout << "此用户名已被占用，请您选择其他用户名" << std::endl;
+                    cout << "此用户名已被占用，请您选择其他用户名" << endl;
                     continue;
                 }
                 else
@@ -144,13 +145,13 @@ void Server::start()
                 }
                 [[fallthrough]];
             case SIGNUP::NOPASSWORD:
-                std::cout << "请输入您的密码" << std::endl;
-                std::cin >> usr[1];
-                std::cout << "请再次确认您的密码" << std::endl;
-                std::cin >> usr[2];
+                cout << "请输入您的密码" << endl;
+                cin >> usr[1];
+                cout << "请再次确认您的密码" << endl;
+                cin >> usr[2];
                 if (usr[1] != usr[2])
                 {
-                    std::cout << "两次密码不同，请重新注册" << std::endl;
+                    cout << "两次密码不同，请重新注册" << endl;
                     continue;
                 }
                 else
@@ -160,19 +161,19 @@ void Server::start()
                 }
                 [[fallthrough]];
             case SIGNUP::NOUSRTYPE:
-                std::cout << "请输入您的用户类型,A为顾客，B为商家" << std::endl;
-                std::cin >> usr[3];
+                cout << "请输入您的用户类型,A为顾客，B为商家" << endl;
+                cin >> usr[3];
                 if (usr[3] != "A" && usr[3] != "B")
                 {
-                    std::cout << "由于您输入了错误的用户类型，请重新注册" << std::endl;
+                    cout << "由于您输入了错误的用户类型，请重新注册" << endl;
                 }
                 else
                 {
                     signUpJson["usrType"] = usr[3];
                     signUpEnum = SIGNUP::NOUSRNAME;
-                    std::cout << "您已完成了注册，详细信息如下\n" << signUpJson.toStyledString() << "\n" << "输入w保存信息，输入q重新注册" << std::endl;
-                    std::string ans;
-                    std::cin >> ans;
+                    cout << "您已完成了注册，详细信息如下\n" << signUpJson.toStyledString() << "\n" << "输入w保存信息，输入q重新注册" << endl;
+                    string ans;
+                    cin >> ans;
                     if (ans == "w")
                     {
                         test = new Customer(usr[0], usr[1]);
@@ -192,11 +193,11 @@ void Server::start()
         }
     }
 }
-bool Server::check(std::string usrId)
+bool Server::check(string usrId)
 {
-    std::string inPath = Customer::getAddress() + usrId + ".usr";
+    string inPath = Customer::getAddress() + usrId + ".usr";
 
-    std::ifstream fin;
+    ifstream fin;
     fin.open(inPath);
     if (fin.is_open())
     {
