@@ -3,6 +3,7 @@
 #include<json/json.h>
 #include<fstream>
 #include "Customer.h"
+#include"Businessman.h"
 using namespace std;
 string Server::Path = "config.json";
 Server::Server()
@@ -19,6 +20,7 @@ Server::Server()
         {
             cout << errs << endl;
         }
+        Businessman::setAddress(root["busmanAddress"].asString());
         Customer::setAddress(root["usrAddress"].asString());
         fin.close();
     }
@@ -39,10 +41,9 @@ void Server::start()
         int choice;
         cout << "1为登录，2为注册" << endl;
         cin >> choice;
-        EVENT choiceEvent = (EVENT)choice;
         cin.clear();
         cin.ignore();
-        switch (choiceEvent)
+        switch ((EVENT)choice)
         {
         case EVENT::login:
         {
@@ -74,10 +75,9 @@ void Server::start()
                 {
                     PERSONAL, GOODS, LOGOUT
                 };
-                CUSTOMERLOGIN temp = (CUSTOMERLOGIN)choice;
                 cin.clear();
                 cin.ignore();
-                switch (temp)
+                switch ((CUSTOMERLOGIN)choice)
                 {
                 case CUSTOMERLOGIN::PERSONAL:
                     test->balance();
@@ -88,10 +88,9 @@ void Server::start()
                     cout << "输入0为查看商品，输入1为搜索商品，输入2为购买商品\n";
                     cin >> choice;
                     enum class BUY { SEARCH=0, FIND, BUY };
-                    BUY temp = (BUY)choice;
                     cin.clear();
                     cin.ignore();
-                    switch (temp)
+                    switch ((BUY)temp)
                     {
                     case BUY::BUY:
                         test->buySomeThing(10.00);

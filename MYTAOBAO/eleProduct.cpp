@@ -1,9 +1,9 @@
 #include "EleProduct.h"
 double EleProduct::discount = 1;
-EleProduct::EleProduct(long long int newId, long long int newNumberRemain, double newPrice, std::string newName)
-    :BaseGoods(newId, newNumberRemain, newPrice, newName)
+EleProduct::EleProduct( long long int newNumberRemain, double newPrice, std::string newName)
+    :BaseGoods(newNumberRemain, newPrice, newName)
 {
-    setDescription("书");
+    setDescription("电子产品");
 }
 double EleProduct::getPrice()
 {

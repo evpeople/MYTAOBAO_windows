@@ -1,6 +1,9 @@
 #pragma once
 #include "BaseUsr.h"
 #include<vector>
+#include<unordered_map>
+#include<memory>
+#include<algorithm>
 #include"Goods.h"
 class Businessman :
     public BaseUsr
@@ -17,7 +20,8 @@ public:
     virtual void setGoods()override;
 private:
     long long int id;
-    std::vector<BaseGoods*>busSGooods;
+    int goods;;
+    std::vector<std::unique_ptr<BaseGoods>>busSGooods;
     static USRTYPE type;
     static long long int totalId;
     static std::string  storageAddress;

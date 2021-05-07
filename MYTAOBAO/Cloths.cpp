@@ -1,10 +1,10 @@
 #include "Cloths.h"
 using std::string;
 double Cloths::discount = 1;
-Cloths::Cloths(long long int newId, long long int newNumberRemain, double newPrice, string newName)
-    :BaseGoods(newId, newNumberRemain, newPrice, newName)
+Cloths::Cloths(long long int newNumberRemain, double newPrice, string newName)
+    :BaseGoods(newNumberRemain, newPrice, newName)
 {
-    setDescription("Êé");
+    setDescription("ÒÂ·þ");
 }
 double Cloths::getPrice()
 {

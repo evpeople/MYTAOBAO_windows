@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include<json/json.h>
+#include<fstream>
 enum class USRTYPE { businessman, customer, newUsr
 };
 //std::ostream& operator<<(std::ostream& os, const USRTYPE& ec)

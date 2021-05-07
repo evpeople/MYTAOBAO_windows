@@ -4,8 +4,8 @@
 class BaseGoods
 {
 public:
-    BaseGoods(long long int newId, long long int newNumberRemain, double newPrice, std::string newName)
-        :id(newId), numberRemain(newNumberRemain), price(newPrice), name(newName) {}
+    BaseGoods( long long int newNumberRemain, double newPrice, std::string newName)
+        : numberRemain(newNumberRemain), price(newPrice), name(newName) {}
     virtual double getOriginalPrice()final;
     virtual long long int getRemain()final;
     virtual std::string getName()final;
@@ -15,7 +15,6 @@ public:
 protected:
     virtual void setDescription(std::string newDescription);
 private:
-    long long int id;
     long long int numberRemain;
     double price;
     std::string name;

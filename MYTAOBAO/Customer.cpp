@@ -1,7 +1,5 @@
 #include "Customer.h"
-#include<json/json.h>
 #include <iostream>
-#include<fstream>
 #include <io.h>
 
 using std::cin;

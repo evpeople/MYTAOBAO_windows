@@ -1,5 +1,7 @@
 ﻿// MYTAOBAO.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
+//todo: 所有输入函数的检查
+//todo: C/S架构所有操作的返回值（异常处理）
 
 #include <fstream>
 #include<iostream>
