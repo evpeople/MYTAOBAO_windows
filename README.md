@@ -58,3 +58,7 @@ A cpp homework of Bupt
 | 计算价钱=0         |                        |                                      |
 | get原价（virtual） |                        |                                      |
 
+
+
+## MVC设计
+
