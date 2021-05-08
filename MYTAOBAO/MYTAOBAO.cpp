@@ -3,6 +3,7 @@
 //todo: 所有输入函数的检查
 //todo: C/S架构所有操作的返回值（异常处理）
 //todo: 输入改为输入一行
+//todo: 商品展示的美化
 
 #include <fstream>
 #include<iostream>
