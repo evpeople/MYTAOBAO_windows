@@ -1,0 +1,32 @@
+
+	[
+		{
+			"description" : "一本非常好的书",
+			"name" : "good book",
+			"price" : 100.0,
+			"remain" : 200,
+			"type" : "Book"
+        },
+		{
+			"description" : "一本还行的书",
+			"name" : "中等好书书",
+			"price" : 80.0,
+			"remain" : 200,
+			"type" : "Book"
+        },
+        
+		{
+			"description" : "一般的书",
+			"name" : "一般的书",
+			"price" : 60.0,
+			"remain" : 200,
+			"type" : "Book"
+        },
+		{
+			"description" : "不要看，特别烂的书",
+			"name" : "假好书",
+			"price" : 20.0,
+			"remain" : 200,
+			"type" : "Book"
+        }
+	]

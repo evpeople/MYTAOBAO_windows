@@ -17,4 +17,50 @@
 	"usrName" : "qwer",
 	"usrPass" : "f6f2ea8f45d8a057c9566a33f99474da2e5c6a664d736121650e273c6fb0a3",
 	"usrType" : "Businessman"
+}{
+	"goods" : 
+	[
+		{
+			"description" : "真是好书",
+			"name" : "好书",
+			"price" : 100.0,
+			"remain" : 2000,
+			"type" : "Book"
+		},
+		{
+			"description" : "不好的书",
+			"name" : "坏书",
+			"price" : 12.0,
+			"remain" : 189,
+			"type" : "Book"
+		},
+		{
+			"description" : "一本看了之后有收获的书",
+			"name" : "中等好的书",
+			"price" : 23.0,
+			"remain" : 89,
+			"type" : "Book"
+		}
+	],
+	"goodsType" : 9,
+	"usrID" : 0,
+	"usrName" : "qwer",
+	"usrPass" : "f6f2ea8f45d8a057c9566a33f99474da2e5c6a664d736121650e273c6fb0a3",
+	"usrType" : "Businessman"
+}{
+	"goods" : 
+	[
+		{
+			"description" : "好书",
+			"name" : "好书",
+			"price" : 100.0,
+			"remain" : 200,
+			"type" : "Book"
+		}
+	],
+	"goodsType" : 9,
+	"usrID" : 0,
+	"usrName" : "qwer",
+	"usrPass" : "b29a591ad3246f82c69338919bc3ac1b675afb73967ffa066bd7fe9f470d4",
+	"usrType" : "Businessman"
 }

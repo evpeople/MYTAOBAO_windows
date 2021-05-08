@@ -13,8 +13,6 @@ public:
     virtual std::string getType() = 0;
     virtual std::string getDescription()final;
     virtual void setDiscount(double newDiscount) = 0;
-protected:
-    virtual void setDescription(std::string newDescription);
 private:
     long long int numberRemain;
     double price;

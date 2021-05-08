@@ -196,6 +196,12 @@ void Server::start()
         }
     }
 }
+void Server::start(int i)
+{
+    viewManger.setNext(make_unique<BaseView>());
+    viewManger.start();
+
+}
 bool Server::check(string usrId)
 {
     string inPath = Customer::getAddress() + usrId + ".usr";
@@ -216,3 +222,4 @@ bool Server::check(string usrId)
 Server::~Server()
 {
 }
+

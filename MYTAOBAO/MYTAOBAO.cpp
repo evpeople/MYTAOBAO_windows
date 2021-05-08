@@ -1,8 +1,8 @@
 ﻿// MYTAOBAO.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 //todo: 所有输入函数的检查
-//todo: 商品描述的重构
 //todo: C/S架构所有操作的返回值（异常处理）
+//todo: 输入改为输入一行
 
 #include <fstream>
 #include<iostream>
@@ -19,7 +19,7 @@ int main()
    
     char event;
     Server a = Server();
-    a.start();
+    a.start(1);
     //    while (1)
 //    {
 //        

@@ -84,6 +84,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
             cin >> des;
             busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des }));
             cout << name << "添加完毕" << endl;
+            cout<<busSGooods[0]->getDescription();
             break;
         }
         default:
@@ -106,6 +107,13 @@ void Businessman::storage()
 {
     Json::Value root, goods;
     Json::StreamWriterBuilder fwbuilder;
+    static Json::Value def = []() {
+        Json::Value def;
+        Json::StreamWriterBuilder::setDefaults(&def);
+        def["emitUTF8"] = true;
+        return def;
+    }();
+    fwbuilder.settings_ = def;
     int serial = 0;
     for_each(busSGooods.begin(), busSGooods.end(), [&goods, &serial](unique_ptr<BaseGoods>& up) {
 
@@ -137,51 +145,7 @@ bool Businessman::login()
 
     string inPath = Businessman::storageAddress + tempUsr + ".usr";
 
-    ifstream fin;
-    fin.open(inPath);
-    if (fin.is_open())
-    {
-        Json::CharReaderBuilder reader;
-        JSONCPP_STRING errs;
-
-        Json::Value root,goods;
-        if (!Json::parseFromStream(reader, fin, &root, &errs))
-        {
-            cout << errs << endl;
-        }
-
-        id = root["usrID"].asInt64();
-        goodsType = root["goodsType"].asInt();
-        setUsrName(root["usrName"].asString());
-        setUsrPassWord(root["usrPass"].asString());
-
-        goods = root["goods"];
-
-        string name;
-        double price;
-        long long int remain;
-        for (size_t i = 0; i < goods.size(); i++)
-        {
-            if (goods[i]["type"]=="Book")
-            {
-
-            busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString() }));
-            }
-            else if (goods[i]["type"]=="Cloths")
-            {
-            busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString() }));
-
-            }
-            else if (goods[i]["type"]=="EleProduct")
-            {
-            busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString() }));
-            }
-            else
-            {
-                cout << "错误的文件" << endl;
-            }
-        }
-        fin.close();
+   
         cout << "请输入您的密码" << endl;
         string passWord;
         cin >> passWord;
@@ -189,6 +153,51 @@ bool Businessman::login()
         if (auth(passWord))
         {
             cout << "登陆成功" << endl;
+            ifstream fin;
+            fin.open(inPath);
+            if (fin.is_open())
+            {
+                Json::CharReaderBuilder reader;
+                JSONCPP_STRING errs;
+
+                Json::Value root, goods;
+                if (!Json::parseFromStream(reader, fin, &root, &errs))
+                {
+                    cout << errs << endl;
+                }
+
+                id = root["usrID"].asInt64();
+                goodsType = root["goodsType"].asInt();
+                setUsrName(root["usrName"].asString());
+                setUsrPassWord(root["usrPass"].asString());
+
+                goods = root["goods"];
+
+                string name;
+                double price;
+                long long int remain;
+                for (size_t i = 0; i < goods.size(); i++)
+                {
+                    if (goods[i]["type"].asString() == "Book")
+                    {
+
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString() }));
+                    }
+                    else if (goods[i]["type"].asString() == "Cloths")
+                    {
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString() }));
+
+                    }
+                    else if (goods[i]["type"].asString() == "EleProduct")
+                    {
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString() }));
+                    }
+                    else
+                    {
+                        cout << "错误的文件" << goods[i].toStyledString() << endl;
+                    }
+                }
+                fin.close();
             return true;
         }
         else

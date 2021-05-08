@@ -15,8 +15,8 @@ void ViewManger::setNext(std::unique_ptr<BaseView> next)
 
 ViewManger& ViewManger::operator=(const ViewManger& t)
 {
-	ViewManger a = t;
+	ViewManger a ;
 	return a;
 }
 
-	//todo: 需要给每个View建立好单例的对象，然后直接set过去；
+	//todo: View不用单例，现用现创。 

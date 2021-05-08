@@ -20,10 +20,3 @@ std::string BaseGoods::getDescription()
     return description;
 }
 
-void BaseGoods::setDescription(string newDescription)
-{
-    string tempDes;
-    cout << "请提供商品的详细的描述" << endl;
-    cin >> tempDes;
-    description = tempDes;
-}

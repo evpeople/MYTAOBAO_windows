@@ -5,7 +5,6 @@ string Cloths::type = "Cloths";
 Cloths::Cloths(long long int newNumberRemain, double newPrice, string newName,string des)
     :BaseGoods(newNumberRemain, newPrice, newName,des)
 {
-    setDescription("ายทþ");
 }
 double Cloths::getPrice()
 {
