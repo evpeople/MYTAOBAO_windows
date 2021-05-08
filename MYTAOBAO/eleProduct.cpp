@@ -1,8 +1,8 @@
 #include "EleProduct.h"
 double EleProduct::discount = 1;
 std::string EleProduct::type = "EleProduct";
-EleProduct::EleProduct( long long int newNumberRemain, double newPrice, std::string newName)
-    :BaseGoods(newNumberRemain, newPrice, newName)
+EleProduct::EleProduct( long long int newNumberRemain, double newPrice, std::string newName,std::string des)
+    :BaseGoods(newNumberRemain, newPrice, newName,des)
 {
     setDescription("电子产品");
 }

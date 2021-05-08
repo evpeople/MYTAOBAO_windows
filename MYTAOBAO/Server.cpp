@@ -4,6 +4,7 @@
 #include<fstream>
 #include "Customer.h"
 #include"Businessman.h"
+#include"BaseView.h"
 using namespace std;
 string Server::Path = "config.json";
 Server::Server()
@@ -22,6 +23,7 @@ Server::Server()
         }
         Businessman::setAddress(root["busmanAddress"].asString());
         Customer::setAddress(root["usrAddress"].asString());
+        BaseView::setAddress(root["logoAddress"].asString(),root["goodsAddress"].asString());
         fin.close();
     }
     else

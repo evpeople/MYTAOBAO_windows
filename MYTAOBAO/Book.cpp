@@ -2,10 +2,9 @@
 using std::string;
 double Book::discount = 1;
 const string Book::type = "Book";
-Book::Book( long long int newNumberRemain, double newPrice, string newName)
-    :BaseGoods(newNumberRemain,newPrice,newName)
+Book::Book( long long int newNumberRemain, double newPrice, string newName,string des)
+    :BaseGoods(newNumberRemain,newPrice,newName,des)
 {
-    setDescription(" È");
 }
 double Book::getPrice()
 {

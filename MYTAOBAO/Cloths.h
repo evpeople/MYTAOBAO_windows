@@ -4,7 +4,7 @@ class Cloths :
     public BaseGoods
 {
 public:
-    Cloths ( long long int newNumberRemain, double newPrice, std::string newName);
+    Cloths(long long int newNumberRemain, double newPrice, std::string newName, std::string des);
     virtual double getPrice()override;
     virtual std::string getType()override;
     virtual void setDiscount(double newDiscount)override;
