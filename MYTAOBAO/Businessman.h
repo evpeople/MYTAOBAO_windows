@@ -5,6 +5,7 @@
 #include<memory>
 #include<algorithm>
 #include"Goods.h"
+typedef std::vector<std::unique_ptr<BaseGoods>> vupOfBaseGoods;
 class Businessman :
     public BaseUsr
 {
@@ -21,7 +22,8 @@ public:
 private:
     long long int id;
     int goodsType;;
-    std::vector<std::unique_ptr<BaseGoods>>busSGooods;
+    vupOfBaseGoods busSGooods;
+    //std::unordered_map<std::string, vupOfBaseGoods>busSGooods;
     static USRTYPE type;
     static long long int totalId;
     static std::string  storageAddress;

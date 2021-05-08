@@ -6,9 +6,10 @@ class EleProduct :
 public:
     EleProduct( long long int newNumberRemain, double newPrice, std::string newName);
     virtual double getPrice()override;
+    virtual std::string getType()override;
     virtual void setDiscount(double newDiscount)override;
 private:
+    static std::string type;   
     static double discount;
-};
 };
 

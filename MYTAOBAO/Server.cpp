@@ -90,7 +90,7 @@ void Server::start()
                     enum class BUY { SEARCH=0, FIND, BUY };
                     cin.clear();
                     cin.ignore();
-                    switch ((BUY)temp)
+                    switch ((BUY)choice)
                     {
                     case BUY::BUY:
                         test->buySomeThing(10.00);
@@ -132,6 +132,7 @@ void Server::start()
             case SIGNUP::NOUSRNAME:
                 cout << "请输入您的用户名" << endl;
                 cin >> usr[0];
+                //todo: 应该先检测用户类型
                 if (!this->check(usr[0]))
                 {
                     cout << "此用户名已被占用，请您选择其他用户名" << endl;
@@ -175,8 +176,9 @@ void Server::start()
                     cin >> ans;
                     if (ans == "w")
                     {
-                        test = new Customer(usr[0], usr[1]);
+                        test = new Businessman(usr[0], usr[1]);
                         test->storage();
+                        cout << "保存完毕" << endl;
                     }
                     else
                     {

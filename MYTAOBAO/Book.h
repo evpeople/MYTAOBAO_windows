@@ -7,8 +7,10 @@ class Book :
 public:
     Book( long long int newNumberRemain, double newPrice, std::string newName);
     virtual double getPrice()override;
+    virtual std::string getType();
     virtual void setDiscount(double newDiscount)override;
 private:
     static double discount;
+    const static std::string type;
 };
 

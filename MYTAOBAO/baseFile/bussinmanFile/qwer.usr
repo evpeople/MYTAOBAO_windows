@@ -1,0 +1,20 @@
+{
+	"goods" : 
+	[
+		{
+			"name" : "c++",
+			"price" : 100.0,
+			"remain" : 200
+		},
+		{
+			"name" : "c",
+			"price" : 20.0,
+			"remain" : 200
+		}
+	],
+	"goodsType" : 9,
+	"usrID" : 0,
+	"usrName" : "qwer",
+	"usrPass" : "f6f2ea8f45d8a057c9566a33f99474da2e5c6a664d736121650e273c6fb0a3",
+	"usrType" : "Businessman"
+}

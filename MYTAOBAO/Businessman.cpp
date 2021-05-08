@@ -1,10 +1,10 @@
 #include "Businessman.h"
-using namespace std;
 
 
 long long int Businessman::totalId = 0;
 USRTYPE Businessman::type = USRTYPE::businessman;
-string Businessman::storageAddress = ".";
+std::string Businessman::storageAddress = ".";
+using namespace std;
 Businessman::Businessman(std::string name, std::string PassWd)
     :BaseUsr{name,PassWd}
 {
@@ -18,9 +18,10 @@ Businessman::Businessman(std::string name, std::string PassWd)
     totalId++;
     goodsType = 8;
     bool in = true;
-    cout << "下面进入添加商品环节，小商人，你准备好了吗,输入0，是贩卖书，输入1是贩卖电子产品，输入2是贩卖衣服,其余输入是退出商品添加" << endl;
+    cout << "下面进入添加商品环节，小商人，你准备好了吗" << endl;
     while (in)
     {
+        cout << "输入0，是贩卖书，输入1是贩卖电子产品，输入2是贩卖衣服,其余输入是退出商品添加" << endl;
         int temp;
         cin >> temp;
         cin.clear();
@@ -40,6 +41,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name }));
+            cout << name << "添加完毕" << endl;
             break;
         }
         case GOODS::CLOTHES:
@@ -48,13 +50,14 @@ Businessman::Businessman(std::string name, std::string PassWd)
             string name;
             double price;
             long long int remain;
-            cout << "请输入书的名字" << endl;
+            cout << "请输入衣服的名字" << endl;
             cin >> name;
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name }));
+            cout << name << "添加完毕" << endl;
             break;
         }
         case GOODS::ELEPRODUCT:
@@ -63,13 +66,14 @@ Businessman::Businessman(std::string name, std::string PassWd)
             string name;
             double price;
             long long int remain;
-            cout << "请输入书的名字" << endl;
+            cout << "请输入电子产品的名字" << endl;
             cin >> name;
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name }));
+            cout << name << "添加完毕" << endl;
             break;
         }
         default:
@@ -95,9 +99,10 @@ void Businessman::storage()
     int serial = 0;
     for_each(busSGooods.begin(), busSGooods.end(), [&goods, &serial](unique_ptr<BaseGoods>& up) {
 
-        goods[serial]["name"] = up.get()->getName();
-        goods[serial]["price"] = up.get()->getPrice();
-        goods[serial]["remain"] = up.get()->getRemain();
+        goods[serial]["name"] = up->getName();
+        goods[serial]["price"] = up->getPrice();
+        goods[serial]["remain"] = up->getRemain();
+        goods[serial]["type"] = up->getType();
         serial++;
         });
     root["usrID"] = id;
@@ -146,7 +151,24 @@ bool Businessman::login()
         long long int remain;
         for (size_t i = 0; i < goods.size(); i++)
         {
+            if (goods[i]["type"]=="Book")
+            {
+
+            busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString() }));
+            }
+            else if (goods[i]["type"]=="Cloths")
+            {
+            busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString() }));
+
+            }
+            else if (goods[i]["type"]=="EleProduct")
+            {
             busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString() }));
+            }
+            else
+            {
+                cout << "错误的文件" << endl;
+            }
         }
         fin.close();
         cout << "请输入您的密码" << endl;
