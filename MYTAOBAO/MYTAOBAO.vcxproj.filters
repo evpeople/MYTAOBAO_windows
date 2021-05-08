@@ -42,6 +42,39 @@
     <ClCompile Include="Businessman.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ViewManger.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LogoutView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SignUpView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CustmomerView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BusinessmanView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FailureView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CusResultView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BusResultView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUsr.h">
@@ -69,6 +102,42 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Goods.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewManger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MainView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoutView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SignUpView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CustmomerView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BusinessmanView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FailureView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CusResultView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BusResultView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Views.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

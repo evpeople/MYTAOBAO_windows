@@ -1,0 +1,10 @@
+#pragma once
+#include"BusinessmanView.h"
+#include"BusResultView.h"
+#include"BusResultView.h"
+#include"CusResultView.h"
+#include"CustmomerView.h"
+#include"FailureView.h"
+#include"LoginView.h"
+#include"LogoutView.h"
+#include"MainView.h"

@@ -16,7 +16,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
     };
     id = totalId;
     totalId++;
-    goods = 8;
+    goodsType = 8;
     bool in = true;
     cout << "下面进入添加商品环节，小商人，你准备好了吗,输入0，是贩卖书，输入1是贩卖电子产品，输入2是贩卖衣服,其余输入是退出商品添加" << endl;
     while (in)
@@ -29,7 +29,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
         {
         case GOODS::BOOK:
         {
-            goods |= 1;
+            goodsType |= 1;
             string name;
             double price;
             long long int remain;
@@ -44,7 +44,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
         }
         case GOODS::CLOTHES:
         {
-            goods |= 2;
+            goodsType |= 2;
             string name;
             double price;
             long long int remain;
@@ -59,7 +59,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
         }
         case GOODS::ELEPRODUCT:
         {
-            goods |= 4;
+            goodsType |= 4;
             string name;
             double price;
             long long int remain;
@@ -85,7 +85,7 @@ Businessman::Businessman()
     :BaseUsr("0","0")
 {
     id = 0;
-    goods = 0;
+    goodsType = 0;
 }
 
 void Businessman::storage()
@@ -105,6 +105,7 @@ void Businessman::storage()
     root["usrPass"] = getUsrPassWord();
     root["usrType"] = "Businessman";
     root["goods"] = goods;
+    root["goodsType"] = goodsType;
     string outFile = Businessman::storageAddress + getUsrName() + ".usr";
     ofstream fout{ outFile ,ios_base::app };
     auto jsonWriter(fwbuilder.newStreamWriter());
@@ -134,15 +135,18 @@ bool Businessman::login()
         }
 
         id = root["usrID"].asInt64();
+        goodsType = root["goodsType"].asInt();
         setUsrName(root["usrName"].asString());
         setUsrPassWord(root["usrPass"].asString());
 
         goods = root["goods"];
 
+        string name;
+        double price;
+        long long int remain;
         for (size_t i = 0; i < goods.size(); i++)
         {
-            goods[i]
-                //todo: 设置商品的函数
+            busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString() }));
         }
         fin.close();
         cout << "请输入您的密码" << endl;

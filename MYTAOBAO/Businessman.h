@@ -20,7 +20,7 @@ public:
     virtual void setGoods()override;
 private:
     long long int id;
-    int goods;;
+    int goodsType;;
     std::vector<std::unique_ptr<BaseGoods>>busSGooods;
     static USRTYPE type;
     static long long int totalId;
