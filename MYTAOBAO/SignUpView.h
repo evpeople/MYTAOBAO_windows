@@ -5,3 +5,8 @@ class SignUpView :
 {
 };
 
+class SignupView :
+    public BaseView
+{
+};
+

@@ -1,4 +1,9 @@
 #include "ViewManger.h"
+ViewManger& ViewManger::getInstance()
+{
+	static ViewManger instance;
+	return instance;
+}
 void ViewManger::start()
 {
 	while (viewNext)

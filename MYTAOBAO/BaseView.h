@@ -1,5 +1,9 @@
 #pragma once
 #include<string>
+#include<regex>
+#include<memory>
+
+
 class BaseView 
 {
     /*
@@ -18,11 +22,14 @@ public:
     void showLogo();
     void showGoods();
     void static setAddress(std::string,std::string);
-
+protected:
+    virtual void input(int& choice, std::string help,std::regex regexString);
 private:
-    int b;
     static std::string logoAddress;
     static std::string goodsAddress;
 
 };
+
+
+
 

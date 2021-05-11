@@ -1,10 +1,12 @@
 #pragma once
+#include"BaseView.h"
 #include"BusinessmanView.h"
 #include"BusResultView.h"
 #include"BusResultView.h"
 #include"CusResultView.h"
 #include"CustmomerView.h"
 #include"FailureView.h"
+#include"SignUpView.h"
 #include"LoginView.h"
 #include"LogoutView.h"
 #include"MainView.h"

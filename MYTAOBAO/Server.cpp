@@ -4,7 +4,7 @@
 #include<fstream>
 #include "Customer.h"
 #include"Businessman.h"
-#include"BaseView.h"
+#include"Views.h"
 using namespace std;
 string Server::Path = "config.json";
 Server::Server()
@@ -198,7 +198,7 @@ void Server::start()
 }
 void Server::start(int i)
 {
-    viewManger.setNext(make_unique<BaseView>());
+    viewManger.setNext(make_unique<MainView>());
     viewManger.start();
 
 }

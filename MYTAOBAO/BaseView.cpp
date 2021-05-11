@@ -1,6 +1,7 @@
 #include "BaseView.h"
 #include "Server.h"
 #include<fstream>
+#include <regex>
 #include<json/json.h>
 using namespace std;
 
@@ -13,6 +14,19 @@ void BaseView::show()
 }
 void BaseView::viewInput()
 {
+}
+void BaseView::input(int& choice, std::string help, std::regex regexString)
+{
+    cout << help << endl;
+
+    cin >> choice;
+    string temp = to_string(choice);
+    if (!regex_match(temp,regexString))
+    {
+        cin.clear();
+        cin.sync();
+        input(choice,help,regexString);
+    }
 }
 void BaseView::showLogo()
 {
