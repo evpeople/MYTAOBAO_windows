@@ -20,7 +20,7 @@ void LoginView::viewInput()
 
     ViewManger& viewManger = ViewManger::getInstance();
     std::regex regexFir("[12]");
-    std::regex regexSec("[123]");
+    std::regex regexSec("[1234]");
     input(choice, "1\t以商人身份登录\n2\t以顾客登录注册\n", regexFir);
     std::cout << "请输入用户名" << endl;
     cin >> name;
@@ -32,10 +32,10 @@ void LoginView::viewInput()
         {
             //商人，则
         case PEOPLETYPE::BUS:
-        {   input(choice, "尊敬的商家\n1\t更改商品\n2\t打折\n3\t登出", regexSec);
+        {   input(choice, "尊敬的商家\n1\t更改商品\n2\t打折\n3\t登出\n4\t更改密码\n", regexSec);
             enum class CHOICEEVENT
             {
-                GOODS=1,DISCOUNT,LOGOUT
+                GOODS=1,DISCOUNT,LOGOUT,CHANGEPASS
             };
             switch ((CHOICEEVENT)choice)
             {
@@ -48,6 +48,8 @@ void LoginView::viewInput()
             case CHOICEEVENT::LOGOUT:
                 viewManger.setNext(make_unique<LogoutView>());
                 break;
+            case CHOICEEVENT::CHANGEPASS:
+                viewManger.setNext(make_unique<ChangePassView>());
             default:
                 viewManger.setNext(make_unique<FailureView>());
                 break;
@@ -57,10 +59,10 @@ void LoginView::viewInput()
         }
         case PEOPLETYPE::CUS:
         {
-            input(choice, "尊敬的客人\n1\t查看个人信息\n2\t购买商品\n3\t登出", regexSec);
+            input(choice, "尊敬的客人\n1\t查看个人信息\n2\t购买商品\n3\t登出\n4\t更改密码\n", regexSec);
             enum class CHOICEEVENT
             {
-                INFO = 1, BUY, LOGOUT
+                INFO = 1, BUY, LOGOUT,CHANGEPASS
             };
             switch ((CHOICEEVENT)choice)
             {
@@ -73,7 +75,9 @@ void LoginView::viewInput()
             case CHOICEEVENT::LOGOUT:
                 viewManger.setNext(make_unique<LogoutView>());
                 break;
-            default:
+            case CHOICEEVENT::CHANGEPASS:
+                viewManger.setNext(make_unique<ChangePassView>());
+             default:
                 viewManger.setNext(make_unique<FailureView>());
                 break;
             }

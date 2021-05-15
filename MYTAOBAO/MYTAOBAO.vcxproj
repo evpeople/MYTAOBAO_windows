@@ -146,6 +146,7 @@
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Businessman.cpp" />
     <ClCompile Include="BusinessmanView.cpp" />
+    <ClCompile Include="ChangePassView.cpp" />
     <ClCompile Include="GoodsView.cpp" />
     <ClCompile Include="BuyView.cpp" />
     <ClCompile Include="Cloths.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Book.h" />
     <ClInclude Include="Businessman.h" />
     <ClInclude Include="BusinessmanView.h" />
+    <ClInclude Include="ChangePassView.h" />
     <ClInclude Include="GoodsView.h" />
     <ClInclude Include="BuyView.h" />
     <ClInclude Include="Cloths.h" />
