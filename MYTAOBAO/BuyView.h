@@ -1,5 +1,6 @@
 #pragma once
-class CustmomerView:
+#include "BaseView.h"
+class BuyView :
     public BaseView
 {
 };

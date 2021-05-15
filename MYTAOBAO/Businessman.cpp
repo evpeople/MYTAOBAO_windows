@@ -137,18 +137,12 @@ void Businessman::storage()
     fout.close();
 }
 
-bool Businessman::login()
+bool Businessman::login(string tempUsr,string passWord)
 {
-    cout << "请输入您的用户名" << endl;
-    string tempUsr;
-    cin >> tempUsr;
 
     string inPath = Businessman::storageAddress + tempUsr + ".usr";
 
    
-        cout << "请输入您的密码" << endl;
-        string passWord;
-        cin >> passWord;
         //passWord = "evp";
         if (auth(passWord))
         {

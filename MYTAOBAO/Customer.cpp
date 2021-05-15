@@ -43,11 +43,8 @@ void Customer::storage()
     fout.close();
 }
 
-bool Customer::login()
+bool Customer::login(string tempUsr,string passWord)
 {
-    cout << "请输入您的用户名" << endl;
-    string tempUsr;
-    cin >> tempUsr;
 
     string inPath = Customer::storageAddress + tempUsr + ".usr";
 
@@ -69,9 +66,6 @@ bool Customer::login()
         setUsrPassWord(root["usrPass"].asString());
         money = root["money"].asDouble();
         fin.close();
-        cout << "请输入您的密码" << endl;
-        string passWord;
-        cin >> passWord;
         //passWord = "evp";
         if (auth(passWord))
         {

@@ -2,7 +2,8 @@
 #include<string>
 #include<regex>
 #include<memory>
-
+#include"Businessman.h"
+#include"Customer.h"
 
 class BaseView 
 {
@@ -24,6 +25,9 @@ public:
     void static setAddress(std::string,std::string);
 protected:
     virtual void input(int& choice, std::string help,std::regex regexString);
+    //std::unique_ptr<Businessman>Bus(new Businessman()) ;
+    static std::unique_ptr<Businessman> Bus{ std::make_unique<Businessman>() };
+    static std::unique_ptr<Customer>Cus{ std::make_unique<Customer>() };
 private:
     static std::string logoAddress;
     static std::string goodsAddress;

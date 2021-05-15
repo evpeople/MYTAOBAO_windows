@@ -7,6 +7,7 @@ using namespace std;
 void MainView::show()
 {
     showLogo();
+    viewInput();
 }
 
 void MainView::viewInput()
@@ -23,10 +24,10 @@ void MainView::viewInput()
     switch ((MAINEVENT)choice)
     {
     case MAINEVENT::login:
-        viewManger.setNext(make_unique<BusResultView>());
+        viewManger.setNext(make_unique<LoginView>());
         break;
     case MAINEVENT::signUp:
-        viewManger.setNext(make_unique<BusResultView>());
+        viewManger.setNext(make_unique<SignUpView>());
         break;
     default:
         break;

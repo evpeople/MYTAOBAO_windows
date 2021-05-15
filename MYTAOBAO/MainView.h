@@ -4,7 +4,7 @@ class MainView :
     public BaseView
 {
 public:
-    virtual void show();
-    virtual void viewInput();
+    virtual void show()override;
+    virtual void viewInput()override;
 };
 

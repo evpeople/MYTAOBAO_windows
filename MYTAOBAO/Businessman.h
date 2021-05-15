@@ -13,7 +13,7 @@ public:
     Businessman(std::string name, std::string PassWd);
     Businessman();
     virtual void storage()override;
-    virtual bool login()override;
+    virtual bool login(std::string tempUsr, std::string passWord)override;
     virtual USRTYPE getType()override;
     void static setAddress(std::string newAddress);
     std::string static getAddress();

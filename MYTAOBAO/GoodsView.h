@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseView.h"
-class BusResultView :
+class GoodsView :
     public BaseView
 {
     virtual void show();

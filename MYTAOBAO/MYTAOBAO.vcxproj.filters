@@ -72,7 +72,13 @@
     <ClCompile Include="CusResultView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="BusResultView.cpp">
+    <ClCompile Include="GoodsView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DisCountView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,10 +140,16 @@
     <ClInclude Include="CusResultView.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="BusResultView.h">
+    <ClInclude Include="GoodsView.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Views.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DisCountView.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -41,7 +41,7 @@ public:
 	virtual bool changePassWord()final;
 
 	virtual void storage()=0;
-	virtual bool login() = 0;
+	virtual bool login(std::string, std::string) = 0;
 	virtual USRTYPE getType() = 0;
 
 	

@@ -7,7 +7,7 @@ public:
     Customer(std::string name, std::string PassWd);
     Customer();
     virtual void storage()override;
-    virtual bool login()override;
+    virtual bool login(std::string tempUsr, std::string passWord)override;
     virtual USRTYPE getType()override;
     virtual void balance()override;
     virtual void buySomeThing(double)override;
