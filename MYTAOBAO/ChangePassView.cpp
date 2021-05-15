@@ -25,18 +25,11 @@ void ChangePassView::viewInput()
     while (true)
     {
 
-        if (Bus->getUsrName()!="0"&&Bus->auth(pass))
+        if (Usr->getUsrName()!="0"&&Usr->auth(pass))
         {
             cout << "ÇëÊäÈëÄúµÄĞÂÃÜÂë" << endl;
             cin >> pass;
-            Bus->changePassWord(pass);
-            break;
-        }
-        else if(Cus->auth(pass))
-        {
-            cout << "ÇëÊäÈëÄúµÄĞÂÃÜÂë" << endl;
-            cin >> pass;
-            Cus->changePassWord(pass);
+            Usr->changePassWord(pass);
             break;
         }
     }

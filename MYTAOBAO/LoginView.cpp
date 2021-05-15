@@ -36,6 +36,7 @@ void LoginView::viewInput()
         case PEOPLETYPE::CUS:
             viewManger.setNext(make_unique<CusResultView>());
             break;
+            break;
         default:
             cout << "something wrong" << endl;
 
@@ -53,10 +54,12 @@ bool LoginView::dealInput(string name, string pass, int choice)
     switch (PEOPLETYPE(choice))
     {
     case PEOPLETYPE::BUS:
-        return Bus->login(name, pass);
+        Usr = std::move(make_unique<Businessman>());
+        return Usr->login(name, pass);
         break;
     case PEOPLETYPE::CUS:
-        return Cus->login(name, pass);
+        Usr = std::move(make_unique<Customer>());
+        return Usr->login(name, pass);
         break;
     default:
         break;

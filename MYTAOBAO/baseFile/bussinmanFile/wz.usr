@@ -1,0 +1,37 @@
+{
+	"goodDiscount" : 
+	{
+		"Book" : 0.70000000000000007,
+		"Cloths" : 0.0,
+		"EleProduct" : 0.0
+	},
+	"goods" : 
+	[
+		{
+			"description" : "",
+			"name" : "wd",
+			"price" : 0.0,
+			"remain" : -3689348814741910324,
+			"type" : "Book"
+		},
+		{
+			"description" : "",
+			"name" : "d",
+			"price" : 0.0,
+			"remain" : -3689348814741910324,
+			"type" : "Book"
+		},
+		{
+			"description" : "2wd",
+			"name" : "d",
+			"price" : 70.0,
+			"remain" : 100,
+			"type" : "Book"
+		}
+	],
+	"goodsType" : 9,
+	"usrID" : 0,
+	"usrName" : "wz",
+	"usrPass" : "7e545c6cfe2a2fa8878c58c3d7572c74bf3ce7c394e448129ec55e483bb26c1",
+	"usrType" : "Businessman"
+}

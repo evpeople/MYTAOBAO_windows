@@ -156,24 +156,24 @@ bool Businessman::login(string tempUsr,string passWord)
 {
 
     string inPath = Businessman::storageAddress + tempUsr + ".usr";
+    ifstream fin;
+    fin.open(inPath);
+    if (fin.is_open())
+    {
+        Json::CharReaderBuilder reader;
+        JSONCPP_STRING errs;
 
-   
+        Json::Value root, goods;
+        if (!Json::parseFromStream(reader, fin, &root, &errs))
+        {
+            cout << errs << endl;
+        }
+        setUsrPassWord(root["usrPass"].asString());
         //passWord = "evp";
         if (auth(passWord))
         {
             cout << "µÇÂ½³É¹¦" << endl;
-            ifstream fin;
-            fin.open(inPath);
-            if (fin.is_open())
-            {
-                Json::CharReaderBuilder reader;
-                JSONCPP_STRING errs;
 
-                Json::Value root, goods;
-                if (!Json::parseFromStream(reader, fin, &root, &errs))
-                {
-                    cout << errs << endl;
-                }
 
                 id = root["usrID"].asInt64();
                 goodsType = root["goodsType"].asInt();

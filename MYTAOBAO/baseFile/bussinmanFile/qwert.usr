@@ -1,0 +1,23 @@
+{
+	"goodDiscount" : 
+	{
+		"Book" : 1.0,
+		"Cloths" : 1.0,
+		"EleProduct" : 1.0
+	},
+	"goods" : 
+	[
+		{
+			"description" : "mia",
+			"name" : "mia",
+			"price" : 100.0,
+			"remain" : 20,
+			"type" : "Book"
+		}
+	],
+	"goodsType" : 9,
+	"usrID" : 0,
+	"usrName" : "qwert",
+	"usrPass" : "9e69e7e29351ad83753c44a5971edebc9b7e6d8601c89c284b1b59bf37afa80",
+	"usrType" : "Businessman"
+}
