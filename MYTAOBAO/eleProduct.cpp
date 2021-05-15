@@ -21,3 +21,8 @@ void EleProduct::setDiscount(double newDiscount)
 {
     EleProduct::discount = newDiscount;
 }
+
+double EleProduct::getDiscount()
+{
+    return discount;
+}

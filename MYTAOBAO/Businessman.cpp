@@ -114,7 +114,7 @@ Businessman::Businessman(std::string name,std::string PassWd, vupOfBaseGoods& bu
 
 void Businessman::storage()
 {
-    Json::Value root, goods;
+    Json::Value root, goods,goodsDiscount;
     Json::StreamWriterBuilder fwbuilder;
     static Json::Value def = []() {
         Json::Value def;
@@ -139,6 +139,11 @@ void Businessman::storage()
     root["usrType"] = "Businessman";
     root["goods"] = goods;
     root["goodsType"] = goodsType;
+    goodsDiscount["Book"]=Book::getDiscount();
+    goodsDiscount["Cloths"]=Cloths::getDiscount();
+    goodsDiscount["EleProduct"]=EleProduct::getDiscount();
+    root["goodDiscount"] = goodsDiscount;
+
     string outFile = Businessman::storageAddress + getUsrName() + ".usr";
     ofstream fout{ outFile ,ios_base::app };
     auto jsonWriter(fwbuilder.newStreamWriter());
@@ -173,7 +178,9 @@ bool Businessman::login(string tempUsr,string passWord)
                 goodsType = root["goodsType"].asInt();
                 setUsrName(root["usrName"].asString());
                 setUsrPassWord(root["usrPass"].asString());
-
+                Book::setDiscount(root["goodsDiscount"]["Book"].asDouble());
+                Cloths::setDiscount(root["goodsDiscount"]["Cloths"].asDouble());
+                EleProduct::setDiscount(root["goodsDiscount"]["EleProduct"].asDouble());
                 goods = root["goods"];
 
                 string name;
@@ -232,16 +239,29 @@ std::string Businessman::getAddress()
 }
 
 
-void Businessman::discount(std::string kind,double discount)
+void Businessman::discount(int kind, double discount)
 {
-    for (size_t i = 0; i < busSGooods.size(); i++)
+    enum class GOODS
     {
-        if (busSGooods[i]->getType()==kind)
-        {
-            busSGooods[i]->setDiscount(discount);
-            break;
-        }
+        BOOK = 0,
+        ELEPRODUCT,
+        CLOTHES
+    };
+    switch ((GOODS)kind)
+    {
+    case GOODS::BOOK:
+        Book::setDiscount(discount);
+        break;
+    case GOODS::ELEPRODUCT:
+        EleProduct::setDiscount(discount);
+        break;
+    case GOODS::CLOTHES:
+        Cloths::setDiscount(discount);
+        break;
+    default:
+        break;
     }
+    this->storage();
 }
 
 void Businessman::setGoods()

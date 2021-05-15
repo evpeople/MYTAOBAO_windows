@@ -15,7 +15,7 @@ public:
     virtual double getPrice() = 0;
     virtual std::string getType() = 0;
     virtual std::string getDescription()final;
-    virtual void setDiscount(double newDiscount) = 0;
+
 
 private:
     long long int numberRemain;

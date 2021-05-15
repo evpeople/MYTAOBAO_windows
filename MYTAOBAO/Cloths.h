@@ -7,7 +7,8 @@ public:
     Cloths(long long int newNumberRemain, double newPrice, std::string newName, std::string des);
     virtual double getPrice()override;
     virtual std::string getType()override;
-    virtual void setDiscount(double newDiscount)override;
+    static void setDiscount(double newDiscount);
+    static double getDiscount();
 private:
     static double discount;
     static std::string type;

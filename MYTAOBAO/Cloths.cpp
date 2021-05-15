@@ -22,3 +22,8 @@ void Cloths::setDiscount(double newDiscount)
 {
     Cloths::discount = newDiscount;
 }
+
+double Cloths::getDiscount()
+{
+    return discount;
+}

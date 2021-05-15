@@ -36,20 +36,6 @@ bool DisCountView::dealInput(int choice,double discount)
         ELEPRODUCT,
         CLOTHES
     };
-    switch ((GOODS)choice)
-    {
-    case GOODS::BOOK:
-        Usr->discount("Book", discount);
-        break;
-    case GOODS::ELEPRODUCT:
-        Usr->discount("Cloths", discount);
-        break;
-    case GOODS::CLOTHES:
-        Usr->discount("EleProduct", discount);
-        break;
-    default:
-        break;
-    }
-
+    Usr->discount(choice, discount);
     return false;
 }

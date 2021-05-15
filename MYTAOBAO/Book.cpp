@@ -22,3 +22,8 @@ void Book::setDiscount(double newDiscount)
 {
     Book::discount = newDiscount;
 }
+
+double Book::getDiscount()
+{
+    return discount;
+}
