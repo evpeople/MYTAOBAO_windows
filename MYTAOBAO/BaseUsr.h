@@ -40,17 +40,16 @@ public:
 	virtual void discount(int kind, double Discount);
 	virtual bool changePassWord(std::string pass)final;
 	virtual bool auth(std::string)final;//”…login π”√
-
 	virtual void storage()=0;
 	virtual bool login(std::string, std::string) = 0;
 	virtual USRTYPE getType() = 0;
+	std::string getUsrName();
 
 	
 	std::string tosting();
 protected:
 	virtual std::string encryp(const  std::string passwd)final;
 	std::string getUsrPassWord();
-	std::string getUsrName();
 	void setUsrName(std::string newName);
 	void setUsrPassWord(std::string newPassWord);
 

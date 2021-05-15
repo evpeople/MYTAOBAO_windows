@@ -32,8 +32,10 @@ void LoginView::viewInput()
         {
         case PEOPLETYPE::BUS:
             viewManger.setNext(make_unique<BusResultView>());
+            break;
         case PEOPLETYPE::CUS:
             viewManger.setNext(make_unique<CusResultView>());
+            break;
         default:
             cout << "something wrong" << endl;
 
@@ -42,7 +44,7 @@ void LoginView::viewInput()
     else
     {
         cout << "用户名不存在或密码错误" << endl;
-        viewManger.setNext(make_unique<FailureView>());
+        viewManger.setNext(make_unique<MainView>());
     }
 }
 
@@ -51,10 +53,10 @@ bool LoginView::dealInput(string name, string pass, int choice)
     switch (PEOPLETYPE(choice))
     {
     case PEOPLETYPE::BUS:
-        return (*Usr)->login(name, pass);
+        return Bus->login(name, pass);
         break;
     case PEOPLETYPE::CUS:
-        return (*Usr)->login(name, pass);
+        return Cus->login(name, pass);
         break;
     default:
         break;

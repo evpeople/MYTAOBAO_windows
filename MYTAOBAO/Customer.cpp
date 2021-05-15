@@ -27,7 +27,7 @@ Customer::Customer(string name, string PassWd,double money)
     totalId++;
     this->money= money;
 }
-Customer::Customer() :BaseUsr{ "defalut","0" }
+Customer::Customer() :BaseUsr{ "0","0" }
 {
     id = 0;
     money = 0;

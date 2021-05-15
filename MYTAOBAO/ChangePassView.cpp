@@ -24,14 +24,23 @@ void ChangePassView::viewInput()
     
     while (true)
     {
-        if ((*Usr)->auth(pass))
+
+        if (Bus->getUsrName()!="0"&&Bus->auth(pass))
         {
             cout << "请输入您的新密码" << endl;
             cin >> pass;
-            (*Usr)->changePassWord(pass);
+            Bus->changePassWord(pass);
+            break;
+        }
+        else if(Cus->auth(pass))
+        {
+            cout << "请输入您的新密码" << endl;
+            cin >> pass;
+            Cus->changePassWord(pass);
             break;
         }
     }
+    cout << "更改成功" << endl;
     viewManger.setNext(make_unique<MainView>());
 }
 

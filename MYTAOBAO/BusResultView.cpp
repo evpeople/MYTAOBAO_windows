@@ -34,6 +34,7 @@ void BusResultView::viewInput()
         break;
     case CHOICEEVENT::CHANGEPASS:
         viewManger.setNext(make_unique<ChangePassView>());
+        break;
     default:
         viewManger.setNext(make_unique<FailureView>());
         break;

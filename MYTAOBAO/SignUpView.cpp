@@ -147,8 +147,10 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
             }
         }
         
-        (**Usr) = Businessman{ name,pass,busSGooods,goodsType };
-        (*Usr)->storage();
+        //(**Usr) = Businessman{ name,pass,busSGooods,goodsType };
+        //(*Usr)->storage();
+        Bus = std::move(make_unique<Businessman>(name, pass, busSGooods, goodsType));
+        Bus->storage();
         cout << "保存完毕" << endl;
         break;
     }
@@ -157,8 +159,9 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
         double money;
         cout << "您想充值多少钱" << endl;
         cin >> money;
-        (**Usr) = Customer{ name,pass,money };
-        (*Usr)->storage();
+        //Customer temp{ name,pass,money };
+        Cus = std::move(make_unique<Customer>(name, pass, money));
+        Cus->storage();
         cout << "保存完毕" << endl;
         break;
     }

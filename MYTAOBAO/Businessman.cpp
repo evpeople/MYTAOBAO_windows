@@ -140,12 +140,13 @@ void Businessman::storage()
     root["goods"] = goods;
     root["goodsType"] = goodsType;
     goodsDiscount["Book"]=Book::getDiscount();
+    cout << Book::getDiscount()<<getUsrName() << endl;
     goodsDiscount["Cloths"]=Cloths::getDiscount();
     goodsDiscount["EleProduct"]=EleProduct::getDiscount();
     root["goodDiscount"] = goodsDiscount;
 
     string outFile = Businessman::storageAddress + getUsrName() + ".usr";
-    ofstream fout{ outFile ,ios_base::app };
+    ofstream fout{ outFile ,ios_base::out };
     auto jsonWriter(fwbuilder.newStreamWriter());
     jsonWriter->write(root, &fout);
     fout.close();
@@ -243,7 +244,7 @@ void Businessman::discount(int kind, double discount)
 {
     enum class GOODS
     {
-        BOOK = 0,
+        BOOK = 1,
         ELEPRODUCT,
         CLOTHES
     };
