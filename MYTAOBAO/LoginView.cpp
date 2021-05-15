@@ -30,59 +30,10 @@ void LoginView::viewInput()
     {
         switch ((PEOPLETYPE)choice)
         {
-            //商人，则
         case PEOPLETYPE::BUS:
-        {   input(choice, "尊敬的商家\n1\t更改商品\n2\t打折\n3\t登出\n4\t更改密码\n", regexSec);
-            enum class CHOICEEVENT
-            {
-                GOODS=1,DISCOUNT,LOGOUT,CHANGEPASS
-            };
-            switch ((CHOICEEVENT)choice)
-            {
-            case CHOICEEVENT::GOODS:
-                viewManger.setNext(make_unique<GoodsView>());
-                break;
-            case CHOICEEVENT::DISCOUNT:
-                viewManger.setNext(make_unique<DisCountView>());
-                break;
-            case CHOICEEVENT::LOGOUT:
-                viewManger.setNext(make_unique<LogoutView>());
-                break;
-            case CHOICEEVENT::CHANGEPASS:
-                viewManger.setNext(make_unique<ChangePassView>());
-            default:
-                viewManger.setNext(make_unique<FailureView>());
-                break;
-            }
-            break;
-        //顾客，则
-        }
+            viewManger.setNext(make_unique<BusResultView>());
         case PEOPLETYPE::CUS:
-        {
-            input(choice, "尊敬的客人\n1\t查看个人信息\n2\t购买商品\n3\t登出\n4\t更改密码\n", regexSec);
-            enum class CHOICEEVENT
-            {
-                INFO = 1, BUY, LOGOUT,CHANGEPASS
-            };
-            switch ((CHOICEEVENT)choice)
-            {
-            case CHOICEEVENT::INFO:
-                viewManger.setNext(make_unique<CustmomerView>());
-                break;
-            case CHOICEEVENT::BUY:
-                viewManger.setNext(make_unique<BuyView>());
-                break;
-            case CHOICEEVENT::LOGOUT:
-                viewManger.setNext(make_unique<LogoutView>());
-                break;
-            case CHOICEEVENT::CHANGEPASS:
-                viewManger.setNext(make_unique<ChangePassView>());
-             default:
-                viewManger.setNext(make_unique<FailureView>());
-                break;
-            }
-            break;
-        }
+            viewManger.setNext(make_unique<CusResultView>());
         default:
             cout << "something wrong" << endl;
 
