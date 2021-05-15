@@ -10,7 +10,7 @@
 #include"LoginView.h"//登录页
 #include"LogoutView.h"//todo:登出页
 #include"MainView.h"//首页FF
-#include"ChangePassView.h"//todo:更改密码页
+#include"ChangePassView.h"//更改密码页
 #include"BuyView.h" //todo:购买页
 #include"DisCountView.h"//todo:打折页
 

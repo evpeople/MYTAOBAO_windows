@@ -100,10 +100,10 @@ bool LoginView::dealInput(string name, string pass, int choice)
     switch (PEOPLETYPE(choice))
     {
     case PEOPLETYPE::BUS:
-        return Bus->login(name, pass);
+        return Usr->login(name, pass);
         break;
     case PEOPLETYPE::CUS:
-        return Cus->login(name, pass);
+        return Usr->login(name, pass);
         break;
     default:
         break;
