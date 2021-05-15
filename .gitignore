@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+*.usr 
+# 自定用户文件格式 
+
+
 # User-specific files
 *.rsuser
 *.suo
