@@ -4,7 +4,7 @@
 #include <openssl/sha.h>
 #include<json/json.h>
 using namespace std;
-void BaseUsr::discount(std::string kind,double Discount)
+void BaseUsr::discount(int kind ,double Discount)
 {
     cout << "只有商家可以打折" <<  endl;
 }

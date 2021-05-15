@@ -24,11 +24,11 @@ void ChangePassView::viewInput()
     
     while (true)
     {
-        if (Usr->auth(pass))
+        if ((*Usr)->auth(pass))
         {
             cout << "ÇëÊäÈëÄúµÄÐÂÃÜÂë" << endl;
             cin >> pass;
-            Usr->changePassWord(pass);
+            (*Usr)->changePassWord(pass);
             break;
         }
     }

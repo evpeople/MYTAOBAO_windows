@@ -36,6 +36,6 @@ bool DisCountView::dealInput(int choice,double discount)
         ELEPRODUCT,
         CLOTHES
     };
-    Usr->discount(choice, discount);
+    (*Usr)->discount(choice, discount);
     return false;
 }
