@@ -84,6 +84,9 @@
     <ClCompile Include="ChangePassView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="BusResultView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUsr.h">
@@ -156,6 +159,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ChangePassView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BusResultView.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

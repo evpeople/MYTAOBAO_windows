@@ -103,6 +103,15 @@ Businessman::Businessman()
     goodsType = 0;
 }
 
+Businessman::Businessman(std::string name,std::string PassWd, vupOfBaseGoods busSGooods, int goodsType)
+    :BaseUsr{ name,PassWd }
+{
+    id = totalId;
+    totalId++;
+    this->goodsType = goodsType;
+    this->busSGooods = busSGooods;
+}
+
 void Businessman::storage()
 {
     Json::Value root, goods;

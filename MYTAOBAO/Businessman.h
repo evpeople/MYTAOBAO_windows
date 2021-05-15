@@ -12,6 +12,7 @@ class Businessman :
 public:
     Businessman(std::string name, std::string PassWd);
     Businessman();
+    Businessman(std::string name,std::string PassWd, vupOfBaseGoods busSGooods, int goodsType);
     virtual void storage()override;
     virtual bool login(std::string tempUsr, std::string passWord)override;
     virtual USRTYPE getType()override;

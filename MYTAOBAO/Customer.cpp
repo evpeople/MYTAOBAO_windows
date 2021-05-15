@@ -20,7 +20,13 @@ Customer::Customer(string name, string PassWd)
     cout << "您想充值多少钱" << endl;
     cin >> money;
 }
-
+Customer::Customer(string name, string PassWd,double money)
+    :BaseUsr{ name, PassWd }
+{
+    id = totalId;
+    totalId++;
+    this->money= money;
+}
 Customer::Customer() :BaseUsr{ "defalut","0" }
 {
     id = 0;

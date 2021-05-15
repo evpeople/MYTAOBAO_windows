@@ -21,7 +21,7 @@ void LoginView::viewInput()
     ViewManger& viewManger = ViewManger::getInstance();
     std::regex regexFir("[12]");
     std::regex regexSec("[1234]");
-    input(choice, "1\t以商人身份登录\n2\t以顾客登录注册\n", regexFir);
+    input(choice, "1\t以商人身份登录\n2\t以顾客身份登录\n", regexFir);
     std::cout << "请输入用户名" << endl;
     cin >> name;
     cout << "请输入密码" << endl;
