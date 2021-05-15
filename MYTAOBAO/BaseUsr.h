@@ -38,8 +38,8 @@ public:
 	virtual void buySomeThing(double);
 	virtual void setGoods();
 	virtual void discount();
+	virtual bool changePassWord(std::string pass)final;
 	virtual bool auth(std::string)final;//”…login π”√
-	virtual bool changePassWord()final;
 
 	virtual void storage()=0;
 	virtual bool login(std::string, std::string) = 0;

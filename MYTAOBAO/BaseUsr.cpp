@@ -8,22 +8,12 @@ void BaseUsr::discount()
 {
     cout << "只有商家可以打折" <<  endl;
 }
-bool BaseUsr::changePassWord()
+bool BaseUsr::changePassWord(std::string pass)
 {
-    std::string pass;
-    if (auth(pass))
-    {
-         cout << "请输入您的新密码" <<  endl;
-         cin >> pass;
         usrPassWord = encryp(pass);
          cout << "!!!!!!!!!!!!保存有可能出问题\n\n\n" <<  endl;
-        this->storage();
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+       this->storage();
+       return true;
 }
 //long long int BaseUsr::totalNum = 0;
 void BaseUsr::storage()

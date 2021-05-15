@@ -16,14 +16,23 @@ void ChangePassView::show()
 
 void ChangePassView::viewInput()
 {
+    ViewManger& viewManger = ViewManger::getInstance();
+
     string pass;
     cout << "请输入你原本的密码" << endl;
     cin >> pass;
-    //while (true)
-    //{
-    //    if()
-    //}
-
+    
+    while (true)
+    {
+        if (Usr->auth(pass))
+        {
+            cout << "请输入您的新密码" << endl;
+            cin >> pass;
+            Usr->changePassWord(pass);
+            break;
+        }
+    }
+    viewManger.setNext(make_unique<MainView>());
 }
 
 bool ChangePassView::dealInput(std::string name, std::string pass, int choice)
