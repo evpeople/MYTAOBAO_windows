@@ -4,6 +4,7 @@
 //todo: C/S架构所有操作的返回值（异常处理）
 //todo: 输入改为输入一行
 //todo: 商品展示的美化
+//todo: 商人提供不登陆但展示的接口
 
 #include <fstream>
 #include<iostream>

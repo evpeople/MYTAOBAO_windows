@@ -24,4 +24,3 @@ ViewManger& ViewManger::operator=(const ViewManger& t)
 	return a;
 }
 
-	//todo: View不用单例，现用现创。 

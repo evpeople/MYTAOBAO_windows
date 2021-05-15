@@ -96,10 +96,8 @@ void Server::start()
                     {
                     case BUY::BUY:
                         test->buySomeThing(10.00);
-                        //todo: 需要详细的拓展
                         break;
                     case BUY::FIND:
-                        //todo: 需要详细的拓展
                         break;
                     case BUY::SEARCH:
                         break;
@@ -134,7 +132,6 @@ void Server::start()
             case SIGNUP::NOUSRNAME:
                 cout << "请输入您的用户名" << endl;
                 cin >> usr[0];
-                //todo: 应该先检测用户类型
                 if (!this->check(usr[0]))
                 {
                     cout << "此用户名已被占用，请您选择其他用户名" << endl;
