@@ -1,6 +1,7 @@
 #include "SignUpView.h"
 #include"ViewManger.h"
 #include"Views.h"
+#include"Goods.h"
 #include<iostream>
 using namespace std;
 enum class PEOPLETYPE

@@ -1,6 +1,11 @@
 #pragma once
-class CustmomerView:
+#include "BaseView.h"
+
+class CustmomerView :
     public BaseView
 {
+    virtual void show()override;
+    virtual void viewInput()override;
+    bool dealInput(std::string name, std::string pass, int choice);
 };
 

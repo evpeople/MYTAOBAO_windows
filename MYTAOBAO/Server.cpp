@@ -56,7 +56,7 @@ void Server::start()
             default:
                 break;
             }*/
-            if (!test->login())
+            if (!test->login("low","ss"))
             {
                 cout << "再重来一遍吧" << endl;
                 break;

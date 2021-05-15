@@ -38,6 +38,7 @@ public:
 	virtual void buySomeThing(double);
 	virtual void setGoods();
 	virtual void discount();
+	virtual bool auth(std::string)final;//由login使用
 	virtual bool changePassWord()final;
 
 	virtual void storage()=0;
@@ -48,7 +49,6 @@ public:
 	std::string tosting();
 protected:
 	virtual std::string encryp(const  std::string passwd)final;
-	virtual bool auth(std::string)final;//由login使用
 	std::string getUsrPassWord();
 	std::string getUsrName();
 	void setUsrName(std::string newName);

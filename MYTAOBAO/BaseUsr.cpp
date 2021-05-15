@@ -10,9 +10,7 @@ void BaseUsr::discount()
 }
 bool BaseUsr::changePassWord()
 {
-     cout << "请输入你原本的密码" <<  endl;
-     string pass;
-     cin >> pass;
+    std::string pass;
     if (auth(pass))
     {
          cout << "请输入您的新密码" <<  endl;

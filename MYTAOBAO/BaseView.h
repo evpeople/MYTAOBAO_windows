@@ -26,8 +26,9 @@ public:
 protected:
     virtual void input(int& choice, std::string help,std::regex regexString);
     //std::unique_ptr<Businessman>Bus(new Businessman()) ;
-    static std::unique_ptr<Businessman> Bus{ std::make_unique<Businessman>() };
-    static std::unique_ptr<Customer>Cus{ std::make_unique<Customer>() };
+    //static std::unique_ptr<BaseUsr> Usr{ std::make_unique<BaseUsr>() };
+    inline static std::unique_ptr<Businessman> Bus{ std::make_unique<Businessman>() };//出问题是是这个static
+    inline static std::unique_ptr<Customer>Cus{ std::make_unique<Customer>() };
 private:
     static std::string logoAddress;
     static std::string goodsAddress;

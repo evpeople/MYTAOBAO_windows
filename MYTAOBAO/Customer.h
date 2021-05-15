@@ -5,7 +5,7 @@ class Customer :public BaseUsr
 public:
 
     Customer(std::string name, std::string PassWd);
-    Customer(string name, string PassWd, double money);
+    Customer(std::string name, std::string PassWd, double money);
     Customer();
     virtual void storage()override;
     virtual bool login(std::string tempUsr, std::string passWord)override;
