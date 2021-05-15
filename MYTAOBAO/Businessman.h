@@ -18,7 +18,7 @@ public:
     virtual USRTYPE getType()override;
     void static setAddress(std::string newAddress);
     std::string static getAddress();
-    virtual void discount()override;
+    virtual void discount(std::string kind ,double)override;
     virtual void setGoods()override;
 private:
     long long int id;

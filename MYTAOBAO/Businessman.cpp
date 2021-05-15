@@ -232,8 +232,16 @@ std::string Businessman::getAddress()
 }
 
 
-void Businessman::discount()
+void Businessman::discount(std::string kind,double discount)
 {
+    for (size_t i = 0; i < busSGooods.size(); i++)
+    {
+        if (busSGooods[i]->getType()==kind)
+        {
+            busSGooods[i]->setDiscount(discount);
+            break;
+        }
+    }
 }
 
 void Businessman::setGoods()

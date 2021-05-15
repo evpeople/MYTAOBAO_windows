@@ -37,7 +37,7 @@ public:
 	virtual void getGoods();
 	virtual void buySomeThing(double);
 	virtual void setGoods();
-	virtual void discount();
+	virtual void discount(std::string kind, double Discount);
 	virtual bool changePassWord(std::string pass)final;
 	virtual bool auth(std::string)final;//”…login π”√
 
