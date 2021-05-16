@@ -27,6 +27,7 @@ private:
     //std::unordered_map<std::string, vupOfBaseGoods>busSGooods;
     static USRTYPE type;
     static long long int totalId;
+    inline  static bool isLogin=false;
     static std::string  storageAddress;
 };
 

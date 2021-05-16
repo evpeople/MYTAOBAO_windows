@@ -1,45 +1,37 @@
 {
-	"goodDiscount": {
-		"Book": 1.0,
-		"Cloths": 1.0,
-		"EleProduct": 1.0
-	},
-	"goods": [
+	"goods" : 
+	[
 		{
-			"description": "一本非常好的书",
-			"name": "good book",
-			"price": 100.0,
-			"remain": 200,
-			"type": "Book"
+			"description" : "v",
+			"name" : "v",
+			"owner" : "v",
+			"price" : 3.0,
+			"remain" : 4,
+			"type" : "Book"
 		},
 		{
-			"description": "一本还行的书",
-			"name": "中等好书书",
-			"price": 80.0,
-			"remain": 200,
-			"type": "Book"
-		},
-
-		{
-			"description": "一般的书",
-			"name": "一般的书",
-			"price": 60.0,
-			"remain": 200,
-			"type": "Book"
+			"description" : "fsafsafsaf",
+			"name" : "asfafsaf",
+			"owner" : "v",
+			"price" : 3.0,
+			"remain" : 4,
+			"type" : "Book"
 		},
 		{
-			"description": "不要看，特别烂的书",
-			"name": "假好书",
-			"price": 20.0,
-			"remain": 200,
-			"type": "Book"
+			"description" : "j",
+			"name" : "j",
+			"owner" : "j",
+			"price" : 5.0,
+			"remain" : 6,
+			"type" : "Book"
+		},
+		{
+			"description" : "4",
+			"name" : "t",
+			"owner" : "t",
+			"price" : 4.0,
+			"remain" : 5,
+			"type" : "Book"
 		}
-	],
-	"goodsType": 9,
-	"usrID": 0,
-	"usrName": "qw",
-	"usrPass": "d876d59095f13054c120f7722c5378aa25d7787d4adf7980dbb3f2a7125ac1",
-	"usrType": "Businessman"
+	]
 }
-
-

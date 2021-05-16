@@ -35,8 +35,6 @@ void SignUpView::viewInput()
         break;
     }
 
-    cout << "ÇëÊäÈëÃÜÂë" << endl;
-    cin >> password;
     while (true)
     {
         cout << "ÇëÊäÈëÃÜÂë" << endl;
@@ -97,7 +95,7 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 cin >> remain;
                 cout << "ÇëÊäÈë" << name << "µÄÃèÊö" << endl;
                 cin >> des;
-                busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des }));
+                busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,name}));
                 cout << name << "Ìí¼ÓÍê±Ï" << endl;
                 break;
             }
@@ -116,7 +114,7 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 cin >> remain;
                 cout << "ÇëÊäÈë" << name << "µÄÃèÊö" << endl;
                 cin >> des;
-                busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des }));
+                busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,name }));
                 cout << name << "Ìí¼ÓÍê±Ï" << endl;
                 break;
             }
@@ -136,7 +134,7 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 cin >> remain;
                 cout << "ÇëÊäÈë" << name << "µÄÃèÊö" << endl;
                 cin >> des;
-                busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des }));
+                busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,name }));
                 cout << name << "Ìí¼ÓÍê±Ï" << endl;
                 cout << busSGooods[0]->getDescription();
                 break;

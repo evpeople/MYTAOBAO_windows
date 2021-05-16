@@ -15,6 +15,11 @@ string BaseGoods::getName()
     return name;
 }
 
+std::string BaseGoods::getOwner()
+{
+    return owner;
+}
+
 std::string BaseGoods::getDescription()
 {
     return description;

@@ -1,5 +1,5 @@
 #include "Businessman.h"
-
+#include"BaseView.h"
 
 long long int Businessman::totalId = 0;
 USRTYPE Businessman::type = USRTYPE::businessman;
@@ -43,7 +43,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
             cin >> des;
-             busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName }));
+             busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             break;
         }
@@ -62,7 +62,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
             cin >> des;
-             busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName }));
+             busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             break;
         }
@@ -131,6 +131,7 @@ void Businessman::storage()
         goods[serial]["remain"] = up->getRemain();
         goods[serial]["type"] = up->getType();
         goods[serial]["description"] = up->getDescription();
+        goods[serial]["owner"] = up->getOwner();
         serial++;
         });
     root["usrID"] = id;
@@ -150,11 +151,54 @@ void Businessman::storage()
     auto jsonWriter(fwbuilder.newStreamWriter());
     jsonWriter->write(root, &fout);
     fout.close();
+    
+    if (!isLogin)
+    {
+        string outFileGoods = "./baseFile/goodsFile/defalutGoods.json";
+
+        fstream foutGoods;
+        foutGoods.open(outFileGoods, ios_base::in);
+        if (foutGoods.is_open())
+        {
+            Json::CharReaderBuilder reader;
+            JSONCPP_STRING errs;
+
+            Json::Value root;
+            if (!Json::parseFromStream(reader, foutGoods, &root, &errs))
+            {
+                cout << errs << endl;
+            }
+            //for (size_t i = 0; i < root["goods"].size(); i++)
+            //{
+            //    root["goods"].append(Json::Value(root["goods"][i]));
+            //}
+            //root["goods"] = root["goods"];
+            //cout << root["goods"].toStyledString()<<endl;
+            foutGoods.close();
+            foutGoods.open(outFileGoods, ios_base::out);
+            for (size_t i = 0; i < goods.size(); i++)
+            {
+              root["goods"].append(Json::Value(goods[i]));
+            }
+
+            cout << root["goods"].toStyledString();
+
+           
+ 
+            auto jsonWriterGoods(fwbuilder.newStreamWriter());
+            jsonWriterGoods->write(root, &foutGoods);
+            foutGoods.close();
+        }
+        else
+        {
+            cout << "没打开" << endl;
+        }
+    }
 }
 
 bool Businessman::login(string tempUsr,string passWord)
 {
-
+    isLogin = true;
     string inPath = Businessman::storageAddress + tempUsr + ".usr";
     ifstream fin;
     fin.open(inPath);

@@ -9,6 +9,7 @@ public:
     virtual double getOriginalPrice()final;
     virtual long long int getRemain()final;
     virtual std::string getName()final;
+    virtual std::string getOwner()final;
     virtual double getPrice() = 0;
     virtual std::string getType() = 0;
     virtual std::string getDescription()final;
