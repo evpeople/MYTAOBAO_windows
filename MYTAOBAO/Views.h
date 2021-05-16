@@ -8,7 +8,7 @@
 #include"FailureView.h"//todo:失败页（不同的失败类型
 #include"SignUpView.h"//注册页
 #include"LoginView.h"//登录页
-#include"LogoutView.h"//todo:登出页
+#include"LogoutView.h"//登出页
 #include"MainView.h"//首页FF
 #include"ChangePassView.h"//更改密码页
 #include"BuyView.h" //todo:购买页

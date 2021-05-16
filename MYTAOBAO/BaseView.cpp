@@ -2,6 +2,7 @@
 #include "Server.h"
 #include<fstream>
 #include <regex>
+#include<iomanip>
 #include<json/json.h>
 using namespace std;
 
@@ -51,6 +52,7 @@ void BaseView::showGoods()
     string goodsPath = goodsAddress + "defalutGoods.json";
     ifstream fin;
     fin.open(goodsPath);
+    int lenOfString = 10;
     if (fin.is_open())
     {
         Json::CharReaderBuilder reader;
@@ -63,31 +65,31 @@ void BaseView::showGoods()
         }
         for (size_t i = 0; i < root.size(); i++)
         {
-            cout << root[i]["name"].asString();
+            cout<<"\t"  <<setw(lenOfString)<< root[i]["name"].asString();
         }
         cout << endl;
         for (size_t i = 0; i < root.size(); i++)
         {
-            cout << root[i]["price"].asString();
+            cout << "\t" << setw(lenOfString) << root[i]["price"].asString();
         }
         cout << endl;
         for (size_t i = 0; i < root.size(); i++)
         {
-            cout << root[i]["remain"].asString();
+            cout << "\t" << setw(lenOfString) << root[i]["remain"].asString();
         }
         cout << endl;
         for (size_t i = 0; i < root.size(); i++)
         {
-            cout << root[i]["type"].asString();
+            cout << "\t" << setw(lenOfString) << root[i]["type"].asString();
         }
         cout << endl;
         for (size_t i = 0; i < root.size(); i++)
         {
-            cout << root[i]["description"].asString();
+            cout << "\t" << setw(lenOfString) << root[i]["description"].asString();
         }
         cout << endl;
 
-
+        cout << "\n\n\n\n\n\n\n" << endl;   
         fin.close();
 
     }
