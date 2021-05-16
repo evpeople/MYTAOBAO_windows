@@ -2,8 +2,8 @@
 using std::string;
 double Cloths::discount = 1;
 string Cloths::type = "Cloths";
-Cloths::Cloths(long long int newNumberRemain, double newPrice, string newName,string des)
-    :BaseGoods(newNumberRemain, newPrice, newName,des)
+Cloths::Cloths(long long int newNumberRemain, double newPrice, std::string newName, std::string des, std::string owner)
+    :BaseGoods(newNumberRemain, newPrice, newName,des,owner)
 {
 }
 double Cloths::getPrice()

@@ -4,11 +4,8 @@
 class BaseGoods
 {
 public:
-    BaseGoods( long long int newNumberRemain, double newPrice, std::string newName,std::string des)
-        : numberRemain(newNumberRemain), price(newPrice), name(newName),description(des) {}
-    BaseGoods(const BaseGoods& temp)
-        : numberRemain(temp.numberRemain),price(temp.price),name(temp.name),description(temp.description){}
-    BaseGoods& operator=(BaseGoods&& temp);
+    BaseGoods( long long int newNumberRemain, double newPrice, std::string newName,std::string des,std::string owner)
+        : numberRemain(newNumberRemain), price(newPrice), name(newName),description(des),owner(owner) {}
     virtual double getOriginalPrice()final;
     virtual long long int getRemain()final;
     virtual std::string getName()final;
@@ -22,5 +19,6 @@ private:
     double price;
     std::string name;
     std::string description;
+    std::string owner;
 };
 

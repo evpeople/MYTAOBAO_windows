@@ -5,7 +5,7 @@ class Book :
     public BaseGoods
 {
 public:
-    Book(long long int newNumberRemain, double newPrice, std::string newName, std::string des);
+    Book(long long int newNumberRemain, double newPrice, std::string newName, std::string des,std::string owner);
     virtual double getPrice()override;
     virtual std::string getType();
     static void setDiscount(double newDiscount);

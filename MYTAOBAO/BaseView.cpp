@@ -1,6 +1,7 @@
 #include "BaseView.h"
 #include "Server.h"
 #include<fstream>
+#include<iostream>
 #include <regex>
 #include<iomanip>
 #include<json/json.h>
@@ -58,34 +59,36 @@ void BaseView::showGoods()
         Json::CharReaderBuilder reader;
         JSONCPP_STRING errs;
 
-        Json::Value root;
+        Json::Value root ,goodsOfUsr;
+       
         if (!Json::parseFromStream(reader, fin, &root, &errs))
         {
             cout << errs << endl;
         }
-        for (size_t i = 0; i < root.size(); i++)
+        goodsOfUsr = root["goods"];
+        for (size_t i = 0; i < goodsOfUsr.size(); i++)
         {
-            cout<<"\t"  <<setw(lenOfString)<< root[i]["name"].asString();
+            cout<<"\t"  <<setw(lenOfString)<< goodsOfUsr[i]["name"].asString();
         }
         cout << endl;
-        for (size_t i = 0; i < root.size(); i++)
+        for (size_t i = 0; i < goodsOfUsr.size(); i++)
         {
-            cout << "\t" << setw(lenOfString) << root[i]["price"].asString();
+            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["price"].asDouble();
         }
         cout << endl;
-        for (size_t i = 0; i < root.size(); i++)
+        for (size_t i = 0; i < goodsOfUsr.size(); i++)
         {
-            cout << "\t" << setw(lenOfString) << root[i]["remain"].asString();
+            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["remain"].asInt64();
         }
         cout << endl;
-        for (size_t i = 0; i < root.size(); i++)
+        for (size_t i = 0; i < goodsOfUsr.size(); i++)
         {
-            cout << "\t" << setw(lenOfString) << root[i]["type"].asString();
+            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["type"].asString();
         }
         cout << endl;
-        for (size_t i = 0; i < root.size(); i++)
+        for (size_t i = 0; i < goodsOfUsr.size(); i++)
         {
-            cout << "\t" << setw(lenOfString) << root[i]["description"].asString();
+            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["description"].asString();
         }
         cout << endl;
 

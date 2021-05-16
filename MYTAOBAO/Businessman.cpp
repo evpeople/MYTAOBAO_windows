@@ -43,7 +43,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
             cin >> des;
-             busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des }));
+             busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName }));
             cout << name << "添加完毕" << endl;
             break;
         }
@@ -62,7 +62,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
             cin >> des;
-             busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des }));
+             busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName }));
             cout << name << "添加完毕" << endl;
             break;
         }
@@ -82,7 +82,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
             cin >> des;
-            busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des }));
+            busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             cout<<busSGooods[0]->getDescription();
             break;
@@ -192,16 +192,16 @@ bool Businessman::login(string tempUsr,string passWord)
                     if (goods[i]["type"].asString() == "Book")
                     {
 
-                        busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString() }));
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
                     }
                     else if (goods[i]["type"].asString() == "Cloths")
                     {
-                        busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString() }));
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
 
                     }
                     else if (goods[i]["type"].asString() == "EleProduct")
                     {
-                        busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString() }));
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
                     }
                     else
                     {
