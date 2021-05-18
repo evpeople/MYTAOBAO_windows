@@ -3,6 +3,7 @@
 #include<fstream>
 #include<iostream>
 #include <regex>
+#include<random>
 #include<iomanip>
 #include<json/json.h>
 using namespace std;
@@ -53,7 +54,7 @@ void BaseView::showGoods()
     string goodsPath = goodsAddress + "defalutGoods.json";
     ifstream fin;
     fin.open(goodsPath);
-    int lenOfString = 10;
+    int lenOfString = 20;
     if (fin.is_open())
     {
         Json::CharReaderBuilder reader;
@@ -66,29 +67,33 @@ void BaseView::showGoods()
             cout << errs << endl;
         }
         goodsOfUsr = root["goods"];
-        for (size_t i = 0; i < goodsOfUsr.size(); i++)
+        size_t randNumber = rand()%10;
+        int total = 7;
+        
+        cout << "名字";
+        for (size_t i = randNumber; i <total+randNumber; i++)
         {
-            cout<<"\t"  <<setw(lenOfString)<< goodsOfUsr[i]["name"].asString();
+            cout<<std::left<<"\t"  <<setw(lenOfString)<< goodsOfUsr[i]["name"].asString();
         }
-        cout << endl;
-        for (size_t i = 0; i < goodsOfUsr.size(); i++)
+        cout <<endl<<"价钱";
+        for (size_t i = randNumber; i <total +randNumber;i++)
         {
-            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["price"].asDouble();
+            cout <<std::left<< "\t" << setw(lenOfString) << goodsOfUsr[i]["price"].asDouble();
         }
-        cout << endl;
-        for (size_t i = 0; i < goodsOfUsr.size(); i++)
+        cout << endl<<"剩余量";
+        for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["remain"].asInt64();
+            cout<<std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["remain"].asInt64();
         }
-        cout << endl;
-        for (size_t i = 0; i < goodsOfUsr.size(); i++)
+        cout << endl<<"类型";
+        for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["type"].asString();
+            cout <<std::left<< "\t" << setw(lenOfString) << goodsOfUsr[i]["type"].asString();
         }
-        cout << endl;
-        for (size_t i = 0; i < goodsOfUsr.size(); i++)
+        cout << endl<<"描述";
+        for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            cout << "\t" << setw(lenOfString) << goodsOfUsr[i]["description"].asString();
+            cout << std::left<<"\t" << setw(lenOfString) << goodsOfUsr[i]["description"].asString();
         }
         cout << endl;
 
