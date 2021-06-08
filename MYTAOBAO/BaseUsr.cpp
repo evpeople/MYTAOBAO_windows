@@ -114,8 +114,10 @@ void BaseUsr::getGoods()
      cout << "只有商家有货物" <<  endl;
 }
 
-void BaseUsr::buySomeThing(double)
+bool BaseUsr::buySomeThing(double)
 {
+    cout << "只有用户能买东西" << endl;
+    return false;
 }
 
 

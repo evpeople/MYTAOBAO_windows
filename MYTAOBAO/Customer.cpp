@@ -43,7 +43,7 @@ void Customer::storage()
     temp["usrType"] = "Customer";
     temp["money"] = money;
     string outFile = Customer::storageAddress + getUsrName() + ".usr";
-    ofstream fout{ outFile ,ios_base::app };
+    ofstream fout{ outFile ,ios_base::out};
     auto jsonWriter(fwbuilder.newStreamWriter());
     jsonWriter->write(temp, &fout);
     fout.close();
@@ -115,16 +115,18 @@ void Customer::balance()
     }
 }
 
-void Customer::buySomeThing(double price)
+bool Customer::buySomeThing(double price)
 {
     if (price > money)
     {
         cout << "抱歉，你的钱不够多" << endl;
+        return false;
     }
     else
     {
         money -= price;
-cout << "已购买，你还剩" << money << "这么多钱" << endl;
+        cout << "已购买，你还剩" << money << "这么多钱" << endl;
+        return true;
     }
 }
 

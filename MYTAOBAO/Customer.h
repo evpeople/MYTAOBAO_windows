@@ -11,7 +11,7 @@ public:
     virtual bool login(std::string tempUsr, std::string passWord)override;
     virtual USRTYPE getType()override;
     virtual void balance()override;
-    virtual void buySomeThing(double)override;
+    virtual bool buySomeThing(double)override;
     virtual int getId();
     void static setAddress(std::string newAddress);
     std::string static getAddress();
