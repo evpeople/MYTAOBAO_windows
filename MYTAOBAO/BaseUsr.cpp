@@ -109,10 +109,12 @@ void BaseUsr::balance()
      cout << "只有用户用钱！！"<< endl;
 }
 
-void BaseUsr::getGoods()
+std::vector<std::unique_ptr<BaseGoods>>& BaseUsr::getGoods()
 {
-     cout << "只有商家有货物" <<  endl;
+    std::vector<std::unique_ptr<BaseGoods>> a;
+    return a;
 }
+
 
 bool BaseUsr::buySomeThing(double)
 {

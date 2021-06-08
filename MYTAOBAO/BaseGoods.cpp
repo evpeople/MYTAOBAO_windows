@@ -15,6 +15,28 @@ string BaseGoods::getName()
     return name;
 }
 
+void BaseGoods::setDescription(std::string newDes)
+{
+    description = newDes;
+}
+
+
+void BaseGoods::setName(std::string newname)
+{
+    name = newname;
+}
+
+
+void BaseGoods::setRemain(long long int newReamin)
+{
+    numberRemain = newReamin;
+}
+
+void BaseGoods::setOriginalPrice(double newPrice)
+{
+    price = newPrice;
+}
+
 std::string BaseGoods::getOwner()
 {
     return owner;

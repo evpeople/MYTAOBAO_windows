@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include<json/json.h>
+#include"BaseGoods.h"
 #include<fstream>
 enum class USRTYPE { businessman, customer, newUsr
 };
@@ -34,7 +35,7 @@ public:
 	BaseUsr(std::string name,std::string pd);
 	virtual ~BaseUsr();
 	virtual void balance();
-	virtual void getGoods();
+	virtual  std::vector<std::unique_ptr<BaseGoods>>& getGoods();
 	virtual bool buySomeThing(double);
 	virtual void setGoods();
 	virtual void discount(int kind, double Discount);

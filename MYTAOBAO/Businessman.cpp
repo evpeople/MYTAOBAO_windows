@@ -141,7 +141,7 @@ void Businessman::storage()
     root["goods"] = goods;
     root["goodsType"] = goodsType;
     goodsDiscount["Book"]=Book::getDiscount();
-    cout << Book::getDiscount()<<getUsrName() << endl;
+    //cout << Book::getDiscount()<<getUsrName() << endl;
     goodsDiscount["Cloths"]=Cloths::getDiscount();
     goodsDiscount["EleProduct"]=EleProduct::getDiscount();
     root["goodDiscount"] = goodsDiscount;
@@ -152,7 +152,7 @@ void Businessman::storage()
     jsonWriter->write(root, &fout);
     fout.close();
     
-    if (!isLogin)
+    if (1)
     {
         string outFileGoods = "./baseFile/goodsFile/defalutGoods.json";
 
@@ -181,7 +181,7 @@ void Businessman::storage()
               root["goods"].append(Json::Value(goods[i]));
             }
 
-            cout << root["goods"].toStyledString();
+            //cout << root["goods"].toStyledString();
 
            
  
@@ -309,6 +309,10 @@ void Businessman::discount(int kind, double discount)
     this->storage();
 }
 
-void Businessman::setGoods()
+vupOfBaseGoods& Businessman::getGoods()
 {
+    return busSGooods;
 }
+
+
+

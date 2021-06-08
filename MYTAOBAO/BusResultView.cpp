@@ -24,7 +24,7 @@ void BusResultView::viewInput()
     switch ((CHOICEEVENT)choice)
     {
     case CHOICEEVENT::GOODS:
-        viewManger.setNext(make_unique<GoodsView>());
+        viewManger.setNext(make_unique<BusinessmanView>());
         break;
     case CHOICEEVENT::DISCOUNT:
         viewManger.setNext(make_unique<DisCountView>());

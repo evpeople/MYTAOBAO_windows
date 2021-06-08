@@ -30,12 +30,6 @@ void DisCountView::viewInput()
 
 bool DisCountView::dealInput(int choice,double discount)
 {
-    enum class GOODS
-    {
-        BOOK = 0,
-        ELEPRODUCT,
-        CLOTHES
-    };
     Usr->discount(choice, discount);
     return false;
 }

@@ -14,6 +14,10 @@ public:
     virtual std::string getType() = 0;
     virtual std::string getDescription()final;
 
+    virtual void setDescription(std::string newDes)final;
+    virtual void  setName(std::string newName)final;
+    virtual void setRemain(long long int newReamin)final;
+    virtual void setOriginalPrice(double newPrice)final;
 
 private:
     long long int numberRemain;

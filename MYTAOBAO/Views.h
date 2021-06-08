@@ -1,7 +1,7 @@
 #pragma once
 #include"BaseView.h"
 #include"BusinessmanView.h"//todo:商人个人信息
-#include"GoodsView.h"//todo: 更改商品
+#include"GoodsView.h"// 更改商品
 #include"CusResultView.h"//顾客选项界面
 #include"BusResultView.h" //商人选择界面
 #include"CustmomerView.h"//:顾客个人信息

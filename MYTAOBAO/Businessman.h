@@ -19,7 +19,8 @@ public:
     void static setAddress(std::string newAddress);
     std::string static getAddress();
     virtual void discount(int kind  ,double)override;
-    virtual void setGoods()override;
+    virtual vupOfBaseGoods& getGoods()override;
+    //virtual void  setGoods()override;
 private:
     long long int id;
     int goodsType;;

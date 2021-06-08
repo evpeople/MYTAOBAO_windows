@@ -79,7 +79,9 @@ void BaseView::showGoods()
             string name=(*itr)["name"].asString();
             string type = (*itr)["type"].asString();
             Json::Value value=*itr;
-            GoodSearchFromName.insert(make_pair(name,value));
+            //由于unordermap插入同样的键时会覆盖最后的，所以计算时是正确的。
+            //GoodSearchFromName.insert(make_pair(name,value));
+            GoodSearchFromName[name] = value;
             GoodSearchFromType[type].push_back(value);
         }
         //auto t=GoodSearchFromName.find("Effective C++");
