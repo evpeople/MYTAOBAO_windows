@@ -11,7 +11,7 @@
 #include"LogoutView.h"//登出页
 #include"MainView.h"//首页FF
 #include"ChangePassView.h"//更改密码页
-#include"BuyView.h" //todo:购买页
+#include"BuyView.h" //购买页
 #include"DisCountView.h"//打折页
 
 

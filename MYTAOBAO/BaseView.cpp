@@ -31,6 +31,12 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
         input(choice,help,regexString);
     }
 }
+void BaseView::input(std::string& choice, std::string help)
+{
+    cout << help << endl;
+    cin >> choice;
+} 
+
 void BaseView::showLogo()
 {
     system("cls");
@@ -67,7 +73,18 @@ void BaseView::showGoods()
             cout << errs << endl;
         }
         goodsOfUsr = root["goods"];
-        size_t randNumber = rand()%10;
+        std::string output;
+        for (Json::ValueIterator itr = goodsOfUsr.begin(); itr != goodsOfUsr.end(); itr++)
+        {
+            string name=(*itr)["name"].asString();
+            string type = (*itr)["type"].asString();
+            Json::Value value=*itr;
+            GoodSearchFromName.insert(make_pair(name,value));
+            GoodSearchFromType[type].push_back(value);
+        }
+        //auto t=GoodSearchFromName.find("Effective C++");
+       //cout <<"\n" << x.toStyledString()<<GoodSearchFromName.size();
+       size_t randNumber = rand() % 10;
         int total = 7;
         
         cout << "Ãû×Ö";

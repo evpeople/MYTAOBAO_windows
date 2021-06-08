@@ -35,7 +35,7 @@ public:
 	virtual ~BaseUsr();
 	virtual void balance();
 	virtual void getGoods();
-	virtual void buySomeThing(double);
+	virtual bool buySomeThing(double);
 	virtual void setGoods();
 	virtual void discount(int kind, double Discount);
 	virtual bool changePassWord(std::string pass)final;
