@@ -163,6 +163,7 @@
     <ClCompile Include="MYTAOBAO.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="BaseView.cpp" />
+    <ClCompile Include="shoppingCart.cpp" />
     <ClCompile Include="SignUpView.cpp" />
     <ClCompile Include="ViewManger.cpp" />
   </ItemGroup>
@@ -189,6 +190,7 @@
     <ClInclude Include="Server.h" />
     <ClInclude Include="Goods.h" />
     <ClInclude Include="BaseView.h" />
+    <ClInclude Include="shoppingCart.h" />
     <ClInclude Include="SignUpView.h" />
     <ClInclude Include="ViewManger.h" />
     <ClInclude Include="Views.h" />

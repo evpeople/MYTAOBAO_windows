@@ -87,6 +87,9 @@
     <ClCompile Include="BusResultView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="shoppingCart.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUsr.h">
@@ -162,6 +165,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="BusResultView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="shoppingCart.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

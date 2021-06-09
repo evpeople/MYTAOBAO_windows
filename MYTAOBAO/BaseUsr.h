@@ -3,6 +3,7 @@
 #include<json/json.h>
 #include"BaseGoods.h"
 #include<fstream>
+typedef std::vector<std::unique_ptr<BaseGoods>> vupOfBaseGoods;
 enum class USRTYPE { businessman, customer, newUsr
 };
 //std::ostream& operator<<(std::ostream& os, const USRTYPE& ec)
@@ -38,6 +39,8 @@ public:
 	virtual  std::vector<std::unique_ptr<BaseGoods>>& getGoods();
 	virtual bool buySomeThing(double);
 	virtual void setGoods();
+	virtual bool addInShoppingCart(std::unique_ptr<BaseGoods>&good,long long int last);
+    virtual void minShoppingCart(std::unique_ptr<BaseGoods>&goods, long long int last);
 	virtual void discount(int kind, double Discount);
 	virtual bool changePassWord(std::string pass)final;
 	virtual bool auth(std::string)final;//”…login π”√
@@ -46,12 +49,14 @@ public:
 	virtual USRTYPE getType() = 0;
 	std::string getUsrName();
 
+    virtual double calShoppingCart();
 	
 	std::string tosting();
 protected:
 	virtual std::string encryp(const  std::string passwd)final;
 	std::string getUsrPassWord();
 	void setUsrName(std::string newName);
+	virtual double getMoney();
 	void setUsrPassWord(std::string newPassWord);
 
 private:

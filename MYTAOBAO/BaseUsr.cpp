@@ -55,9 +55,19 @@ bool BaseUsr::auth( string passwd)
     return usrName;
 }
 
+ double BaseUsr::calShoppingCart()
+ {
+     return 0.0;
+ }
+
 void BaseUsr::setUsrName( string newName)
 {
     usrName = newName;
+}
+
+double BaseUsr::getMoney()
+{
+    return 0.0;
 }
 
 void BaseUsr::setUsrPassWord( string newPassWord)
@@ -127,3 +137,13 @@ void BaseUsr::setGoods()
 {
      cout << "只有商家能改货" <<  endl;
 }
+
+bool BaseUsr::addInShoppingCart(std::unique_ptr<BaseGoods>& good,long long int last)
+{
+    return false;
+}
+
+void BaseUsr::minShoppingCart(std::unique_ptr<BaseGoods>& goods, long long int last)
+{
+}
+

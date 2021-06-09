@@ -132,6 +132,7 @@ void Businessman::storage()
         goods[serial]["type"] = up->getType();
         goods[serial]["description"] = up->getDescription();
         goods[serial]["owner"] = up->getOwner();
+        goods[serial]["isFreeze"] = up->getFreeze();
         serial++;
         });
     root["usrID"] = id;

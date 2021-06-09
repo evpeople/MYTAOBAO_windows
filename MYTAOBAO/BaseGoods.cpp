@@ -1,5 +1,8 @@
 #include "BaseGoods.h"
 using namespace std;
+void BaseGoods::storage()
+{
+}
 double BaseGoods::getOriginalPrice()
 {
     return price;
@@ -26,6 +29,11 @@ void BaseGoods::setName(std::string newname)
     name = newname;
 }
 
+void BaseGoods::setFreeze(long long int freeze)
+{
+    isFreeze = freeze;
+}
+
 
 void BaseGoods::setRemain(long long int newReamin)
 {
@@ -45,5 +53,10 @@ std::string BaseGoods::getOwner()
 std::string BaseGoods::getDescription()
 {
     return description;
+}
+
+long long int BaseGoods::getFreeze()
+{
+    return isFreeze;
 }
 
