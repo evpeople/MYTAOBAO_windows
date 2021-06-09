@@ -223,9 +223,9 @@ bool Businessman::login(string tempUsr,string passWord)
                 goodsType = root["goodsType"].asInt();
                 setUsrName(root["usrName"].asString());
                 setUsrPassWord(root["usrPass"].asString());
-                Book::setDiscount(root["goodsDiscount"]["Book"].asDouble());
-                Cloths::setDiscount(root["goodsDiscount"]["Cloths"].asDouble());
-                EleProduct::setDiscount(root["goodsDiscount"]["EleProduct"].asDouble());
+                Book::setDiscount(root["goodDiscount"]["Book"].asDouble());
+                Cloths::setDiscount(root["goodDiscount"]["Cloths"].asDouble());
+                EleProduct::setDiscount(root["goodDiscount"]["EleProduct"].asDouble());
                 goods = root["goods"];
 
                 string name;
