@@ -37,7 +37,7 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
 void BaseView::input(std::string& choice, std::string help)
 {
     cout << help << endl;
-    cin >> choice;
+    getline(cin,choice);
 }
 void BaseView::inputDouble(double& num)
 {

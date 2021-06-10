@@ -1,6 +1,7 @@
 #include "BusinessmanView.h"
 #include"BusResultView.h"
 #include"ViewManger.h"
+#include<algorithm>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ void BusinessmanView::viewInput()
     string ans;
     if (choice>0&&choice<4)
     {
+        cin.get();
         input(name, "输入更改的商品的名字");
     }
     std::vector<std::unique_ptr<BaseGoods>>& temp= Usr->getGoods();
@@ -45,10 +47,19 @@ void BusinessmanView::viewInput()
         cout << "新价格是" << endl;
         double newPrice;
         inputDouble(newPrice);
+        int i;
+        //for ( i = 0; i < temp.size(); i++)
+        //{
+        //    if (temp[i]->getName() == name)
+        //    {
+        //        temp[i]->setOriginalPrice(newPrice);
+        //    }
+        //}
         for_each(temp.begin(), temp.end(), [newPrice, name](unique_ptr<BaseGoods>& up) {
         if (up->getName() == name)
         {
             up->setOriginalPrice(newPrice);
+            cout << "成功更改" << endl;
         }
         });   
         break;

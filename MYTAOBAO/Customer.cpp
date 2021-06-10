@@ -11,250 +11,6 @@ long long int Customer::totalId = 0;
 USRTYPE Customer::type = USRTYPE::customer;
 string Customer::storageAddress = ".";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Customer::Customer(string name, string PassWd)
     :BaseUsr{ name, PassWd }
 {
@@ -290,16 +46,22 @@ USRTYPE Customer::getType()
 
 
 
-
-
-
-
-
-
-
-
 Customer::~Customer()
 {
+}
+
+void Customer::inputDouble(double& num)
+{
+        cin >> num;
+        while (!cin.good())
+        {
+            cout << "只能是数字" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            cin.sync();
+
+            cin >> num;
+        }
 }
 
 void Customer::storage()
@@ -395,15 +157,14 @@ void Customer::balance()
     if (choice == 8)
     {
         cout << "请输入充值多少钱" << endl;
-        cin >> choice;
         double money;
-        cin >> money;
+        inputDouble(money);
         setMoney(getMoney() + money);
     }
     else
     {
         cin.clear();
-        cin.ignore();
+        cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
         return;
     }
 }

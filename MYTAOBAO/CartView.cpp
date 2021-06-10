@@ -17,8 +17,8 @@ void CartView::viewInput()
     Json::Value temp;
     ViewManger& viewManger = ViewManger::getInstance();
     //std::regex regexFir("[12]");
-    std::regex regexSec("[12345]");
-    input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t支付订单\n其他\t回到上一界面", regexSec);
+    std::regex regexSec("[123456]");
+    input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t支付订单\n6\t回到上一界面", regexSec);
     enum class CHOICEEVENT
     {
         ADD= 1,MIN ,TOTAL, SHOW,BUY

@@ -25,6 +25,7 @@ public:
     std::string static getAddress();
     ~Customer();
 private:
+    void inputDouble(double& num);
     long long int id;
     static USRTYPE type;
     shoppingCart shopCart;

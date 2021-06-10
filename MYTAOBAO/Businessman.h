@@ -33,7 +33,6 @@ private:
     int goodsType;
 
     vupOfBaseGoods busSGooods;
-    //todo: 没有给商人钱的属性
     //std::unordered_map<std::string, vupOfBaseGoods>busSGooods;
     static USRTYPE type;
     static long long int totalId;
