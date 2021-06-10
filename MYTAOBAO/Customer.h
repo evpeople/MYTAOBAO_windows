@@ -28,7 +28,6 @@ private:
     long long int id;
     static USRTYPE type;
     shoppingCart shopCart;
-    vupOfBaseGoods shoppingCart;
     static long long int totalId;
     static std::string  storageAddress;
 };

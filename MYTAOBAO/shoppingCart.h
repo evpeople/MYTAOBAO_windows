@@ -2,6 +2,7 @@
 #include<vector>
 #include<memory>
 #include<algorithm>
+#include<json/json.h>
 #include"Goods.h"
 typedef std::vector<std::unique_ptr<BaseGoods>> vupOfBaseGoods;
 class shoppingCart

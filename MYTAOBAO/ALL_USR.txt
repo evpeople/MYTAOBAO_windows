@@ -1,6 +1,0 @@
-{
-	"usrID" : 3,
-	"usrName" : "dsds",
-	"usrPass" : "\u075a\u03e6\u0157h\\\u00ff\u04f5:+k\ufc82\u6e75\u0326\ucea6\u0460\u01b3X\ufffd",
-	"usrType" : "sd"
-}

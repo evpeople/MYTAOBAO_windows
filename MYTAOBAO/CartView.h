@@ -13,5 +13,4 @@ private:
     void search(std::string, Json::Value& ansGood);
     void search(std::string, std::vector<Json::Value>& ansGoods);
 };
-};
 

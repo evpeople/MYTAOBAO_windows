@@ -5,22 +5,262 @@
 #include <memory>
 
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::string;
-using std::ofstream;
-using std::ifstream;
-using std::ios_base;
-using std::unique_ptr;
+using namespace std;
+
 long long int Customer::totalId = 0;
 USRTYPE Customer::type = USRTYPE::customer;
 string Customer::storageAddress = ".";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Customer::Customer(string name, string PassWd)
     :BaseUsr{ name, PassWd }
 {
     id = totalId;
     totalId++;
+    //shoppingCart = shopCart.getCart();
     cout << "您想充值多少钱" << endl;
     double money;
     cin >> money;
@@ -29,6 +269,7 @@ Customer::Customer(string name, string PassWd)
 Customer::Customer(string name, string PassWd,double money)
     :BaseUsr{ name, PassWd }
 {
+    //shoppingCart = shopCart.getCart();
     id = totalId;
     totalId++;
     setMoney(money);
@@ -37,6 +278,28 @@ Customer::Customer() :BaseUsr{ "0","0" }
 {
     id = 0;
     setMoney(0);
+    //shoppingCart = shopCart.getCart();
+}
+
+
+
+USRTYPE Customer::getType()
+{
+    return Customer::type;
+}
+
+
+
+
+
+
+
+
+
+
+
+Customer::~Customer()
+{
 }
 
 void Customer::storage()
@@ -58,8 +321,8 @@ void Customer::storage()
     }();
     fwbuilder.settings_ = def;
     int serial = 0;
-    shoppingCart = shopCart.getCart();
-    for_each(shoppingCart.begin(), shoppingCart.end(), [&shoppingFartJson, &serial](unique_ptr<BaseGoods>& up) {
+    //shoppingCart = shopCart.getCart();
+    for_each(shopCart.getCart().begin(), shopCart.getCart().end(), [&shoppingFartJson, &serial](unique_ptr<BaseGoods>& up) {
 
         shoppingFartJson[serial]["name"] = up->getName();
         shoppingFartJson[serial]["price"] = up->getPrice();
@@ -77,7 +340,7 @@ void Customer::storage()
     jsonWriter->write(temp, &fout);
     fout.close();
 }
-
+//
 bool Customer::login(string tempUsr,string passWord)
 {
 
@@ -122,12 +385,8 @@ bool Customer::login(string tempUsr,string passWord)
     }
     return false;
 }
-
-USRTYPE Customer::getType()
-{
-    return Customer::type;
-}
-
+//
+//
 void Customer::balance()
 {
     cout << "你现在还剩" << getMoney()<< "元钱，充值请输入8" << endl;
@@ -138,7 +397,7 @@ void Customer::balance()
         cout << "请输入充值多少钱" << endl;
         cin >> choice;
         double money;
-        money += choice;
+        cin >> money;
         setMoney(getMoney() + money);
     }
     else
@@ -168,7 +427,7 @@ int Customer::getId()
 {
     return id;
 }
-
+//
 bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 {
     shopCart.addShoppingCart(good, last,getUsrName());
@@ -197,7 +456,7 @@ bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 
     return false;
 }
-
+//
 void Customer::minShoppingCart(Json::Value& goods, long long int last)
 {
     shopCart.minShoppingCart(goods, last,getUsrName());
@@ -208,7 +467,7 @@ void Customer::showCart()
 {
     shopCart.show();
 }
-
+//
 bool Customer::buyAllThing()
 {
     bool flag = false;
@@ -224,42 +483,42 @@ bool Customer::buyAllThing()
     }
     return flag;
 }
-
+//
 double Customer::calShoppingCart()
 {
     return shopCart.calShoppingCart();
 }
-
-
+//
+//
 void Customer::setAddress(string newAddress)
 {
     Customer::storageAddress = newAddress;
 }
-
+//
 string Customer::getAddress()
 {
     return Customer::storageAddress;
 }
-
-//_finddata_t fileInfo;
-//long handle = _findfirst(inPath.c_str(), &fileInfo);
-//if (handle==-1)//todo: 异常处理
+//
+////_finddata_t fileInfo;
+////long handle = _findfirst(inPath.c_str(), &fileInfo);
+////if (handle==-1)//todo: 异常处理
+////{
+////    std::cout << "此时还没有文件" << std::endl;
+////    return false;
+////}
+////int finded = 0;
+////do
+////{
+////    if ((tempUsr+".usr")==fileInfo.name)
+////    {
+////        finded = 1;
+////        break;
+////    }
+////} while (!_findnext(handle,&fileInfo);
+////_findclose(handle);
+//
+//Customer::~Customer()
 //{
-//    std::cout << "此时还没有文件" << std::endl;
-//    return false;
 //}
-//int finded = 0;
-//do
-//{
-//    if ((tempUsr+".usr")==fileInfo.name)
-//    {
-//        finded = 1;
-//        break;
-//    }
-//} while (!_findnext(handle,&fileInfo);
-//_findclose(handle);
 
-Customer::~Customer()
-{
-    int a = 1;
-}

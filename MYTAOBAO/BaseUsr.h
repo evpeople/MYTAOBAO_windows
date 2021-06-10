@@ -50,8 +50,6 @@ public:
 	virtual bool login(std::string, std::string) = 0;
 	virtual USRTYPE getType() = 0;
 	std::string getUsrName();
-	virtual double getMoney()final;
-	virtual void setMoney(double newMoney)final;
 
     virtual double calShoppingCart();
 	
@@ -60,7 +58,8 @@ protected:
 	virtual std::string encryp(const  std::string passwd)final;
 	std::string getUsrPassWord();
 	void setUsrName(std::string newName);
-	virtual double getMoney();
+	virtual double getMoney()final;
+	virtual void setMoney(double newMoney)final;
 	void setUsrPassWord(std::string newPassWord);
 
 private:

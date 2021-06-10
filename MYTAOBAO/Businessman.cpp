@@ -37,13 +37,13 @@ Businessman::Businessman(std::string name, std::string PassWd)
             double price;
             long long int remain;
             cout << "请输入书的名字" << endl;
-            cin >> name;
+            getline(cin, name);
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
-            cin >> des;
+            getline(cin, des);
              busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             break;
@@ -56,13 +56,13 @@ Businessman::Businessman(std::string name, std::string PassWd)
             double price;
             long long int remain;
             cout << "请输入衣服的名字" << endl;
-            cin >> name;
+            getline(cin, name,'\n');
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
-            cin >> des;
+            getline(cin, des);
              busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             break;
@@ -76,16 +76,17 @@ Businessman::Businessman(std::string name, std::string PassWd)
             long long int remain;
             
             cout << "请输入电子产品的名字" << endl;
-            cin >> name;
+            getline(cin, name,'\n');
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
-            cin >> des;
+            getline(cin, des);
             busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
-            cout<<busSGooods[0]->getDescription();
+            cin.clear();
+            cin.sync();
             break;
         }
         default:

@@ -26,7 +26,9 @@ void SignUpView::viewInput()
     while (true)
     {
         std::cout << "请输入用户名" << endl;
-        cin >> name;
+        cin.get();
+        getline(cin, name);
+        //cin >> name;
         if (isExist(name, choice))
         {
             cout << "此用户名已被占用，请您选择其他用户名" << endl;
@@ -88,13 +90,14 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 double price;
                 long long int remain;
                 cout << "请输入书的名字" << endl;
-                cin >> name;
+                getline(cin, name);
                 cout << "请输入" << name << "的价钱" << endl;
                 cin >> price;
                 cout << "请输入" << name << "的仓库存量" << endl;
                 cin >> remain;
                 cout << "请输入" << name << "的描述" << endl;
-                cin >> des;
+                cin.get();
+                getline(cin, des);
                 busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,name}));
                 cout << name << "添加完毕" << endl;
                 break;
@@ -107,13 +110,14 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 double price;
                 long long int remain;
                 cout << "请输入衣服的名字" << endl;
-                cin >> name;
+                getline(cin, name);
                 cout << "请输入" << name << "的价钱" << endl;
                 cin >> price;
                 cout << "请输入" << name << "的仓库存量" << endl;
                 cin >> remain;
                 cout << "请输入" << name << "的描述" << endl;
-                cin >> des;
+                cin.get();
+                getline(cin, des);
                 busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,name }));
                 cout << name << "添加完毕" << endl;
                 break;
@@ -127,13 +131,14 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 long long int remain;
 
                 cout << "请输入电子产品的名字" << endl;
-                cin >> name;
+                getline(cin, name);
                 cout << "请输入" << name << "的价钱" << endl;
                 cin >> price;
                 cout << "请输入" << name << "的仓库存量" << endl;
                 cin >> remain;
                 cout << "请输入" << name << "的描述" << endl;
-                cin >> des;
+                cin.get();
+                getline(cin, des);
                 busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,name }));
                 cout << name << "添加完毕" << endl;
                 cout << busSGooods[0]->getDescription();
