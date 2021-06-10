@@ -2,13 +2,7 @@
 #include <iostream>
 #include <io.h>
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::string;
-using std::ofstream;
-using std::ifstream;
-using std::ios_base;
+using namespace std;
 long long int Customer::totalId = 0;
 USRTYPE Customer::type = USRTYPE::customer;
 string Customer::storageAddress = ".";
@@ -18,19 +12,21 @@ Customer::Customer(string name, string PassWd)
     id = totalId;
     totalId++;
     cout << "您想充值多少钱" << endl;
-    cin >> money;
+    double money;
+    inputDouble(money);
+    setMoney(money);
 }
 Customer::Customer(string name, string PassWd,double money)
     :BaseUsr{ name, PassWd }
 {
     id = totalId;
     totalId++;
-    this->money= money;
+    setMoney(money);
 }
 Customer::Customer() :BaseUsr{ "0","0" }
 {
     id = 0;
-    money = 0;
+    setMoney(0);
 }
 
 void Customer::storage()
@@ -41,7 +37,7 @@ void Customer::storage()
     temp["usrName"] = getUsrName();
     temp["usrPass"] = getUsrPassWord();
     temp["usrType"] = "Customer";
-    temp["money"] = money;
+    temp["money"] = getMoney();
     string outFile = Customer::storageAddress + getUsrName() + ".usr";
     ofstream fout{ outFile ,ios_base::out};
     auto jsonWriter(fwbuilder.newStreamWriter());
@@ -70,7 +66,7 @@ bool Customer::login(string tempUsr,string passWord)
         id = root["usrID"].asInt64();
         setUsrName(root["usrName"].asString());
         setUsrPassWord(root["usrPass"].asString());
-        money = root["money"].asDouble();
+        setMoney(root["money"].asDouble());
         fin.close();
         //passWord = "evp";
         if (auth(passWord))
@@ -98,34 +94,36 @@ USRTYPE Customer::getType()
 
 void Customer::balance()
 {
-    cout << "你现在还剩" << money << "元钱，充值请输入8" << endl;
+    cout << "你现在还剩" << getMoney() << "元钱，充值请输入8" << endl;
     int choice;
     cin >> choice;
     if (choice == 8)
     {
         cout << "请输入充值多少钱" << endl;
-        cin >> choice;
-        money += choice;
+        double money;
+        inputDouble(money);
+        setMoney(getMoney() + money);
     }
     else
     {
         cin.clear();
-        cin.ignore();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n'
+        );
         return;
     }
 }
 
 bool Customer::buySomeThing(double price)
 {
-    if (price > money)
+    if (price > getMoney())
     {
         cout << "抱歉，你的钱不够多" << endl;
         return false;
     }
     else
     {
-        money -= price;
-        cout << "已购买，你还剩" << money << "这么多钱" << endl;
+        setMoney(getMoney() - price);
+        cout << "已购买，你还剩" << getMoney() << "这么多钱" << endl;
         return true;
     }
 }

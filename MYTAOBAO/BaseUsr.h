@@ -35,6 +35,7 @@ public:
 	BaseUsr(std::string name,std::string pd);
 	virtual ~BaseUsr();
 	virtual void balance();
+	virtual void addGoods();
 	virtual  std::vector<std::unique_ptr<BaseGoods>>& getGoods();
 	virtual bool buySomeThing(double);
 	virtual void setGoods();
@@ -53,9 +54,14 @@ protected:
 	std::string getUsrPassWord();
 	void setUsrName(std::string newName);
 	void setUsrPassWord(std::string newPassWord);
+	void inputDouble(double& num);
+	void inputLLint(long long int& num);
+	virtual double getMoney()final;
+	virtual void setMoney(double newMoney)final;
 
 private:
     std::string usrName;
 	std::string usrPassWord;
+	double money;
 	bool isLogin;
 };

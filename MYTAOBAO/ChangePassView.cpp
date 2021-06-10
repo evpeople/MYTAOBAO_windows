@@ -34,6 +34,7 @@ void ChangePassView::viewInput()
         }
     }
     cout << "更改成功" << endl;
+    viewManger.sleepMs(500);
     viewManger.setNext(make_unique<MainView>());
 }
 

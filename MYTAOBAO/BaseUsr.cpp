@@ -11,7 +11,6 @@ void BaseUsr::discount(int kind ,double Discount)
 bool BaseUsr::changePassWord(std::string pass)
 {
         usrPassWord = encryp(pass);
-         cout << "!!!!!!!!!!!!保存有可能出问题\n\n\n" <<  endl;
        this->storage();
        return true;
 }
@@ -109,6 +108,10 @@ void BaseUsr::balance()
      cout << "只有用户用钱！！"<< endl;
 }
 
+void BaseUsr::addGoods()
+{
+}
+
 std::vector<std::unique_ptr<BaseGoods>>& BaseUsr::getGoods()
 {
     std::vector<std::unique_ptr<BaseGoods>> a;
@@ -126,4 +129,41 @@ bool BaseUsr::buySomeThing(double)
 void BaseUsr::setGoods()
 {
      cout << "只有商家能改货" <<  endl;
+}
+void BaseUsr::inputDouble(double& num)
+{
+    cin >> num;
+    while (!cin.good())
+    {
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+
+        cin >> num;
+    }
+}
+
+void BaseUsr::inputLLint(long long int& num)
+{
+    cin >> num;
+    while (!cin.good())
+    {
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+
+        cin >> num;
+    }
+}
+
+double BaseUsr::getMoney()
+{
+    return money;
+}
+
+void BaseUsr::setMoney(double newMoney)
+{
+    money = newMoney;
 }

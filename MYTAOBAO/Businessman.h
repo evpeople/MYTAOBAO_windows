@@ -14,6 +14,7 @@ public:
     Businessman();
     Businessman(std::string name,std::string PassWd, vupOfBaseGoods& busSGooods, int goodsType);
     virtual void storage()override;
+    virtual void addGoods()override;
     virtual bool login(std::string tempUsr, std::string passWord)override;
     virtual USRTYPE getType()override;
     void static setAddress(std::string newAddress);
@@ -22,6 +23,7 @@ public:
     virtual vupOfBaseGoods& getGoods()override;
     //virtual void  setGoods()override;
 private:
+
     long long int id;
     int goodsType;;
     vupOfBaseGoods busSGooods;

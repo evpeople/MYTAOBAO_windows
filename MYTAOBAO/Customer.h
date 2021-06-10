@@ -18,7 +18,6 @@ public:
     ~Customer();
 private:
     long long int id;
-    double money;
     static USRTYPE type;
     static long long int totalId;
     static std::string  storageAddress;

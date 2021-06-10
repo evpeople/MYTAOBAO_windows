@@ -6,6 +6,7 @@ class ViewManger
 {
 public:
     void start();
+    void sleepMs(int ms);
     void setNext(std::unique_ptr<BaseView>next);
     static  ViewManger& getInstance();
    //{
