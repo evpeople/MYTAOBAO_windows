@@ -1,4 +1,5 @@
 #include "CartView.h"
+#include"Views.h"
 #include"ViewManger.h"
 
 using namespace std;
@@ -17,7 +18,7 @@ void CartView::viewInput()
     ViewManger& viewManger = ViewManger::getInstance();
     //std::regex regexFir("[12]");
     std::regex regexSec("[12345]");
-    input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t支付订单", regexSec);
+    input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t支付订单\n其他\t回到上一界面", regexSec);
     enum class CHOICEEVENT
     {
         ADD= 1,MIN ,TOTAL, SHOW,BUY
@@ -28,24 +29,30 @@ void CartView::viewInput()
         input(name, "请输入增加的商品的名字,并在回车之后输入增加的数量");
         cin >> number;
         Usr->addInShoppingCart(GoodSearchFromName[name], number);
+        viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::MIN:
         input(name, "请输入减少的商品的名字，并在回车后输入减少的数量");
         cin >> number;
         Usr->minShoppingCart(GoodSearchFromName[name], number);
+        viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::TOTAL:
         cout << "总价是" << Usr->calShoppingCart();
+        viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::SHOW:
         cout << "购物车的详情" << endl;
         Usr->showCart();
+        viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::BUY://todo: 冻结减少应该在defaultGoods中体现，Bussine只用加钱和减少货物
         cout << "清空购物车" << endl;
         Usr->buyAllThing();
+        viewManger.setNext(make_unique<CartView>());
         break;
     default:
+        viewManger.setNext(make_unique<BuyView>());
         break;
     }
 }
