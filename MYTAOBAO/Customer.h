@@ -21,14 +21,11 @@ public:
 	virtual void showCart()override;
 	virtual bool buyAllThing()override;
     virtual double calShoppingCart()override;//todo: 计算购物车的总价值
-	virtual double getMoney()override;
-    void setMoney(double newMoney);
     void static setAddress(std::string newAddress);
     std::string static getAddress();
     ~Customer();
 private:
     long long int id;
-    double money;
     static USRTYPE type;
     shoppingCart shopCart;
     vupOfBaseGoods shoppingCart;

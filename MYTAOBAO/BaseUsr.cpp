@@ -71,7 +71,12 @@ void BaseUsr::setUsrName( string newName)
 
 double BaseUsr::getMoney()
 {
-    return 0.0;
+    return money;
+}
+
+void BaseUsr::setMoney(double newMoney)
+{
+    money = newMoney;
 }
 
 void BaseUsr::setUsrPassWord( string newPassWord)

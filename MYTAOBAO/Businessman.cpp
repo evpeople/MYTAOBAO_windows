@@ -18,6 +18,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
     totalId++;
     goodsType = 8;
     bool in = true;
+    setMoney(0);
     cout << "下面进入添加商品环节，小商人，你准备好了吗" << endl;
     while (in)
     {
@@ -101,6 +102,7 @@ Businessman::Businessman()
 {
     id = 0;
     goodsType = 0;
+    setMoney(0);
 }
 
 
@@ -136,6 +138,7 @@ void Businessman::storage()
         goods[serial]["isFreeze"] = up->getFreeze();
         serial++;
         });
+    root["money"] = getMoney();
     root["usrID"] = id;
     root["usrName"] = getUsrName();
     root["usrPass"] = getUsrPassWord();
@@ -217,8 +220,8 @@ bool Businessman::loginWithoutChecked(std::string tempUsr)
         //passWord = "evp";
              cout << "登陆成功" << endl;
 
-
-            id = root["usrID"].asInt64();
+             setMoney(root["money"].asDouble());
+                 id = root["usrID"].asInt64();
             goodsType = root["goodsType"].asInt();
             setUsrName(root["usrName"].asString());
             setUsrPassWord(root["usrPass"].asString());
@@ -284,6 +287,7 @@ bool Businessman::login(string tempUsr,string passWord)
                 goodsType = root["goodsType"].asInt();
                 setUsrName(root["usrName"].asString());
                 setUsrPassWord(root["usrPass"].asString());
+                setMoney(root["money"].asDouble());
                 Book::setDiscount(root["goodDiscount"]["Book"].asDouble());
                 Cloths::setDiscount(root["goodDiscount"]["Cloths"].asDouble());
                 EleProduct::setDiscount(root["goodDiscount"]["EleProduct"].asDouble());
@@ -348,7 +352,7 @@ void Businessman::dealBuy(string goodsName, long long int goodsNum)
         {
             double money = busSGooods[i]->getPrice()*goodsNum;//下面这步非常重要，因为要统一保存。
             busSGooods[i]->setRemain(busSGooods[i]->getRemain() - goodsNum);//此步可有可无，实际上有用的是defalut的内容。
-            se
+            setMoney(getMoney() + money);
             break;
         }
     }
