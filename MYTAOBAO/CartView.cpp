@@ -38,10 +38,12 @@ void CartView::viewInput()
         cout << "总价是" << Usr->calShoppingCart();
         break;
     case CHOICEEVENT::SHOW:
+        cout << "购物车的详情" << endl;
         Usr->showCart();
         break;
     case CHOICEEVENT::BUY://todo: 冻结减少应该在defaultGoods中体现，Bussine只用加钱和减少货物
-        Usr->
+        cout << "清空购物车" << endl;
+        Usr->buyAllThing();
         break;
     default:
         break;

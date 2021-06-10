@@ -22,19 +22,21 @@ Customer::Customer(string name, string PassWd)
     id = totalId;
     totalId++;
     cout << "您想充值多少钱" << endl;
+    double money;
     cin >> money;
+    setMoney(money);
 }
 Customer::Customer(string name, string PassWd,double money)
     :BaseUsr{ name, PassWd }
 {
     id = totalId;
     totalId++;
-    this->money= money;
+    setMoney(money);
 }
 Customer::Customer() :BaseUsr{ "0","0" }
 {
     id = 0;
-    money = 0;
+    setMoney(0);
 }
 
 void Customer::storage()
@@ -45,7 +47,7 @@ void Customer::storage()
     temp["usrName"] = getUsrName();
     temp["usrPass"] = getUsrPassWord();
     temp["usrType"] = "Customer";
-    temp["money"] = money;
+    temp["money"] = getMoney();
 
     Json::StreamWriterBuilder fwCbuilder;
     static Json::Value def = []() {
@@ -97,7 +99,7 @@ bool Customer::login(string tempUsr,string passWord)
         id = root["usrID"].asInt64();
         setUsrName(root["usrName"].asString());
         setUsrPassWord(root["usrPass"].asString());
-        money = root["money"].asDouble();
+        setMoney(root["money"].asDouble());
         //todo:购物车入内存
 
 
@@ -128,14 +130,16 @@ USRTYPE Customer::getType()
 
 void Customer::balance()
 {
-    cout << "你现在还剩" << money << "元钱，充值请输入8" << endl;
+    cout << "你现在还剩" << getMoney()<< "元钱，充值请输入8" << endl;
     int choice;
     cin >> choice;
     if (choice == 8)
     {
         cout << "请输入充值多少钱" << endl;
         cin >> choice;
+        double money;
         money += choice;
+        setMoney(getMoney() + money);
     }
     else
     {
@@ -147,15 +151,15 @@ void Customer::balance()
 
 bool Customer::buySomeThing(double price)
 {
-    if (price > money)
+    if (price > getMoney())
     {
         cout << "抱歉，你的钱不够多" << endl;
         return false;
     }
     else
     {
-        money -= price;
-        cout << "已购买，你还剩" << money << "这么多钱" << endl;
+        setMoney(getMoney() - price);
+        cout << "已购买，你还剩" << getMoney()<< "这么多钱" << endl;
         return true;
     }
 }
@@ -226,16 +230,6 @@ double Customer::calShoppingCart()
     return shopCart.calShoppingCart();
 }
 
-
-double Customer::getMoney()
-{
-    return money;
-}
-
-void Customer::setMoney(double newMoney)
-{
-    money = newMoney;
-}
 
 void Customer::setAddress(string newAddress)
 {
