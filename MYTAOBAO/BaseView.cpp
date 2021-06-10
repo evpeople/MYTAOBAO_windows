@@ -26,8 +26,11 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
     string temp = to_string(choice);
     if (!regex_match(temp,regexString))
     {
+        
         cin.clear();
         cin.sync();
+        cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
+        cout << "\n´íÎóµÄÊäÈë£¬Çë×¢Òâ" << endl;
         input(choice,help,regexString);
     }
 }

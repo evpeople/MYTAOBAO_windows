@@ -31,7 +31,7 @@ void SignUpView::viewInput()
         //cin >> name;
         if (isExist(name, choice))
         {
-            cout << "此用户名已被占用，请您选择其他用户名" << endl;
+            cout << "\n此用户名已被占用，请您选择其他用户名" << endl;
             continue;
         }
         break;
@@ -52,6 +52,7 @@ void SignUpView::viewInput()
     }
 
     dealInput(name, password, choice);
+    viewManger.sleepMs(500);
     viewManger.setNext(make_unique<MainView>());
 }
 
@@ -98,7 +99,7 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 cout << "请输入" << name << "的描述" << endl;
                 cin.get();
                 getline(cin, des);
-                busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,name}));
+                busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,Usr->getUsrName()}));
                 cout << name << "添加完毕" << endl;
                 break;
             }
@@ -118,7 +119,7 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 cout << "请输入" << name << "的描述" << endl;
                 cin.get();
                 getline(cin, des);
-                busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,name }));
+                busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,Usr->getUsrName() }));
                 cout << name << "添加完毕" << endl;
                 break;
             }
@@ -139,9 +140,9 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
                 cout << "请输入" << name << "的描述" << endl;
                 cin.get();
                 getline(cin, des);
-                busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,name }));
+                busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,Usr->getUsrName()}));
                 cout << name << "添加完毕" << endl;
-                cout << busSGooods[0]->getDescription();
+                //cout << busSGooods[0]->getDescription();
                 break;
             }
             default:

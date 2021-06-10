@@ -25,7 +25,7 @@ void BusinessmanView::viewInput()
     std::vector<std::unique_ptr<BaseGoods>>& temp= Usr->getGoods();
     enum class CHOICEEVENT
     {
-        DES= 1, PRICE,LAST,NAME
+        DES= 1, PRICE,LAST,NEWGOOD
     };
     switch ((CHOICEEVENT)choice)
     {
@@ -38,7 +38,7 @@ void BusinessmanView::viewInput()
         }
         });   
         break;
-    case CHOICEEVENT::NAME:
+    case CHOICEEVENT::NEWGOOD:
         addGoods(temp);
         break;
     case CHOICEEVENT::PRICE:
@@ -59,7 +59,7 @@ void BusinessmanView::viewInput()
         for_each(temp.begin(), temp.end(), [newRemain, name](unique_ptr<BaseGoods>& up) {
         if (up->getName() == name)
         {
-            up->setOriginalPrice(newRemain);
+            up->setRemain(newRemain);
         }
         });  
         break;
@@ -97,13 +97,14 @@ void BusinessmanView::addGoods(std::vector<std::unique_ptr<BaseGoods>>& tempVec)
             double price;
             long long int remain;
             cout << "请输入书的名字" << endl;
-            cin >> name;
+            getline(cin, name);
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
-            cin >> des;
+            cin.get();
+            getline(cin, des);
             tempVec.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,Usr->getUsrName() }));
             cout << name << "添加完毕" << endl;
             break;
@@ -115,14 +116,15 @@ void BusinessmanView::addGoods(std::vector<std::unique_ptr<BaseGoods>>& tempVec)
             double price;
             long long int remain;
             cout << "请输入衣服的名字" << endl;
-            cin >> name;
+            getline(cin, name);
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
-            cin >> des;
-            tempVec.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,Usr->getUsrName() }));
+            cin.get();
+            getline(cin, des);
+            tempVec.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,Usr->getUsrName()}));
             cout << name << "添加完毕" << endl;
             break;
         }
@@ -134,15 +136,17 @@ void BusinessmanView::addGoods(std::vector<std::unique_ptr<BaseGoods>>& tempVec)
             long long int remain;
 
             cout << "请输入电子产品的名字" << endl;
-            cin >> name;
+            getline(cin, name);
             cout << "请输入" << name << "的价钱" << endl;
             cin >> price;
             cout << "请输入" << name << "的仓库存量" << endl;
             cin >> remain;
             cout << "请输入" << name << "的描述" << endl;
-            cin >> des;
+            cin.get();
+            getline(cin, des);
             tempVec.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,Usr->getUsrName() }));
             cout << name << "添加完毕" << endl;
+            //cout << busSGooods[0]->getDescription();
             break;
         }
         default:

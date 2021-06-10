@@ -11,7 +11,6 @@ void BaseUsr::discount(int kind ,double Discount)
 bool BaseUsr::changePassWord(std::string pass)
 {
         usrPassWord = encryp(pass);
-         cout << "!!!!!!!!!!!!保存有可能出问题\n\n\n" <<  endl;
        this->storage();
        return true;
 }

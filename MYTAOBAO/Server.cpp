@@ -195,6 +195,7 @@ void Server::start()
 }
 void Server::start(int i)
 {
+    viewManger.sleepMs(500);
     viewManger.setNext(make_unique<MainView>());
     viewManger.start();
 
