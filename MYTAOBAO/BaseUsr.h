@@ -39,6 +39,7 @@ public:
 	virtual  std::vector<std::unique_ptr<BaseGoods>>& getGoods();
 	virtual bool buySomeThing(double);
 	virtual void setGoods();
+	virtual void addGoods();
 	virtual bool addInShoppingCart(Json::Value&good,long long int last);
     virtual void minShoppingCart(Json::Value&goods, long long int last);
 	virtual void showCart();

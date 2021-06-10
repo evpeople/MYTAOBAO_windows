@@ -16,6 +16,8 @@ public:
     virtual void storage()override;
     virtual bool loginWithoutChecked(std::string tempUsr);
     virtual bool login(std::string tempUsr, std::string passWord)override;
+	virtual void addGoods()override;
+    
     virtual USRTYPE getType()override;
     void static setAddress(std::string newAddress);
     void dealBuy(std::string goodsName,long long int goodsNum);
@@ -24,8 +26,12 @@ public:
     virtual vupOfBaseGoods& getGoods()override;
     //virtual void  setGoods()override;
 private:
+    void inputDouble(double& num);
+    void inputLLint(long long int& num);
+
     long long int id;
-    int goodsType;;
+    int goodsType;
+
     vupOfBaseGoods busSGooods;
     //todo: 没有给商人钱的属性
     //std::unordered_map<std::string, vupOfBaseGoods>busSGooods;

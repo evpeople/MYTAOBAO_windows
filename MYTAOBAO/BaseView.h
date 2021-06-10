@@ -27,6 +27,8 @@ protected:
     virtual void input(int& choice, std::string help,std::regex regexString);
     virtual void input(std::string& choice, std::string help);
     //std::unique_ptr<Businessman>Bus(new Businessman()) ;
+    virtual void inputDouble(double& num);
+    virtual void inputLLint(long long int& num);
     inline static std::unique_ptr<BaseUsr> Usr = nullptr;
     inline static std::unordered_map<std::string,Json::Value>GoodSearchFromName;
     inline static std::unordered_map<std::string,std::vector<Json::Value>>GoodSearchFromType;

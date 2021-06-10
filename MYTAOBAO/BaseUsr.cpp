@@ -146,6 +146,10 @@ void BaseUsr::setGoods()
      cout << "只有商家能改货" <<  endl;
 }
 
+void BaseUsr::addGoods()
+{
+}
+
 bool BaseUsr::addInShoppingCart(Json::Value& good,long long int last)
 {
     return false;

@@ -8,94 +8,10 @@ using namespace std;
 Businessman::Businessman(std::string name, std::string PassWd)
     :BaseUsr{name,PassWd}
 {
-    enum class GOODS
-    {
-        BOOK=0,
-        ELEPRODUCT,
-        CLOTHES
-    };
     id = totalId;
     totalId++;
     goodsType = 8;
-    bool in = true;
     setMoney(0);
-    cout << "下面进入添加商品环节，小商人，你准备好了吗" << endl;
-    while (in)
-    {
-        cout << "输入0，是贩卖书，输入1是贩卖电子产品，输入2是贩卖衣服,其余输入是退出商品添加" << endl;
-        int temp;
-        cin >> temp;
-        cin.clear();
-        cin.ignore();
-        switch ((GOODS)temp)
-        {
-        case GOODS::BOOK:
-        {
-            goodsType |= 1;
-            string name;
-            string des;
-            double price;
-            long long int remain;
-            cout << "请输入书的名字" << endl;
-            getline(cin, name);
-            cout << "请输入" << name << "的价钱" << endl;
-            cin >> price;
-            cout << "请输入" << name << "的仓库存量" << endl;
-            cin >> remain;
-            cout << "请输入" << name << "的描述" << endl;
-            getline(cin, des);
-             busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName() }));
-            cout << name << "添加完毕" << endl;
-            break;
-        }
-        case GOODS::CLOTHES:
-        {
-            goodsType |= 2;
-            string name;
-            string des;
-            double price;
-            long long int remain;
-            cout << "请输入衣服的名字" << endl;
-            getline(cin, name,'\n');
-            cout << "请输入" << name << "的价钱" << endl;
-            cin >> price;
-            cout << "请输入" << name << "的仓库存量" << endl;
-            cin >> remain;
-            cout << "请输入" << name << "的描述" << endl;
-            getline(cin, des);
-             busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName() }));
-            cout << name << "添加完毕" << endl;
-            break;
-        }
-        case GOODS::ELEPRODUCT:
-        {
-            goodsType |= 4;
-            string name;
-            string des;
-            double price;
-            long long int remain;
-            
-            cout << "请输入电子产品的名字" << endl;
-            getline(cin, name,'\n');
-            cout << "请输入" << name << "的价钱" << endl;
-            cin >> price;
-            cout << "请输入" << name << "的仓库存量" << endl;
-            cin >> remain;
-            cout << "请输入" << name << "的描述" << endl;
-            getline(cin, des);
-            busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,getUsrName() }));
-            cout << name << "添加完毕" << endl;
-            cin.clear();
-            cin.sync();
-            break;
-        }
-        default:
-            in = false;
-            break;
-        }
-    }
-   
-
 }
 
 Businessman::Businessman()
@@ -334,6 +250,90 @@ bool Businessman::login(string tempUsr,string passWord)
     return false;
 }
 
+void Businessman::addGoods()
+{
+    enum class GOODS
+    {
+        BOOK = 0,
+        ELEPRODUCT,
+        CLOTHES
+    };
+    bool in = true;
+    while (in)
+    {
+        cout << "输入0，是贩卖书，输入1是贩卖电子产品，输入2是贩卖衣服,其余输入是退出商品添加" << endl;
+        long long int temp;
+        inputLLint(temp);
+        cin.get();
+        switch ((GOODS)temp)
+        {
+        case GOODS::BOOK:
+        {
+            string name;
+            string des;
+            double price;
+            long long int remain;
+            cout << "请输入书的名字" << endl;
+            getline(cin, name);
+            cout << "请输入" << name << "的价钱" << endl;
+            inputDouble(price);
+            cout << "请输入" << name << "的仓库存量" << endl;
+            inputLLint(remain);
+            cout << "请输入" << name << "的描述" << endl;
+            cin.get();
+            getline(cin, des);
+            busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName() }));
+            cout << name << "添加完毕" << endl;
+            break;
+        }
+        case GOODS::CLOTHES:
+        {
+            string name;
+            string des;
+            double price;
+            long long int remain;
+            cout << "请输入衣服的名字" << endl;
+            getline(cin, name);
+            cout << "请输入" << name << "的价钱" << endl;
+            inputDouble(price);
+            cout << "请输入" << name << "的仓库存量" << endl;
+            inputLLint(remain);
+            cout << "请输入" << name << "的描述" << endl;
+            cin.get();
+            getline(cin, des);
+            busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName() }));
+            cout << name << "添加完毕" << endl;
+            break;
+        }
+        case GOODS::ELEPRODUCT:
+        {
+            string name;
+            string des;
+            double price;
+            long long int remain;
+
+            cout << "请输入电子产品的名字" << endl;
+            cin.get();
+            getline(cin, name);
+            cout << "请输入" << name << "的价钱" << endl;
+            inputDouble(price);
+            cout << "请输入" << name << "的仓库存量" << endl;
+            inputLLint(remain);
+            cout << "请输入" << name << "的描述" << endl;
+            cin.get();
+            getline(cin, des);
+            busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,getUsrName() }));
+            cout << name << "添加完毕" << endl;
+            //cout << busSGooods[0]->getDescription();
+            break;
+        }
+        default:
+            in = false;
+            break;
+        }
+    }
+}
+
 USRTYPE Businessman::getType()
 {
     return Businessman::type;
@@ -394,6 +394,34 @@ void Businessman::discount(int kind, double discount)
 vupOfBaseGoods& Businessman::getGoods()
 {
     return busSGooods;
+}
+
+void Businessman::inputDouble(double& num)
+{
+    cin >> num;
+    while (!cin.good())
+    {
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+
+        cin >> num;
+    }
+}
+
+void Businessman::inputLLint(long long int& num)
+{
+        cin >> num;
+    while (!cin.good())
+    {
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+
+        cin >> num;
+    }
 }
 
 
