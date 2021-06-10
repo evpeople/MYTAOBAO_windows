@@ -39,10 +39,12 @@ public:
 	virtual  std::vector<std::unique_ptr<BaseGoods>>& getGoods();
 	virtual bool buySomeThing(double);
 	virtual void setGoods();
-	virtual bool addInShoppingCart(std::unique_ptr<BaseGoods>&good,long long int last);
-    virtual void minShoppingCart(std::unique_ptr<BaseGoods>&goods, long long int last);
+	virtual bool addInShoppingCart(Json::Value&good,long long int last);
+    virtual void minShoppingCart(Json::Value&goods, long long int last);
+	virtual void showCart();
 	virtual void discount(int kind, double Discount);
 	virtual bool changePassWord(std::string pass)final;
+	virtual bool buyAllThing();
 	virtual bool auth(std::string)final;//”…login π”√
 	virtual void storage()=0;
 	virtual bool login(std::string, std::string) = 0;

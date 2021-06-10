@@ -18,10 +18,10 @@ void BuyView::viewInput()
     ViewManger& viewManger = ViewManger::getInstance();
     std::regex regexFir("[12]");
     std::regex regexSec("[123]");
-    input(choice, "1\t查询货物种类\n2\t购买\n3\t放弃剁手", regexSec);
+    input(choice, "1\t查询货物种类\n2\t购买\n3\t购物车\n4\t放弃剁手", regexSec);
     enum class CHOICEEVENT
     {
-        SEARCH=1,BUY,GIVEUP
+        SEARCH=1,BUY,CART,GIVEUP
     };
     switch ((CHOICEEVENT)choice)
     {
@@ -40,6 +40,9 @@ void BuyView::viewInput()
         break;
     case CHOICEEVENT::GIVEUP:
         viewManger.setNext(make_unique<CusResultView>());
+        break;
+    case CHOICEEVENT::CART:
+        viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::BUY:
         {

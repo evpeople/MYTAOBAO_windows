@@ -13,5 +13,6 @@
 #include"ChangePassView.h"//¸ü¸ÄÃÜÂëÒ³
 #include"BuyView.h" //¹ºÂòÒ³
 #include"DisCountView.h"//´òÕÛÒ³
+#include"CartView.h"
 
 

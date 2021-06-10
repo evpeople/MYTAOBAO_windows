@@ -1,5 +1,5 @@
 #include "shoppingCart.h"
-
+#include"json/json.h"
 using namespace std;
 
 vupOfBaseGoods& shoppingCart::getCart()
@@ -19,25 +19,26 @@ double shoppingCart::calShoppingCart()
     return totalPrice;
 }
 
-void shoppingCart::addShoppingCart(std::unique_ptr<BaseGoods>& good, long long int last,string usrName)
+void shoppingCart::addShoppingCart(Json::Value& good, long long int last,string usrName)
 {
-    int index = search(good->getName());
+    int index = search(good["name"].asString());
     if (index==-1)
     {
-        string name=good->getName();
-        double price=good->getPrice();
-        string des=good->getDescription();
-        if (good->getType()=="Book")
+        string name = good["name"].asString();
+        double price=good["price"].asDouble();
+        string des=good["description"].asString();
+        string owner = good["owner"].asString();
+        if (good["type"].asString() == "Book")
         {
-            shoppingCart.push_back(unique_ptr<BaseGoods>(new Book{last,price,name,des,usrName}));
+            shoppingCart.push_back(unique_ptr<BaseGoods>(new Book{last,price,name,des,owner}));
         }
-        else if (good->getType()=="Cloths")
+        else if (good["type"].asString() == "Cloths")
         {
-            shoppingCart.push_back(unique_ptr<BaseGoods>(new Cloths{last,price,name,des,usrName}));
+            shoppingCart.push_back(unique_ptr<BaseGoods>(new Cloths{last,price,name,des,owner}));
         }
         else
         {
-            shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{last,price,name,des,usrName}));
+            shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{last,price,name,des,owner}));
         }
     }
     else
@@ -46,9 +47,9 @@ void shoppingCart::addShoppingCart(std::unique_ptr<BaseGoods>& good, long long i
     }
 }
 
-void shoppingCart::minShoppingCart(std::unique_ptr<BaseGoods>& good, long long int last, std::string usrName)
+void shoppingCart::minShoppingCart(Json::Value& good, long long int last, std::string usrName)
 {
-    int index = search(good->getName());
+    int index = search(good["name"].asString());
     if (index == -1)
     {
         cout << "Ã»µÃ¿ÉÉ¾£¡" << endl;
@@ -61,6 +62,32 @@ void shoppingCart::minShoppingCart(std::unique_ptr<BaseGoods>& good, long long i
             shoppingCart.erase(shoppingCart.begin()+index);
         }
     }
+}
+
+void shoppingCart::buyAll()
+{
+    for_each(shoppingCart.begin(), shoppingCart.end(), [](unique_ptr<BaseGoods>& up) {
+
+        cout << "name is " << up->getName() << endl;
+        cout << "price is " << up->getPrice() << endl;
+        cout << "the number you buy is " << up->getRemain() << endl;
+        cout << "Type is " << up->getType() << endl;
+        cout << "description is " << up->getDescription() << endl;
+        });
+
+    shoppingCart.clear();
+}
+
+void shoppingCart::show()
+{
+    for_each(shoppingCart.begin(), shoppingCart.end(), [](unique_ptr<BaseGoods>& up) {
+
+        cout<<"name is "<<up->getName()<<endl;
+        cout<<"price is "<<up->getPrice()<<endl;
+        cout<<"the number you buy is " <<up->getRemain()<<endl;
+        cout<<"Type is "<<up->getType()<<endl;
+        cout<<"description is "<<up->getDescription()<<endl;
+        });
 }
 
 int shoppingCart::search(std::string name)

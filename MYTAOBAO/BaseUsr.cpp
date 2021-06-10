@@ -15,6 +15,10 @@ bool BaseUsr::changePassWord(std::string pass)
        this->storage();
        return true;
 }
+bool BaseUsr::buyAllThing()
+{
+    return false;
+}
 //long long int BaseUsr::totalNum = 0;
 void BaseUsr::storage()
 {
@@ -138,12 +142,16 @@ void BaseUsr::setGoods()
      cout << "只有商家能改货" <<  endl;
 }
 
-bool BaseUsr::addInShoppingCart(std::unique_ptr<BaseGoods>& good,long long int last)
+bool BaseUsr::addInShoppingCart(Json::Value& good,long long int last)
 {
     return false;
 }
 
-void BaseUsr::minShoppingCart(std::unique_ptr<BaseGoods>& goods, long long int last)
+void BaseUsr::minShoppingCart(Json::Value& goods, long long int last)
+{
+}
+
+void BaseUsr::showCart()
 {
 }
 

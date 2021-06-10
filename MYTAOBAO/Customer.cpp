@@ -165,7 +165,7 @@ int Customer::getId()
     return id;
 }
 
-bool Customer::addInShoppingCart(std::unique_ptr<BaseGoods>& good,long long int last)
+bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 {
     shopCart.addShoppingCart(good, last,getUsrName());
     //last 是买多少
@@ -188,16 +188,37 @@ bool Customer::addInShoppingCart(std::unique_ptr<BaseGoods>& good,long long int 
     //    shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{last,price,name,des,getUsrName()}));
     //}
     
-
-    good->setFreeze(last+good->getFreeze());
+//todo:被冻结的问题。
+    //good->setFreeze(last+good->getFreeze());
 
     return false;
 }
 
-void Customer::minShoppingCart(std::unique_ptr<BaseGoods>& goods, long long int last)
+void Customer::minShoppingCart(Json::Value& goods, long long int last)
 {
     shopCart.minShoppingCart(goods, last,getUsrName());
-    goods->setFreeze(goods->getFreeze()-last);
+    //goods->setFreeze(goods->getFreeze()-last);
+}
+
+void Customer::showCart()
+{
+    shopCart.show();
+}
+
+bool Customer::buyAllThing()
+{
+    bool flag = false;
+    if (getMoney()>=shopCart.calShoppingCart())
+    {
+        shopCart.buyAll();
+        setMoney(getMoney() - shopCart.calShoppingCart());
+        flag = true;
+    }
+    else
+    {
+        cout << "钱不够" << endl;
+    }
+    return flag;
 }
 
 double Customer::calShoppingCart()
@@ -209,6 +230,11 @@ double Customer::calShoppingCart()
 double Customer::getMoney()
 {
     return money;
+}
+
+void Customer::setMoney(double newMoney)
+{
+    money = newMoney;
 }
 
 void Customer::setAddress(string newAddress)

@@ -16,10 +16,13 @@ public:
     virtual void balance()override;
     virtual bool buySomeThing(double)override;
     virtual int getId();
-    virtual bool addInShoppingCart(std::unique_ptr<BaseGoods>&good,long long int last)override;//todo: 添加到购物车
-    virtual void minShoppingCart(std::unique_ptr<BaseGoods>&goods, long long int last);
+    virtual bool addInShoppingCart(Json::Value&good,long long int last)override;//todo: 添加到购物车
+    virtual void minShoppingCart(Json::Value&goods, long long int last);
+	virtual void showCart()override;
+	virtual bool buyAllThing()override;
     virtual double calShoppingCart()override;//todo: 计算购物车的总价值
 	virtual double getMoney()override;
+    void setMoney(double newMoney);
     void static setAddress(std::string newAddress);
     std::string static getAddress();
     ~Customer();
