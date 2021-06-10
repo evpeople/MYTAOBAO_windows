@@ -396,33 +396,7 @@ vupOfBaseGoods& Businessman::getGoods()
     return busSGooods;
 }
 
-void Businessman::inputDouble(double& num)
-{
-    cin >> num;
-    while (!cin.good())
-    {
-        cout << "只能是数字" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-        cin.sync();
 
-        cin >> num;
-    }
-}
-
-void Businessman::inputLLint(long long int& num)
-{
-        cin >> num;
-    while (!cin.good())
-    {
-        cout << "只能是数字" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-        cin.sync();
-
-        cin >> num;
-    }
-}
 
 
 

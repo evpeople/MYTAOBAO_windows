@@ -71,11 +71,8 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
     }
     case PEOPLETYPE::CUS:
     {
-        double money;
-        cout << "您想充值多少钱" << endl;
-        inputDouble(money);
         //Customer temp{ name,pass,money };
-        Usr = std::move(make_unique<Customer>(name, pass, money));
+        Usr = std::move(make_unique<Customer>(name, pass));
         Usr->storage();
         cout << "保存完毕" << endl;
         break;

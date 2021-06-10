@@ -26,8 +26,7 @@ public:
     virtual vupOfBaseGoods& getGoods()override;
     //virtual void  setGoods()override;
 private:
-    void inputDouble(double& num);
-    void inputLLint(long long int& num);
+
 
     long long int id;
     int goodsType;

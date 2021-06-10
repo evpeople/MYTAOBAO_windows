@@ -47,7 +47,6 @@ void BusinessmanView::viewInput()
         cout << "新价格是" << endl;
         double newPrice;
         inputDouble(newPrice);
-        int i;
         //for ( i = 0; i < temp.size(); i++)
         //{
         //    if (temp[i]->getName() == name)

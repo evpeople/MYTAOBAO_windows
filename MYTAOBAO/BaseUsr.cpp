@@ -163,3 +163,30 @@ void BaseUsr::showCart()
 {
 }
 
+void BaseUsr::inputDouble(double& num)
+{
+    cin >> num;
+    while (!cin.good())
+    {
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+
+        cin >> num;
+    }
+}
+
+void BaseUsr::inputLLint(long long int& num)
+{
+    cin >> num;
+    while (!cin.good())
+    {
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+
+        cin >> num;
+    }
+}

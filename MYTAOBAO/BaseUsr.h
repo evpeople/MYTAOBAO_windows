@@ -56,6 +56,8 @@ public:
 	
 	std::string tosting();
 protected:
+	void inputDouble(double& num);
+	void inputLLint(long long int& num);
 	virtual std::string encryp(const  std::string passwd)final;
 	std::string getUsrPassWord();
 	void setUsrName(std::string newName);

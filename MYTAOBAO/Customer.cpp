@@ -19,7 +19,7 @@ Customer::Customer(string name, string PassWd)
     //shoppingCart = shopCart.getCart();
     cout << "您想充值多少钱" << endl;
     double money;
-    cin >> money;
+    inputDouble(money);
     setMoney(money);
 }
 Customer::Customer(string name, string PassWd,double money)

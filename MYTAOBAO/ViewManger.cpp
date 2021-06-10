@@ -1,9 +1,10 @@
 #include "ViewManger.h"
 #include <thread>
+#include <iostream>
 #include <chrono>
 
 using std::this_thread::sleep_for;
-
+using namespace::std;
 
 ViewManger& ViewManger::getInstance()
 {
@@ -14,7 +15,9 @@ void ViewManger::start()
 {
 	while (viewNext)
 	{
-	
+		cin.clear();
+		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		cin.sync();
 		viewCurrent = std::move(viewNext);
 		viewCurrent->show();
 	}
