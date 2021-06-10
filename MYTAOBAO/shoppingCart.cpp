@@ -69,10 +69,7 @@ void shoppingCart::buyAll()
     for_each(shoppingCart.begin(), shoppingCart.end(), [](unique_ptr<BaseGoods>& up) {
 
         cout << "name is " << up->getName() << endl;
-        cout << "price is " << up->getPrice() << endl;
         cout << "the number you buy is " << up->getRemain() << endl;
-        cout << "Type is " << up->getType() << endl;
-        cout << "description is " << up->getDescription() << endl;
         });
 
     shoppingCart.clear();

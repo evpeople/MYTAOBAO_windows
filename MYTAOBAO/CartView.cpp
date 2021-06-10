@@ -40,7 +40,7 @@ void CartView::viewInput()
     case CHOICEEVENT::SHOW:
         Usr->showCart();
         break;
-    case CHOICEEVENT::BUY:
+    case CHOICEEVENT::BUY://todo: 冻结减少应该在defaultGoods中体现，Bussine只用加钱和减少货物
         Usr->
         break;
     default:

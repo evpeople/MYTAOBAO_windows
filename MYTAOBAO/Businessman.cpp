@@ -103,6 +103,7 @@ Businessman::Businessman()
     goodsType = 0;
 }
 
+
 Businessman::Businessman(std::string name,std::string PassWd, vupOfBaseGoods& busSGooods, int goodsType)
     :BaseUsr{ name,PassWd }
 {
@@ -197,6 +198,65 @@ void Businessman::storage()
     }
 }
 
+bool Businessman::loginWithoutChecked(std::string tempUsr)
+{
+    string inPath = Businessman::storageAddress + tempUsr + ".usr";
+    ifstream fin;
+    fin.open(inPath);
+    if (fin.is_open())
+    {
+        Json::CharReaderBuilder reader;
+        JSONCPP_STRING errs;
+
+        Json::Value root, goods;
+        if (!Json::parseFromStream(reader, fin, &root, &errs))
+        {
+            cout << errs << endl;
+        }
+        setUsrPassWord(root["usrPass"].asString());
+        //passWord = "evp";
+             cout << "登陆成功" << endl;
+
+
+            id = root["usrID"].asInt64();
+            goodsType = root["goodsType"].asInt();
+            setUsrName(root["usrName"].asString());
+            setUsrPassWord(root["usrPass"].asString());
+            Book::setDiscount(root["goodDiscount"]["Book"].asDouble());
+            Cloths::setDiscount(root["goodDiscount"]["Cloths"].asDouble());
+            EleProduct::setDiscount(root["goodDiscount"]["EleProduct"].asDouble());
+            goods = root["goods"];
+
+            string name;
+            double price;
+            long long int remain;
+            for (size_t i = 0; i < goods.size(); i++)
+            {
+                if (goods[i]["type"].asString() == "Book")
+                {
+
+                    busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                }
+                else if (goods[i]["type"].asString() == "Cloths")
+                {
+                    busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+
+                }
+                else if (goods[i]["type"].asString() == "EleProduct")
+                {
+                    busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                }
+                else
+                {
+                    cout << "错误的文件" << goods[i].toStyledString() << endl;
+                }
+            }
+            fin.close();
+            return true;
+        }
+    return false;
+}
+
 bool Businessman::login(string tempUsr,string passWord)
 {
     isLogin = true;
@@ -277,6 +337,22 @@ USRTYPE Businessman::getType()
 void Businessman::setAddress(std::string newAddress)
 {
     Businessman::storageAddress = newAddress;
+}
+
+void Businessman::dealBuy(string goodsName, long long int goodsNum)
+{
+    size_t i = 0;
+    for ( i = 0; i < busSGooods.size(); i++)
+    {
+        if (busSGooods[i]->getName() == goodsName)
+        {
+            double money = busSGooods[i]->getPrice()*goodsNum;//下面这步非常重要，因为要统一保存。
+            busSGooods[i]->setRemain(busSGooods[i]->getRemain() - goodsNum);//此步可有可无，实际上有用的是defalut的内容。
+            se
+            break;
+        }
+    }
+    storage();
 }
 
 std::string Businessman::getAddress()
