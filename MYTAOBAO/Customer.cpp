@@ -91,7 +91,7 @@ void Customer::storage()
         shoppingFartJson[serial]["remain"] = up->getRemain();//remain 为买了多少
         shoppingFartJson[serial]["type"] = up->getType();
         shoppingFartJson[serial]["description"] = up->getDescription();
-        //shoppingFartJson[serial]["owner"] = up->getOwner();
+        shoppingFartJson[serial]["owner"] = up->getOwner();
         //shoppingFartJson[serial]["isFreeze"] = up->getFreeze();
         serial++;
         });
@@ -125,8 +125,11 @@ bool Customer::login(string tempUsr,string passWord)
         setUsrName(root["usrName"].asString());
         setUsrPassWord(root["usrPass"].asString());
         setMoney(root["money"].asDouble());
-        //todo:购物车入内存
 
+        for (size_t i = 0; i < root["shopping"].size(); i++)
+        {
+            shopCart.addShoppingCart(root["cart"][i], root["cart"][i]["remain"].asInt64(), root["cart"][i]["owner"].asString());
+        }
 
         fin.close();
         //passWord = "evp";

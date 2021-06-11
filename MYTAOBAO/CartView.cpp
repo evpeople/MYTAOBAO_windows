@@ -31,6 +31,7 @@ void CartView::viewInput()
         //cin.get();
         inputLLint(number);
         Usr->addInShoppingCart(GoodSearchFromName[name], number);
+        Usr->storage();
         viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
         break;
@@ -39,6 +40,7 @@ void CartView::viewInput()
         //cin.get();
         inputLLint(number);
         Usr->minShoppingCart(GoodSearchFromName[name], number);
+        Usr->storage();
         viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
         break;

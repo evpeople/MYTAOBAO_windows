@@ -1,5 +1,6 @@
 #include "shoppingCart.h"
 #include"json/json.h"
+#include"Businessman.h"
 using namespace std;
 
 vupOfBaseGoods& shoppingCart::getCart()
@@ -21,6 +22,15 @@ double shoppingCart::calShoppingCart()
 
 void shoppingCart::addShoppingCart(Json::Value& good, long long int last,string usrName)
 {
+    if (good["remain"].asInt64()<last)
+    {
+        cout << "购买了太多，没有这么多卖" << endl;
+        return;
+    }
+    else
+    {
+        good["isFreeze"] = last;
+    }
     int index = search(good["name"].asString());
     if (index==-1)
     {
@@ -66,12 +76,16 @@ void shoppingCart::minShoppingCart(Json::Value& good, long long int last, std::s
 
 void shoppingCart::buyAll()
 {
-    for_each(shoppingCart.begin(), shoppingCart.end(), [](unique_ptr<BaseGoods>& up) {
+    Businessman* tempOwner = new Businessman();
+    for_each(shoppingCart.begin(), shoppingCart.end(), [&tempOwner](unique_ptr<BaseGoods>& up) {
 
         cout << "name is " << up->getName() << endl;
         cout << "the number you buy is " << up->getRemain() << endl;
+        string owner = up->getOwner();
+        tempOwner->loginWithoutChecked(owner);
+        tempOwner->setMoney(tempOwner->getMoney() + up->getPrice() * up->getRemain());
+        tempOwner->storage();
         });
-
     shoppingCart.clear();
 }
 

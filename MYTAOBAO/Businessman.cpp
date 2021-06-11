@@ -47,6 +47,7 @@ void Businessman::storage()
     for_each(busSGooods.begin(), busSGooods.end(), [&goods, &serial](unique_ptr<BaseGoods>& up) {
 
         goods[serial]["name"] = up->getName();
+        goods[serial]["orginPrice"] = up->getOriginalPrice();
         goods[serial]["price"] = up->getPrice();
         goods[serial]["remain"] = up->getRemain();
         goods[serial]["type"] = up->getType();
@@ -135,7 +136,6 @@ bool Businessman::loginWithoutChecked(std::string tempUsr)
         }
         setUsrPassWord(root["usrPass"].asString());
         //passWord = "evp";
-             cout << "µÇÂ½³É¹¦" << endl;
 
              setMoney(root["money"].asDouble());
                  id = root["usrID"].asInt64();
@@ -155,16 +155,16 @@ bool Businessman::loginWithoutChecked(std::string tempUsr)
                 if (goods[i]["type"].asString() == "Book")
                 {
 
-                    busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                    busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["orginPrice"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
                 }
                 else if (goods[i]["type"].asString() == "Cloths")
                 {
-                    busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                    busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["orginPrice"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
 
                 }
                 else if (goods[i]["type"].asString() == "EleProduct")
                 {
-                    busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                    busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["orginPrice"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
                 }
                 else
                 {
@@ -218,16 +218,16 @@ bool Businessman::login(string tempUsr,string passWord)
                     if (goods[i]["type"].asString() == "Book")
                     {
 
-                        busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ goods[i]["remain"].asInt64() ,goods[i]["orginPrice"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
                     }
                     else if (goods[i]["type"].asString() == "Cloths")
                     {
-                        busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ goods[i]["remain"].asInt64() ,goods[i]["orginPrice"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
 
                     }
                     else if (goods[i]["type"].asString() == "EleProduct")
                     {
-                        busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["price"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
+                        busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ goods[i]["remain"].asInt64() ,goods[i]["orginPrice"].asDouble(),goods[i]["name"].asString(),goods[i]["description"].asString(),getUsrName() }));
                     }
                     else
                     {

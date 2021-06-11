@@ -52,6 +52,8 @@ public:
 	virtual USRTYPE getType() = 0;
 	std::string getUsrName();
 
+	virtual void setMoney(double newMoney)final;
+	virtual double getMoney()final;
     virtual double calShoppingCart();
 	
 	std::string tosting();
@@ -61,8 +63,6 @@ protected:
 	virtual std::string encryp(const  std::string passwd)final;
 	std::string getUsrPassWord();
 	void setUsrName(std::string newName);
-	virtual double getMoney()final;
-	virtual void setMoney(double newMoney)final;
 	void setUsrPassWord(std::string newPassWord);
 
 private:
