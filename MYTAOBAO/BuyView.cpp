@@ -48,6 +48,7 @@ void BuyView::viewInput()
         {
         Json::Value temp;
         string name;
+        cin.get();
         input(name, "你要购买的商品的名字");
         search(name, temp);
         if (temp)
