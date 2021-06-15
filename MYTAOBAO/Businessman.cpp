@@ -147,9 +147,6 @@ bool Businessman::loginWithoutChecked(std::string tempUsr)
             EleProduct::setDiscount(root["goodDiscount"]["EleProduct"].asDouble());
             goods = root["goods"];
 
-            string name;
-            double price;
-            long long int remain;
             for (size_t i = 0; i < goods.size(); i++)
             {
                 if (goods[i]["type"].asString() == "Book")
@@ -211,8 +208,6 @@ bool Businessman::login(string tempUsr,string passWord)
                 goods = root["goods"];
 
                 string name;
-                double price;
-                long long int remain;
                 for (size_t i = 0; i < goods.size(); i++)
                 {
                     if (goods[i]["type"].asString() == "Book")
@@ -352,6 +347,11 @@ void Businessman::dealBuy(string goodsName, long long int goodsNum)
         if (busSGooods[i]->getName() == goodsName)
         {
             double money = busSGooods[i]->getPrice()*goodsNum;//下面这步非常重要，因为要统一保存。
+            if ((busSGooods[i]->getRemain() - goodsNum)<0)
+            {
+                cout << "支付失败，此商人当前的剩余量不足" << endl;
+                return;
+            }
             busSGooods[i]->setRemain(busSGooods[i]->getRemain() - goodsNum);//此步可有可无，实际上有用的是defalut的内容。
             setMoney(getMoney() + money);
             break;
@@ -394,6 +394,11 @@ void Businessman::discount(int kind, double discount)
 vupOfBaseGoods& Businessman::getGoods()
 {
     return busSGooods;
+}
+
+void Businessman::setGoodsFree(std::string name)
+{
+
 }
 
 

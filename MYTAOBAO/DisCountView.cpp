@@ -20,7 +20,7 @@ void DisCountView::viewInput()
     input(choice, "1\t给Book打折\n2\t给Cloths打折\n3\t给EleProduct打折\n", regexFir);
     double discount;
     cout << "请输入打几折" << endl;
-    cin >> discount;
+    BaseView::input(discount);
     discount = discount * 0.1;
     dealInput(choice, discount);
     cout << "打折完毕" << endl;

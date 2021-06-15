@@ -17,20 +17,20 @@ void CartView::viewInput()
     Json::Value temp;
     ViewManger& viewManger = ViewManger::getInstance();
     //std::regex regexFir("[12]");
-    std::regex regexSec("[123456]");
-    input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t支付订单\n6\t回到上一界面", regexSec);
+    std::regex regexSec("[1234567]");
+    input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t支付订单\n6\t生成订单\n7\t回到上一界面", regexSec);
     cin.get();
     enum class CHOICEEVENT
     {
-        ADD= 1,MIN ,TOTAL, SHOW,BUY
+        ADD= 1,MIN ,TOTAL, SHOW,BUY,MAKE
     };
     switch ((CHOICEEVENT)choice)
     {
     case CHOICEEVENT::ADD:
         input(name, "请输入增加的商品的名字,并在回车之后输入增加的数量");
         //cin.get();
-        inputLLint(number);
-        Usr->addInShoppingCart(GoodSearchFromName[name], number);
+        BaseView::input(number);
+        Usr->addInShoppingCart(GoodSearchFromName[name], number);//todo:添加成功，不能再次读取到，不能通过其计算结果，不能锁住(没有做锁的逻辑)
         Usr->storage();
         viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
@@ -38,7 +38,7 @@ void CartView::viewInput()
     case CHOICEEVENT::MIN:
         input(name, "请输入减少的商品的名字，并在回车后输入减少的数量");
         //cin.get();
-        inputLLint(number);
+        BaseView::input(number);
         Usr->minShoppingCart(GoodSearchFromName[name], number);
         Usr->storage();
         viewManger.sleepMs(250);
@@ -60,6 +60,10 @@ void CartView::viewInput()
         Usr->buyAllThing();
     viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
+        break;
+    case CHOICEEVENT::MAKE:
+        cout << "生成订单" << endl;
+        //todo: 生成订单冻结操作的debug。
         break;
     default:
         viewManger.setNext(make_unique<BuyView>());

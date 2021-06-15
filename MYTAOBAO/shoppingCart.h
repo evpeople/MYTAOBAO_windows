@@ -14,6 +14,7 @@ public:
     void minShoppingCart(Json::Value& goods, long long int last,std::string);// 若存在，则减少数量，若减少为0，则删去，不存在，则显示错我
     void buyAll();
     void show();
+    void makeBill();
     int search(std::string name);
 private:
     vupOfBaseGoods shoppingCart;

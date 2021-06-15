@@ -55,7 +55,7 @@ void Customer::inputDouble(double& num)
         cin >> num;
         while (!cin.good()||num<0)
         {
-            cout << "只能是数字，且不能为负数，请重新输入" << endl;
+            cout << "只能是数字，且不能为复数" << endl;
             cin.clear();
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
             cin.sync();

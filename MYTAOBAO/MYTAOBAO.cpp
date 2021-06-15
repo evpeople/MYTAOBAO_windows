@@ -18,7 +18,6 @@ int main()
 {
     std::cout << "欢迎来到我的淘宝世界！！！";
    
-    char event;
     Server a = Server();
     a.start(1);
     //    while (1)

@@ -46,7 +46,7 @@ void BusinessmanView::viewInput()
     case CHOICEEVENT::PRICE:
         cout << "新价格是" << endl;
         double newPrice;
-        inputDouble(newPrice);
+        BaseView::input(newPrice);
         //for ( i = 0; i < temp.size(); i++)
         //{
         //    if (temp[i]->getName() == name)
@@ -65,7 +65,7 @@ void BusinessmanView::viewInput()
     case CHOICEEVENT::LAST:
         cout << "新剩余量是" << endl;
         long long int newRemain;
-        inputLLint(newRemain);
+        BaseView::input(newRemain);
         for_each(temp.begin(), temp.end(), [newRemain, name](unique_ptr<BaseGoods>& up) {
         if (up->getName() == name)
         {

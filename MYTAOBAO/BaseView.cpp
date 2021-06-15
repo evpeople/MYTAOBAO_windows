@@ -39,7 +39,7 @@ void BaseView::input(std::string& choice, std::string help)
     cout << help << endl;
     getline(cin,choice);
 }
-void BaseView::inputDouble(double& num)
+void BaseView::input(double& num)
 {
     cin >> num;
     while (!cin.good())
@@ -53,7 +53,22 @@ void BaseView::inputDouble(double& num)
     }
 }
 
-void BaseView::inputLLint(long long int& num)
+
+void BaseView::input(long long int& num)
+{
+    cin >> num;
+    while (!cin.good())
+    {
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+
+        cin >> num;
+    }
+}
+
+void BaseView::input(int& num)
 {
     cin >> num;
     while (!cin.good())

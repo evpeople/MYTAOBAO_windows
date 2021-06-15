@@ -83,9 +83,13 @@ void shoppingCart::buyAll()
         cout << "the number you buy is " << up->getRemain() << endl;
         string owner = up->getOwner();
         tempOwner->loginWithoutChecked(owner);
-        tempOwner->setMoney(tempOwner->getMoney() + up->getPrice() * up->getRemain());
+        tempOwner->dealBuy(up->getName(), up->getRemain());
+        //tempOwner->setMoney(tempOwner->getMoney() + up->getPrice() * up->getRemain());
+        //tempOwner->//todo: free goods
         tempOwner->storage();
         });
+    delete tempOwner;
+    //todo: 购物车没有真的清空
     shoppingCart.clear();
 }
 
@@ -99,6 +103,11 @@ void shoppingCart::show()
         cout<<"Type is "<<up->getType()<<endl;
         cout<<"description is "<<up->getDescription()<<endl;
         });
+}
+
+void shoppingCart::makeBill()
+{
+    //todo: 冻结
 }
 
 int shoppingCart::search(std::string name)

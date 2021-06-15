@@ -116,6 +116,7 @@ bool SignUpView::isExist(string name, int choice)
         }
         break;
     default:
+        return false;
         break;
     }
 }

@@ -8,6 +8,7 @@ void CustmomerView::show()
     showGoods();
     cout << "ÓÃ»§Ãû" << Usr->getUsrName() << endl;
     Usr->balance();
+    Usr->storage();
     ViewManger& viewManger = ViewManger::getInstance();
     viewManger.setNext(make_unique<CusResultView>());
 }

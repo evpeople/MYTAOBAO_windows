@@ -24,6 +24,7 @@ public:
     std::string static getAddress();
     virtual void discount(int kind  ,double)override;
     virtual vupOfBaseGoods& getGoods()override;
+    void setGoodsFree(std::string name);
     //virtual void  setGoods()override;
 private:
 

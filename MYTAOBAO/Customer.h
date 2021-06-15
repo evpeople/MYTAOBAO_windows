@@ -26,6 +26,7 @@ public:
     ~Customer();
 private:
     void inputDouble(double& num);
+    void clearAllShopCart();
     long long int id;
     static USRTYPE type;
     shoppingCart shopCart;

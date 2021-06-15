@@ -65,6 +65,8 @@ bool LoginView::dealInput(string name, string pass, int choice)
         return Usr->login(name, pass);
         break;
     default:
+        return false;
         break;
     }
+    return true;
 }

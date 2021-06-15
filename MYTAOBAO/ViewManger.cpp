@@ -1,4 +1,5 @@
 #include "ViewManger.h"
+#include"Server.h"
 #include <thread>
 #include <iostream>
 #include <chrono>
@@ -19,6 +20,7 @@ void ViewManger::start()
 		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 		cin.sync();
 		viewCurrent = std::move(viewNext);
+		Server::loadGoods();
 		viewCurrent->show();
 	}
 }
@@ -31,11 +33,5 @@ void ViewManger::setNext(std::unique_ptr<BaseView> next)
 void ViewManger::sleepMs(int ms)
 {
 	sleep_for(std::chrono::milliseconds(ms));
-}
-
-ViewManger& ViewManger::operator=(const ViewManger& t)
-{
-	ViewManger a ;
-	return a;
 }
 
