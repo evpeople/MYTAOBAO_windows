@@ -93,6 +93,9 @@
     <ClCompile Include="CartView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="MakeBillView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUsr.h">
@@ -174,6 +177,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CartView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MakeBillView.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

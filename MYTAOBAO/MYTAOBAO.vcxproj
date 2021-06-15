@@ -161,6 +161,7 @@
     <ClCompile Include="LoginView.cpp" />
     <ClCompile Include="LogoutView.cpp" />
     <ClCompile Include="MainView.cpp" />
+    <ClCompile Include="MakeBillView.cpp" />
     <ClCompile Include="MYTAOBAO.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="BaseView.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="LoginView.h" />
     <ClInclude Include="LogoutView.h" />
     <ClInclude Include="MainView.h" />
+    <ClInclude Include="MakeBillView.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="Goods.h" />
     <ClInclude Include="BaseView.h" />

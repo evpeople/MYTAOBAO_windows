@@ -13,6 +13,7 @@
 #include"ChangePassView.h"//更改密码页
 #include"BuyView.h" //购买页
 #include"DisCountView.h"//打折页
-#include"CartView.h"
+#include"MakeBillView.h"// 冻结页
+#include"CartView.h"// 购物车页
 
 

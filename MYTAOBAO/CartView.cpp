@@ -55,7 +55,7 @@ void CartView::viewInput()
         viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
         break;
-    case CHOICEEVENT::BUY://todo: 冻结减少应该在defaultGoods中体现，Bussine只用加钱和减少货物
+    case CHOICEEVENT::BUY:
         cout << "清空购物车" << endl;
         Usr->buyAllThing();
     viewManger.sleepMs(250);
