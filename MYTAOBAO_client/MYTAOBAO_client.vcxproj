@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,7 +140,63 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseGoods.cpp" />
+    <ClCompile Include="BaseUsr.cpp" />
+    <ClCompile Include="BaseView.cpp" />
+    <ClCompile Include="Book.cpp" />
+    <ClCompile Include="Businessman.cpp" />
+    <ClCompile Include="BusinessmanView.cpp" />
+    <ClCompile Include="BusResultView.cpp" />
+    <ClCompile Include="BuyView.cpp" />
+    <ClCompile Include="CartView.cpp" />
+    <ClCompile Include="ChangePassView.cpp" />
+    <ClCompile Include="Cloths.cpp" />
+    <ClCompile Include="CusResultView.cpp" />
+    <ClCompile Include="CustmomerView.cpp" />
+    <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="DisCountView.cpp" />
+    <ClCompile Include="EleProduct.cpp" />
+    <ClCompile Include="FailureView.cpp" />
+    <ClCompile Include="GoodsView.cpp" />
+    <ClCompile Include="LoginView.cpp" />
+    <ClCompile Include="LogoutView.cpp" />
+    <ClCompile Include="MainView.cpp" />
+    <ClCompile Include="MakeBillView.cpp" />
     <ClCompile Include="MYTAOBAO_client.cpp" />
+    <ClCompile Include="Server.cpp" />
+    <ClCompile Include="shoppingCart.cpp" />
+    <ClCompile Include="SignUpView.cpp" />
+    <ClCompile Include="ViewManger.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseGoods.h" />
+    <ClInclude Include="BaseUsr.h" />
+    <ClInclude Include="BaseView.h" />
+    <ClInclude Include="Book.h" />
+    <ClInclude Include="Businessman.h" />
+    <ClInclude Include="BusinessmanView.h" />
+    <ClInclude Include="BusResultView.h" />
+    <ClInclude Include="BuyView.h" />
+    <ClInclude Include="CartView.h" />
+    <ClInclude Include="ChangePassView.h" />
+    <ClInclude Include="Cloths.h" />
+    <ClInclude Include="CusResultView.h" />
+    <ClInclude Include="CustmomerView.h" />
+    <ClInclude Include="Customer.h" />
+    <ClInclude Include="DisCountView.h" />
+    <ClInclude Include="EleProduct.h" />
+    <ClInclude Include="FailureView.h" />
+    <ClInclude Include="Goods.h" />
+    <ClInclude Include="GoodsView.h" />
+    <ClInclude Include="LoginView.h" />
+    <ClInclude Include="LogoutView.h" />
+    <ClInclude Include="MainView.h" />
+    <ClInclude Include="MakeBillView.h" />
+    <ClInclude Include="Server.h" />
+    <ClInclude Include="shoppingCart.h" />
+    <ClInclude Include="SignUpView.h" />
+    <ClInclude Include="ViewManger.h" />
+    <ClInclude Include="Views.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
