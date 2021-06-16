@@ -112,8 +112,10 @@ void Server::start()
                 break;
                 case CUSTOMERLOGIN::LOGOUT:
                     in = false;
+                    break;
                 default:
                     in = false;
+                    break;
                 }
             }
             break;

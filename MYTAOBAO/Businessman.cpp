@@ -347,9 +347,9 @@ void Businessman::dealBuy(string goodsName, long long int goodsNum)
         if (busSGooods[i]->getName() == goodsName)
         {
             double money = busSGooods[i]->getPrice()*goodsNum;//下面这步非常重要，因为要统一保存。
-            if ((busSGooods[i]->getRemain() - goodsNum)<0)
+            if ((busSGooods[i]->getRemain() - goodsNum-busSGooods[i]->getFreeze())<0)
             {
-                cout << "支付失败，此商人当前的剩余量不足" << endl;
+                cout << "支付失败，此商人当前的剩余量不足  也有可能是被冻住喽" << endl;
                 return;
             }
             busSGooods[i]->setRemain(busSGooods[i]->getRemain() - goodsNum);//此步可有可无，实际上有用的是defalut的内容。

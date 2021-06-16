@@ -53,6 +53,7 @@ public:
 	virtual USRTYPE getType() = 0;
 	std::string getUsrName();
     virtual void clearAllShopCart();
+	virtual void clearBill();
 
 	virtual void setMoney(double newMoney)final;
 	virtual double getMoney()final;

@@ -24,6 +24,7 @@ public:
     virtual double calShoppingCart()override;//todo: 计算购物车的总价值
     void static setAddress(std::string newAddress);
     virtual void clearAllShopCart()override;
+    virtual void clearBill()override;
     std::string static getAddress();
     ~Customer();
 private:

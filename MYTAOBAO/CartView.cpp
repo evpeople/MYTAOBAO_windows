@@ -45,7 +45,7 @@ void CartView::viewInput()
         viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::CLEARCART:
-        cout << "清空完成" << endl;
+        cout << "重置购物车完成" << endl;
         Usr->clearAllShopCart();
          //todo: 文件保存覆盖（）freeze的debug
         break;
@@ -63,6 +63,7 @@ void CartView::viewInput()
     case CHOICEEVENT::BUY:
         cout << "清空购物车" << endl;
         Usr->buyAllThing();
+        Usr->clearAllShopCart();
         Usr->storage();
     viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());

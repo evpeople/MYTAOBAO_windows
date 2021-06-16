@@ -15,6 +15,7 @@ public:
     void buyAll();
     void show();
     void makeBill();
+    void clearBill();
     int search(std::string name);
 private:
     vupOfBaseGoods shoppingCart;

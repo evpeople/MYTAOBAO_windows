@@ -1,25 +1,5 @@
 {
 	"goods" : 
 	[
-		{
-			"description" : "da nm",
-			"isFreeze" : 0,
-			"name" : "wys",
-			"orginPrice" : 29.0,
-			"owner" : "wys",
-			"price" : 29.0,
-			"remain" : 31,
-			"type" : "Book"
-		},
-		{
-			"description" : "da nm",
-			"isFreeze" : 2,
-			"name" : "wys",
-			"orginPrice" : 29.0,
-			"owner" : "wys",
-			"price" : 29.0,
-			"remain" : 31,
-			"type" : "Book"
-		}
 	]
 }

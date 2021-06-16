@@ -114,8 +114,30 @@ void shoppingCart::makeBill()
         string owner = up->getOwner();
         tempOwner->loginWithoutChecked(owner);
         tempOwner->setGoodsFreeze(up->getName(), up->getRemain());
-        //todo: 已经设置了的freeze被覆盖存储的问题
         //tempOwner->setMoney(tempOwner->getMoney() + up->getPrice() * up->getRemain());
+        //tempOwner->//todo: free goods
+        //tempOwner->storage();
+        });
+    delete tempOwner;
+}
+
+void shoppingCart::clearBill()
+{
+    Businessman* tempOwner = new Businessman();
+    for_each(shoppingCart.begin(), shoppingCart.end(), [&tempOwner](unique_ptr<BaseGoods>& up) {
+
+        cout << "Goods name is " << up->getName() << endl;
+        cout << "the number Freeze is " << up->getRemain() << endl;
+        string owner = up->getOwner();
+        tempOwner->loginWithoutChecked(owner);
+        if ((up->getFreeze()- up->getRemain())>0)
+        {
+            tempOwner->setGoodsFreeze(up->getName(),up->getFreeze() - up->getRemain());
+        }
+        else
+        {
+            tempOwner->setGoodsFreeze(up->getName(),0);
+        }
         //tempOwner->//todo: free goods
         //tempOwner->storage();
         });

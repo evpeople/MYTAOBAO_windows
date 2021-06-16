@@ -66,6 +66,10 @@ bool BaseUsr::auth( string passwd)
  {
  }
 
+ void BaseUsr::clearBill()
+ {
+ }
+
  double BaseUsr::calShoppingCart()
  {
      return 0.0;

@@ -66,6 +66,10 @@ void Customer::clearAllShopCart()
 {
     shopCart.getCart().clear();
 }
+void Customer::clearBill()
+{
+    shopCart.clearBill();
+}
 void Customer::storage()
 {
     Json::Value temp,shoppingFartJson;
@@ -245,7 +249,6 @@ bool Customer::buyAllThing()
     if (getMoney()>=shopCart.calShoppingCart())
     {
         shopCart.buyAll();
-        clearAllShopCart();
         setMoney(getMoney() - shopCart.calShoppingCart());
         flag = true;
     }
