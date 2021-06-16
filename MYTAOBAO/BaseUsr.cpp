@@ -30,6 +30,10 @@ void BaseUsr::storage()
     temp["usrPass"] = usrPassWord;//Ê¹ÓÃ¹þÏ£±í£¡
 }
 
+void BaseUsr::makeBill()
+{
+}
+
 bool BaseUsr::auth( string passwd)
 {
     //unsigned char hash[SHA256_DIGEST_LENGTH];
@@ -57,6 +61,10 @@ bool BaseUsr::auth( string passwd)
 {
     return usrName;
 }
+
+ void BaseUsr::clearAllShopCart()
+ {
+ }
 
  double BaseUsr::calShoppingCart()
  {

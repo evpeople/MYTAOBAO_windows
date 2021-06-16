@@ -396,9 +396,23 @@ vupOfBaseGoods& Businessman::getGoods()
     return busSGooods;
 }
 
-void Businessman::setGoodsFree(std::string name)
+void Businessman::setGoodsFreeze(std::string goodsName,long long int freeNum)
 {
-
+    size_t i = 0;
+    for (i = 0; i < busSGooods.size(); i++)
+    {
+        if (busSGooods[i]->getName() == goodsName)
+        {
+            if ((busSGooods[i]->getRemain() - freeNum)  <= 0)
+            {
+                cout << "冻结失败，此商人当前的剩余量不足" << endl;
+                return;
+            }
+            busSGooods[i]->setFreeze(busSGooods[i]->getFreeze() +freeNum);
+            break;
+        }
+    }
+    storage();
 }
 
 

@@ -190,7 +190,7 @@ bool Customer::buySomeThing(double price)
     }
 }
 
-int Customer::getId()
+long long int Customer::getId()
 {
     return id;
 }
@@ -233,6 +233,10 @@ void Customer::minShoppingCart(Json::Value& goods, long long int last)
 void Customer::showCart()
 {
     shopCart.show();
+}
+void Customer::makeBill()
+{
+    shopCart.makeBill();
 }
 //
 bool Customer::buyAllThing()

@@ -49,8 +49,10 @@ public:
 	virtual bool auth(std::string)final;//”…login π”√
 	virtual void storage()=0;
 	virtual bool login(std::string, std::string) = 0;
+	virtual void makeBill();
 	virtual USRTYPE getType() = 0;
 	std::string getUsrName();
+    virtual void clearAllShopCart();
 
 	virtual void setMoney(double newMoney)final;
 	virtual double getMoney()final;

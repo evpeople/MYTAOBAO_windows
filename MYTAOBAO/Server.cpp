@@ -5,6 +5,9 @@
 #include "Customer.h"
 #include"Businessman.h"
 #include"Views.h"
+
+//todo: 每次创建一个新的进程时，创建一个线程，也就是阻塞在等待连接建立
+//todo: 不采用多线程，反而，遍历数组，doSomeThing
 using namespace std;
 string Server::Path = "config.json";
 Server::Server()

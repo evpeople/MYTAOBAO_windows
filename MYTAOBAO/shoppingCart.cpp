@@ -89,7 +89,6 @@ void shoppingCart::buyAll()
         tempOwner->storage();
         });
     delete tempOwner;
-    //todo: 购物车没有真的清空
     shoppingCart.clear();
 }
 
@@ -107,7 +106,20 @@ void shoppingCart::show()
 
 void shoppingCart::makeBill()
 {
-    //todo: 冻结
+    Businessman* tempOwner = new Businessman();
+    for_each(shoppingCart.begin(), shoppingCart.end(), [&tempOwner](unique_ptr<BaseGoods>& up) {
+
+        cout << "Goods name is " << up->getName() << endl;
+        cout << "the number Freeze is " << up->getRemain() << endl;
+        string owner = up->getOwner();
+        tempOwner->loginWithoutChecked(owner);
+        tempOwner->setGoodsFreeze(up->getName(), up->getRemain());
+        //todo: 已经设置了的freeze被覆盖存储的问题
+        //tempOwner->setMoney(tempOwner->getMoney() + up->getPrice() * up->getRemain());
+        //tempOwner->//todo: free goods
+        //tempOwner->storage();
+        });
+    delete tempOwner;
 }
 
 int shoppingCart::search(std::string name)
