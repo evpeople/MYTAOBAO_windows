@@ -11,12 +11,13 @@
 #include "BaseUsr.h"
 #include"Customer.h"
 #include<json/json.h>
+#include <thread>
 #include "Server.h"
 #pragma comment(lib, "Ws2_32.lib")
 
 
-
-
+using namespace std;
+void startServer();
 int main()
 {
         WSADATA wsaData;
@@ -24,32 +25,40 @@ int main()
     std::cout << "欢迎来到我的淘世界！！！";
     
     
-    //SOCKET listenSocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-    //sockaddr_in sockAddr;
-    //memset(&sockAddr, 0, sizeof(sockAddr));  
-    //sockAddr.sin_family = PF_INET;  
+    SOCKET listenSocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+    sockaddr_in sockAddr;
+    memset(&sockAddr, 0, sizeof(sockAddr));  
+    sockAddr.sin_family = PF_INET;  
 
-    // inet_pton(AF_INET,"127.0.0.1", &sockAddr.sin_addr);
-    //sockAddr.sin_port = htons(3234);  
-    //bind(listenSocket, (SOCKADDR*)&sockAddr, sizeof(SOCKADDR));
-    //listen(listenSocket, 20);
+     inet_pton(AF_INET,"127.0.0.1", &sockAddr.sin_addr);
+    sockAddr.sin_port = htons(3234);  
+    bind(listenSocket, (SOCKADDR*)&sockAddr, sizeof(SOCKADDR));
+    listen(listenSocket, 20);
 
-    //SOCKADDR clntAddr;
-    //int nSize = sizeof(SOCKADDR);
-    //SOCKET clntSock = accept(listenSocket, (SOCKADDR*)&clntAddr, &nSize);
+    while (1)
+    {
+        int nSize = sizeof(SOCKADDR);
+        SOCKADDR clntAddr;
+        SOCKET clntSock = accept(listenSocket, (SOCKADDR*)&clntAddr, &nSize);
+        Server::setSockAdd(clntAddr);
+        Server::setSocket(clntSock);
+        thread t(startServer);
+        t.detach();
+    }
+    char ad[200]; 
+
     
 
-    Server a = Server();
-    
-    //a.setSockAdd(clntAddr);
-    //a.setSocket(clntSock);
-
-    a.start(1);
     //    while (1)
 //    {
 //        
 //        cin >> event;
 //    }
+}
+void startServer()
+{
+    Server a = Server();
+    a.start(1);
 }
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单

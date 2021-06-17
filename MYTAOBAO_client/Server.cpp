@@ -5,10 +5,13 @@
 #include "Customer.h"
 #include"Businessman.h"
 #include"Views.h"
+#include <mutex>
+
 
 //todo: 每次创建一个新的进程时，创建一个线程，也就是阻塞在等待连接建立
 //todo: 不采用多线程，反而，遍历数组，doSomeThing
 using namespace std;
+static mutex exclusive2;
 string Server::Path = "config.json";
 Server::Server()
 {
@@ -201,6 +204,7 @@ void Server::start()
 }
 void Server::start(int i)
 {
+    exclusive2.lock();
     id = totalid;
     totalid++;
     ViewManger& viewOne= ViewManger::getInstance(id);
@@ -214,6 +218,7 @@ void Server::start(int i)
     std::unique_ptr<BaseView> View2 = make_unique<MainView>();
     View2->setId(id);
     viewOne.setNext(std::move(View2));
+    exclusive2.unlock();
     viewOne.start();
 
 }

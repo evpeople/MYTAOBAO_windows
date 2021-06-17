@@ -3,9 +3,11 @@
 #include <thread>
 #include <iostream>
 #include <chrono>
+#include <mutex>
 
 using std::this_thread::sleep_for;
 using namespace::std;
+static mutex exclusive;
 
 std::vector<ViewManger>ViewManger::viewS(2000);
 ViewManger& ViewManger::getInstance(int ViewId)
@@ -81,7 +83,9 @@ void ViewManger::start()
 			id = viewCurrent->getId();
 		
 		viewCurrent = std::move(viewNext);
+		exclusive.lock();
 		Server::loadGoods();
+		exclusive.unlock();
 		viewCurrent->show();
 	}
 }

@@ -17,8 +17,8 @@ public:
     bool check(std::string usrId);//检查是否重复
     //开始运作
     void static loadGoods();
-    void setSockAdd(SOCKADDR tempAdd);
-    void setSocket(SOCKET tempSocket);
+    void static setSockAdd(SOCKADDR tempAdd);
+    void static setSocket(SOCKET tempSocket);
     inline static std::unordered_map<std::string, Json::Value>GoodSearchFromName;
     inline static std::unordered_map<std::string, std::vector<Json::Value>>GoodSearchFromType;
     inline static std::string GoodPath="";
