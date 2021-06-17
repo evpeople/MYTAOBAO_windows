@@ -1,6 +1,7 @@
 #include "BuyView.h"
 #include"ViewManger.h"
 #include"Views.h"
+#include"Server.h"
 
 using namespace std;
 
@@ -54,10 +55,19 @@ void BuyView::viewInput()
         {
             if (!Usr->buySomeThing(temp["price"].asDouble()))
             {
+                send(Server::sockS[getId()], "000yyyyyy", 10, 0);
                 cout << "充钱吧亲";
+            }
+            else
+            {
+                send(Server::sockS[getId()], "11111yyyy", 10, 0);
             }
             Usr->storage();
             
+        }
+        else
+        {
+
         }
         viewManger.sleepMs(500);
         viewManger.setNext(make_unique<BuyView>());
@@ -87,25 +97,37 @@ void BuyView::search()
     switch ((CHOICEEVENT)(choice))
     {
     case CHOICEEVENT::NAME:
+    {   
         input(reg, "要查找的物品的名字");
-        cout << GoodSearchFromName[reg].toStyledString();
+        string x = GoodSearchFromName[reg].toStyledString();
+        send(Server::sockS[getId()], x.c_str(), x.size(), 0);
+        cout <<x;
         break;
+    }
     case CHOICEEVENT::TYPE:
+    {    
         input(reg, "输入货物类别");
-        for (size_t i = 0; i < GoodSearchFromType[reg].size(); i++)
+        int size = GoodSearchFromType[reg].size();
+        send(Server::sockS[getId()], to_string(size).c_str(), to_string(size).size(), 0);
+        for (size_t i = 0; i < size; i++)
         {
+            string x = GoodSearchFromType[reg][i].toStyledString();
+            send(Server::sockS[getId()], x.c_str(), x.size(), 0);
+            char y[20];
+            recv(Server::sockS[getId()], y, 20, 0);
             cout << GoodSearchFromType[reg][i].toStyledString();
-            if (i&&i%5==0)
+
+            if (i && i % 5 == 0)
             {
                 input(choice, "1\t继续输出\n2\t终止输出\n", regexFir);
-                if (choice==2)
-                {
+                if (choice == 2)
+             {
                     break;
                 }
             }
         }
         break;
-    default:
+    }default:
         break;
     }
 }
@@ -113,6 +135,15 @@ void BuyView::search()
 void BuyView::search(std::string name, Json::Value& ansGood)
 {
     ansGood = GoodSearchFromName[name];
+    if (ansGood)
+    {
+        send(Server::sockS[getId()], ansGood.asCString(), ansGood.asString().size(), 0);
+    }
+    else
+    {
+        send(Server::sockS[getId()], "0yyyyyyyyy", 11, 0);
+    }
+
 }
 
 void BuyView::search(std::string, std::vector<Json::Value>& ansGoods)

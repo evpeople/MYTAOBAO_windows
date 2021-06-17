@@ -1,12 +1,14 @@
 #include "CustmomerView.h"
 #include"ViewManger.h"
 #include"Views.h"
+#include"Server.h"
 
 using namespace std;
 void CustmomerView::show()
 {
     showGoods();
     cout << "ÓÃ»§Ãû" << Usr->getUsrName() << endl;
+    send(Server::sockS[getId()], Usr->getUsrName().c_str(), Usr->getUsrName().size(), 0);
     Usr->balance();
     Usr->storage();
     ViewManger& viewManger = ViewManger::getInstance(getId());

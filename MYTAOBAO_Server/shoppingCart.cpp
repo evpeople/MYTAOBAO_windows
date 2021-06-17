@@ -1,6 +1,8 @@
 #include "shoppingCart.h"
 #include"json/json.h"
 #include"Businessman.h"
+#include"Server.h"
+#include<WinSock2.h>
 using namespace std;
 
 vupOfBaseGoods& shoppingCart::getCart()
@@ -20,16 +22,19 @@ double shoppingCart::calShoppingCart()
     return totalPrice;
 }
 
-void shoppingCart::addShoppingCart(Json::Value& good, long long int last,string usrName)
+void shoppingCart::addShoppingCart(Json::Value& good, long long int last,string usrName,int id)
 {
     if (good["remain"].asInt64()<last)
     {
         cout << "购买了太多，没有这么多卖" << endl;
+        send(Server::sockS[id], "买的太多了", 11, 0);
         return;
     }
     else
     {
-        good["isFreeze"] = last;
+        //good["isFreeze"] = last;
+       //todo: 此时不用冻住
+       
     }
     int index = search(good["name"].asString());
     if (index==-1)
@@ -50,22 +55,28 @@ void shoppingCart::addShoppingCart(Json::Value& good, long long int last,string 
         {
             shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{last,price,name,des,owner}));
         }
+        cout << "添加了新种类" << endl;
+        send(Server::sockS[id], "添加了新的种类", 15, 0);
     }
     else
     {
         shoppingCart[index]->setRemain(shoppingCart[index]->getRemain() + last);
+        send(Server::sockS[id], "增加了数量", 11, 0);
     }
+
 }
 
-void shoppingCart::minShoppingCart(Json::Value& good, long long int last, std::string usrName)
+void shoppingCart::minShoppingCart(Json::Value& good, long long int last, std::string usrName,int id)
 {
     int index = search(good["name"].asString());
     if (index == -1)
     {
+        send(Server::sockS[id], "没得可删", 9, 0);
         cout << "没得可删！" << endl;
     }
     else
     {
+        send(Server::sockS[id], "已经减少了", 11, 0);
         shoppingCart[index]->setRemain(shoppingCart[index]->getRemain() - last);
         if (shoppingCart[index]->getRemain()==0)
         {
@@ -92,15 +103,14 @@ void shoppingCart::buyAll()
     shoppingCart.clear();
 }
 
-void shoppingCart::show()
+void shoppingCart::show(int id)
 {
-    for_each(shoppingCart.begin(), shoppingCart.end(), [](unique_ptr<BaseGoods>& up) {
-
-        cout<<"name is "<<up->getName()<<endl;
-        cout<<"price is "<<up->getPrice()<<endl;
-        cout<<"the number you buy is " <<up->getRemain()<<endl;
-        cout<<"Type is "<<up->getType()<<endl;
-        cout<<"description is "<<up->getDescription()<<endl;
+    for_each(shoppingCart.begin(), shoppingCart.end(), [&id](unique_ptr<BaseGoods>& up) {
+        string out = "name is" + up->getName() + "\nprice is" + to_string(up->getPrice()) + "\nthe number you buy is" + to_string(up->getRemain()) + "\nIts type is" + up->getType() + "\ndescription is" + up->getDescription();
+        cout << out;
+        send(Server::sockS[id], out.c_str(), out.size(), 0);
+        char a[20];
+        recv(Server::sockS[id], a, 20, 0);
         });
 }
 

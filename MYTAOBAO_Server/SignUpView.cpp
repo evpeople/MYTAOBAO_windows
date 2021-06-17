@@ -29,8 +29,15 @@ void SignUpView::viewInput()
         //cin >> name;
         if (isExist(name, choice))
         {
+            string temp = "0it has been used\n";
+            send(Server::sockS[getId()], temp.c_str(), temp.size(),0);
             cout << "\n此用户名已被占用，请您选择其他用户名" << endl;
             continue;
+        }
+        else
+        {
+            string temp = "it has been used\n";
+            send(Server::sockS[getId()], temp.c_str(), temp.size(), 0);
         }
         break;
     }

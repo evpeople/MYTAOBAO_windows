@@ -52,21 +52,32 @@ void LoginView::viewInput()
 
 bool LoginView::dealInput(string name, string pass, int choice)
 {
+    bool flag = false;
     switch (PEOPLETYPE(choice))
     {
     case PEOPLETYPE::BUS:
         Usr = std::move(make_unique<Businessman>());
         Usr->setViewId(getId());
-        return Usr->login(name, pass);
+        flag= Usr->login(name, pass);
         break;
     case PEOPLETYPE::CUS:
         Usr = std::move(make_unique<Customer>());
         Usr->setViewId(getId());
-        return Usr->login(name, pass);
+        flag= Usr->login(name, pass);
         break;
     default:
-        return false;
+        flag=false;
         break;
     }
-    return true;
+    if (flag)
+    {
+        string temp = "1True you login success";
+        send(Server::sockS[getId()], temp.c_str(), temp.size(),0);
+    }
+    else
+    {
+        string temp = "0True you login fail";
+        send(Server::sockS[getId()], temp.c_str(), temp.size(),0);
+    }
+    return flag;
 }

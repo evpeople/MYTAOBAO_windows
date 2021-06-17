@@ -1,6 +1,7 @@
 #include "Customer.h"
 #include"Goods.h"
 #include <iostream>
+#include<string>
 #include <io.h>
 #include <memory>
 #include"Server.h"
@@ -123,7 +124,7 @@ bool Customer::login(string tempUsr,string passWord)
 
         for (size_t i = 0; i < root["shopping"].size(); i++)
         {
-            shopCart.addShoppingCart(root["shopping"][i], root["shopping"][i]["remain"].asInt64(), root["shopping"][i]["owner"].asString());
+            shopCart.addShoppingCart(root["shopping"][i], root["shopping"][i]["remain"].asInt64(), root["shopping"][i]["owner"].asString(),getViewId());
         }
 
         fin.close();
@@ -149,8 +150,11 @@ bool Customer::login(string tempUsr,string passWord)
 //
 void Customer::balance()
 {
-    cout << "你现在还剩" << getMoney()<< "元钱，充值请输入8" << endl;
     
+    cout << "你现在还剩" << getMoney()<< "元钱，充值请输入8" << endl;
+    string tempX = "你现在还剩" +  to_string(getMoney())  + "元钱，充值请输入8";
+
+    send(Server::sockS[getViewId()], tempX.c_str(), tempX.size(),0);
     int choice;
     input(choice);
 
@@ -188,7 +192,7 @@ bool Customer::buySomeThing(double price)
 //
 bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 {
-    shopCart.addShoppingCart(good, last,getUsrName());
+    shopCart.addShoppingCart(good, last,getUsrName(),getViewId());
     //last 是买多少
 
 
@@ -217,13 +221,13 @@ bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 //
 void Customer::minShoppingCart(Json::Value& goods, long long int last)
 {
-    shopCart.minShoppingCart(goods, last,getUsrName());
+    shopCart.minShoppingCart(goods, last,getUsrName(),getViewId());
     //goods->setFreeze(goods->getFreeze()-last);
 }
 
 void Customer::showCart()
 {
-    shopCart.show();
+    shopCart.show(getViewId());
 }
 void Customer::makeBill()
 {
@@ -236,11 +240,13 @@ bool Customer::buyAllThing()
     if (getMoney()>=shopCart.calShoppingCart())
     {
         shopCart.buyAll();
+        send(Server::sockS[getViewId()], "全买了，挺好的", 15, 0);
         setMoney(getMoney() - shopCart.calShoppingCart());
         flag = true;
     }
     else
     {
+        send(Server::sockS[getViewId()], "钱不够，别做梦", 15, 0);
         cout << "钱不够" << endl;
     }
     return flag;

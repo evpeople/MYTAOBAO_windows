@@ -38,7 +38,7 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
 void BaseView::input(std::string& choice, std::string help)
 {
     cout << help << endl;
-    char a[100];
+    char a[101];
     signed long size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
     while (size==-1)
     {
@@ -46,7 +46,7 @@ void BaseView::input(std::string& choice, std::string help)
 
     }
     int x = recv(Server::sockS[getId()], a, size, 0);
-    a[x+1] = '\0';
+    a[x] = '\0';
     string str(a);
     choice = str;
     cout << choice << endl;
