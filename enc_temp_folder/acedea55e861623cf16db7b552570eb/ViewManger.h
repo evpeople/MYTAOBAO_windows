@@ -5,10 +5,10 @@
 class ViewManger
 {
 public:
-    void start();//开始工作
-    void setNext(std::unique_ptr<BaseView>next);//设置下一个界面
-    void sleepMs(int ms);//休眠
-    static  ViewManger& getInstance();//获取单例的对象
+    void start();
+    void setNext(std::unique_ptr<BaseView>next);
+    void sleepMs(int ms);
+    static  ViewManger& getInstance();
     //{
     //    static ViewManger instance;
     //    return instance;

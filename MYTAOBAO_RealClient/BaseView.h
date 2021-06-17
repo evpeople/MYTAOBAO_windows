@@ -16,6 +16,7 @@ class BaseView
     页面调度器采用单例模式
     需要维护一个ans的string vector，最后统一传这个vector给控制器
     在show的时候，全部需要show当前的商品（就展示而言）
+    所有的show均为展示，
     */
 public:
     virtual void show() = 0;
@@ -31,14 +32,10 @@ protected:
     static void input(long long int& num);
     static  void input(int& k);
 
-    //std::unique_ptr<Businessman>Bus(new Businessman()) ;
-    inline static std::unique_ptr<BaseUsr> Usr = nullptr;
-    inline static std::unordered_map<std::string, Json::Value>GoodSearchFromName;
-    inline static std::unordered_map<std::string, std::vector<Json::Value>>GoodSearchFromType;
-    //inline static std::unique_ptr<Businessman> Bus{ std::make_unique<Businessman>() };//出问题是是这个static
-    //inline static std::unique_ptr<Customer>Cus{ std::make_unique<Customer>() };
+    inline static std::unique_ptr<BaseUsr> Usr = nullptr; //页面的usr
+    inline static std::unordered_map<std::string, Json::Value>GoodSearchFromName; //由于哈希表查找
+    inline static std::unordered_map<std::string, std::vector<Json::Value>>GoodSearchFromType; //由于按类别查找
 private:
-    static std::string logoAddress;
-    static std::string goodsAddress;
-    inline static bool flag = false;
+    static std::string logoAddress; // address of logo
+    static std::string goodsAddress;//address of goods
 };

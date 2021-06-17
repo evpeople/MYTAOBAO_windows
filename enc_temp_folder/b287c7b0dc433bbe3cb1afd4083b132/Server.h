@@ -11,7 +11,9 @@ class Server
 {
 public:
     Server();// 初始化服务器，读取商品数据和用户数据.展示logo。
+    void start();
     void start(int i);
+    bool check(std::string usrId);//检查是否重复
     //开始运作
     void static loadGoods();
     inline static std::unordered_map<std::string, Json::Value>GoodSearchFromName;

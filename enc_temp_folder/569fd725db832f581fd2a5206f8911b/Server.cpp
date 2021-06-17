@@ -6,6 +6,8 @@
 #include"Businessman.h"
 #include"Views.h"
 
+//todo: 每次创建一个新的进程时，创建一个线程，也就是阻塞在等待连接建立
+//todo: 不采用多线程，反而，遍历数组，doSomeThing
 using namespace std;
 string Server::Path = "config.json";
 Server::Server()
@@ -34,12 +36,31 @@ Server::Server()
     }
 }
 
+void Server::start()
+{
+}
 void Server::start(int i)
 {
     viewManger.sleepMs(500);
 
     viewManger.setNext(make_unique<MainView>());
     viewManger.start();
+}
+bool Server::check(string usrId)
+{
+    string inPath = Customer::getAddress() + usrId + ".usr";
+
+    ifstream fin;
+    fin.open(inPath);
+    if (fin.is_open())
+    {
+        fin.close();
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 void Server::loadGoods()
