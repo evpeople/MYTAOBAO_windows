@@ -32,6 +32,7 @@ void BusinessmanView::viewInput()
     switch ((CHOICEEVENT)choice)
     {
     case CHOICEEVENT::DES:
+        cin.get();
         input(ans, "–¬√Ë ˆ «");
         //for_each(temp.begin(), temp.end(), [ans, name](unique_ptr<BaseGoods>& up) {
         //if (up->getName() == name)
@@ -69,7 +70,6 @@ void BusinessmanView::viewInput()
     default:
         break;
     }
-    Usr->storage();
     viewManger.setNext(make_unique<BusResultView>());
 }
 

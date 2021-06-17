@@ -12,6 +12,7 @@ void CustmomerView::show()
     a[x] = '\0';
     string temp(a);
     cout << "ÓÃ»§Ãû" << temp << endl;
+    send(Server::sockS, "as", 2, 0);
     Usr->balance();
     ViewManger& viewManger = ViewManger::getInstance();
     viewManger.setNext(make_unique<CusResultView>());

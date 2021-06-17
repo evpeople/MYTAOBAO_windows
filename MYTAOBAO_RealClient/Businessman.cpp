@@ -308,6 +308,7 @@ void Businessman::addGoods()
             cout << "ÇëÊäÈë" << name << "µÄ²Ö¿â´æÁ¿" << endl;
             input(remain);
             cout << "ÇëÊäÈë" << name << "µÄÃèÊö" << endl;
+            cin.get();
             input(des);
             //busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,getUsrName() }));
             cout << name << "Ìí¼ÓÍê±Ï" << endl;

@@ -143,12 +143,12 @@ bool Customer::login(string tempUsr, string passWord)
 //
 void Customer::balance()
 {
-    char a[701];
-    int x = recv(Server::sockS, a, 700, 0);
+    char a[101];
+    int x = recv(Server::sockS, a, 100, 0);
     a[x] = '\0';
     string b(a);
     cout << b << endl;
-
+    cout << "³äÖµÇëÊäÈë8" << endl;
     int choice;
     input(choice);
     if (choice == 8)

@@ -177,9 +177,9 @@ void BaseUsr::showCart()
 void BaseUsr::input(double& num)
 {
     cin >> num;
-    while (!cin.good())
+    while (!cin.good()||num<0)
     {
-        cout << "只能是数字" << endl;
+        cout << "只能是数字,且不能小于0" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
         cin.sync();

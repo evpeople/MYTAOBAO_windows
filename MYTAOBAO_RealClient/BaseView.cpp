@@ -63,9 +63,9 @@ void BaseView::input(double& num)
 void BaseView::input(long long int& num)
 {
     cin >> num;
-    while (!cin.good())
+    while (!cin.good()||num<0)
     {
-        cout << "只能是数字" << endl;
+        cout << "只能是数字,且大于零" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
         cin.sync();

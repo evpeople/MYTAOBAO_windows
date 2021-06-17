@@ -36,15 +36,18 @@ void CartView::viewInput()
         viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::MIN:
-        input(name, "请输入减少的商品的名字，并在回车后输入减少的数量");
-        //cin.get();
-        minGoods();
+        input(name, "请输入减少的商品的名");
+        
+        cout << "输入减少的数量" << endl;
         BaseView::input(number);
+        minGoods();
         viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::CLEARCART:
         cout << "重置购物车完成" << endl;
+        viewManger.sleepMs(250);
+        viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::TOTAL:
     {
