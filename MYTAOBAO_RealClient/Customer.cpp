@@ -1,9 +1,10 @@
 #include "Customer.h"
 #include"Goods.h"
 #include <iostream>
+#include<WinSock2.h>
+#include"Server.h"
 #include <io.h>
 #include <memory>
-#include"Server.h"
 
 
 using namespace std;
@@ -149,23 +150,24 @@ bool Customer::login(string tempUsr,string passWord)
 //
 void Customer::balance()
 {
-    cout << "你现在还剩" << getMoney()<< "元钱，充值请输入8" << endl;
+    char a[701];
+    int x=recv(Server::sockS, a, 700, 0);
+    a[x] = '\0';
+    string b(a);
+    cout << b<< endl;
     
     int choice;
     input(choice);
-
-
     if (choice == 8)
     {
         cout << "请输入充值多少钱" << endl;
         double money;
         input(money);
-
-        setMoney(getMoney() + money);
     }
     else
     {
-        
+        cin.clear();
+        cin.ignore(1000,'\n');
         return;
     }
 }
@@ -185,6 +187,10 @@ bool Customer::buySomeThing(double price)
     }
 }
 
+long long int Customer::getId()
+{
+    return id;
+}
 //
 bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 {
@@ -209,7 +215,6 @@ bool Customer::addInShoppingCart(Json::Value& good,long long int last)
     //    shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{last,price,name,des,getUsrName()}));
     //}
     
-//todo:被冻结的问题。
     //good->setFreeze(last+good->getFreeze());
 
     return false;

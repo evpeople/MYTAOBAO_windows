@@ -4,6 +4,7 @@
 #include<fstream>
 #include <openssl/sha.h>
 #include<json/json.h>
+#include<WinSock2.h>
 using namespace std;
 void BaseUsr::discount(int kind ,double Discount)
 {
@@ -74,17 +75,6 @@ bool BaseUsr::auth( string passwd)
  double BaseUsr::calShoppingCart()
  {
      return 0.0;
- }
-
- int BaseUsr::getViewId()
- {
-     return ViewId;
- }
-
-
- void BaseUsr::setViewId(int newId)
- {
-     ViewId = newId;
  }
 
 void BaseUsr::setUsrName( string newName)
@@ -189,57 +179,52 @@ void BaseUsr::showCart()
 
 void BaseUsr::input(double& num)
 {
-    char a[100];
-    char* endptr;
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
+    cin >> num;
+    while (!cin.good())
     {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin.sync();
 
+        cin >> num;
     }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
-    num = strtod(a, &endptr);
+    string temp = to_string(num);
+    send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
+
 void BaseUsr::input(long long int& num)
 {
-    char a[100];
-    char* endptr;
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
+    cin >> num;
+    while (!cin.good())
     {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin.sync();
 
+        cin >> num;
     }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
-    num = strtol(a, &endptr, 0);
+    string temp = to_string(num);
+    send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
-
 void BaseUsr::input(int& num)
 {
-    char a[100];
-    char* endptr;
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
+    cin >> num;
+    while (!cin.good())
     {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin.sync();
 
+        cin >> num;
     }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
-    num = strtol(a, &endptr, 0);
+    string temp = to_string(num);
+    send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
-
-void BaseUsr::input(std::string& words)
+void BaseUsr::input(string & str)
 {
-    char a[100];
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
-    {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-
-    }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
-    a[x - 2] = '\0';
-    string str(a);
-    words = str;
-    cout << words << endl;
+    getline(cin, str);
+    send(Server::sockS, str.c_str(), str.length(), 0);
 }

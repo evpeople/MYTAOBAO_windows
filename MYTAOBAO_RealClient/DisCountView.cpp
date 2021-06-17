@@ -15,7 +15,7 @@ void DisCountView::viewInput()
 {
     int choice;
 
-    ViewManger& viewManger = ViewManger::getInstance(getId());
+    ViewManger& viewManger = ViewManger::getInstance();
     std::regex regexFir("[123]");
     input(choice, "1\t给Book打折\n2\t给Cloths打折\n3\t给EleProduct打折\n", regexFir);
     double discount;

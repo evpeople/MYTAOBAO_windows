@@ -4,6 +4,7 @@
 #include<memory>
 #include"Businessman.h"
 #include"Customer.h"
+#include<WinSock2.h>
 
 class BaseView 
 {
@@ -17,21 +18,18 @@ class BaseView
     在show的时候，全部需要show当前的商品（就展示而言）
     */
 public:
-    virtual void show() ;
-    virtual void viewInput()  ;
+    virtual void show()=0 ;
+    virtual void viewInput()=0  ;
     
-    int getId();
-    void setId(int id);
     void showLogo();
     void showGoods();
     void static setAddress(std::string,std::string);
 protected:
-    int id;
     virtual void input(int& choice, std::string help,std::regex regexString);
     virtual void input(std::string& choice, std::string help);
-    void input(double& num);
-    void input(long long int& num);
-    void input(int& k);
+    static void input(double& num);
+    static void input(long long int& num);
+    static  void input(int& k);
 
     //std::unique_ptr<Businessman>Bus(new Businessman()) ;
     inline static std::unique_ptr<BaseUsr> Usr = nullptr;

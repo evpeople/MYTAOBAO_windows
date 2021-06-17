@@ -1,6 +1,7 @@
 #include "LoginView.h"
 #include"ViewManger.h"
 #include"Views.h"
+#include"Server.h"
 #include<iostream>
 using namespace std;
 enum class PEOPLETYPE
@@ -18,10 +19,11 @@ void LoginView::viewInput()
     string name, password;
     int choice;
 
-    ViewManger& viewManger = ViewManger::getInstance(getId());
+    ViewManger& viewManger = ViewManger::getInstance();
     std::regex regexFir("[12]");
     std::regex regexSec("[1234]");
     input(choice, "1\t以商人身份登录\n2\t以顾客身份登录\n", regexFir);
+    cin.get();
     input(name, "请输入用户名");
     input(password, "请输入密码");
     if (dealInput(name, password, choice))
@@ -56,17 +58,21 @@ bool LoginView::dealInput(string name, string pass, int choice)
     {
     case PEOPLETYPE::BUS:
         Usr = std::move(make_unique<Businessman>());
-        Usr->setViewId(getId());
-        return Usr->login(name, pass);
         break;
     case PEOPLETYPE::CUS:
         Usr = std::move(make_unique<Customer>());
-        Usr->setViewId(getId());
-        return Usr->login(name, pass);
         break;
     default:
-        return false;
         break;
     }
-    return true;
+    char a[200];
+    recv(Server::sockS, a, 200, 0);
+    if (a[0]-'0'==1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

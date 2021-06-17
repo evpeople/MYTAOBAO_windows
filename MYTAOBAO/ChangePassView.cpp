@@ -30,10 +30,18 @@ void ChangePassView::viewInput()
             cout << "请输入您的新密码" << endl;
             cin >> pass;
             Usr->changePassWord(pass);
+            cout << "更改成功" << endl;
             break;
         }
+        else
+        {
+            input(pass, "好好回忆你原本原本的密码，输入#则退出");
+            if (pass=="#")
+            {
+                break;
+            }
+        }
     }
-    cout << "更改成功" << endl;
     viewManger.sleepMs(500);
     viewManger.setNext(make_unique<MainView>());
 }

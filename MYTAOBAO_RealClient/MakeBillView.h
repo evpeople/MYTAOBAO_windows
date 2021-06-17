@@ -5,5 +5,7 @@ class MakeBillView :
 {
     virtual void show()override;
     virtual void viewInput()override;
+private:
+    void buy();
 };
 

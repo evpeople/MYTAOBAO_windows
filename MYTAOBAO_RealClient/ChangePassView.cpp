@@ -2,6 +2,7 @@
 #include"ViewManger.h"
 #include"Views.h"
 #include<iostream>
+#include"Server.h"
 using namespace std;
 
 enum class PEOPLETYPE
@@ -16,22 +17,32 @@ void ChangePassView::show()
 
 void ChangePassView::viewInput()
 {
-    ViewManger& viewManger = ViewManger::getInstance(getId());
+    ViewManger& viewManger = ViewManger::getInstance();
 
     string pass;
-    input(pass, "你原本的密码");
-    
+    input(pass, "输入你原本的密码");
     while (true)
     {
-
-        if (Usr->getUsrName()!="0"&&Usr->auth(pass))
+        char temp[30];
+        recv(Server::sockS, temp, 30, 0);
+        if (temp[0]-'0'==1)
         {
             input(pass, "你的新密码");
-            Usr->changePassWord(pass);
+
+            cout << "更改成功" << endl;
             break;
         }
+        else
+        {
+            input(pass, "好好回忆你原本原本的密码，输入#则退出");
+            if (pass == "#")
+            {
+                cout << "真完蛋，忘记密码了吧" << endl;
+                break;
+            }
+        }
+
     }
-    cout << "更改成功" << endl;
     viewManger.sleepMs(500);
     viewManger.setNext(make_unique<MainView>());
 }

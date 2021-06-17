@@ -13,17 +13,14 @@ void MainView::show()
 void MainView::viewInput()
 {
     int choice;
-    int sd = getId();
+    ViewManger& viewManger = ViewManger::getInstance();
     std::regex txt_regex("[12]");
     input(choice, "1\tµÇÂ¼\n2\t×¢²á\n", txt_regex);
-    cout << "###########" << endl;
-    //cout << a[1]<<"sa" << choice << "sadas" << endl;
     enum class MAINEVENT
     {
         login = 1,
         signUp = 2
     };
-        ViewManger& viewManger = ViewManger::getInstance(getId());  
     switch ((MAINEVENT)choice)
     {
     case MAINEVENT::login:

@@ -6,7 +6,7 @@
 #include<random>
 #include<iomanip>
 #include<json/json.h>
-constexpr auto lenOfOneNumber = 3;
+constexpr auto lenOfOneNumber = 1;
 using namespace std;
 
 string BaseView::logoAddress = ".";
@@ -30,7 +30,7 @@ void BaseView::setId(int id)
 void BaseView::input(int& choice, std::string help, std::regex regexString)
 {
     cout << help << endl;
-
+    //send(Server::sockS[getId()], help.c_str(), help.length(), 0);
     char  a[lenOfOneNumber];
     int temp = recv(Server::sockS[getId()], a, lenOfOneNumber,0 );
     choice = a[0] - '0';
@@ -46,7 +46,7 @@ void BaseView::input(std::string& choice, std::string help)
 
     }
     int x = recv(Server::sockS[getId()], a, size, 0);
-    a[x-2] = '\0';
+    a[x+1] = '\0';
     string str(a);
     choice = str;
     cout << choice << endl;

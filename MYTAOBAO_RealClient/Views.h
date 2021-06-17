@@ -15,5 +15,5 @@
 #include"DisCountView.h"//打折页
 #include"MakeBillView.h"// 冻结页
 #include"CartView.h"// 购物车页
-#include<WinSock2.h>
-#include"Server.h"
+
+

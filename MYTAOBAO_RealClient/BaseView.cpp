@@ -6,7 +6,6 @@
 #include<random>
 #include<iomanip>
 #include<json/json.h>
-constexpr auto lenOfOneNumber = 3;
 using namespace std;
 
 string BaseView::logoAddress = ".";
@@ -19,81 +18,79 @@ void BaseView::show()
 void BaseView::viewInput()
 {
 }
-int BaseView::getId()
-{
-    return id;
-}
-void BaseView::setId(int id)
-{
-    this->id = id;
-}
 void BaseView::input(int& choice, std::string help, std::regex regexString)
 {
     cout << help << endl;
 
-    char  a[lenOfOneNumber];
-    int temp = recv(Server::sockS[getId()], a, lenOfOneNumber,0 );
-    choice = a[0] - '0';
+    cin >> choice;
+    string temp = to_string(choice);
+    if (!regex_match(temp,regexString))
+    {
+        
+        cin.clear();
+        cin.sync();
+        cin.ignore(1000,'\n');
+        cout << "\n错误的输入，请注意" << endl;
+        input(choice,help,regexString);
+    }
+    else
+    {
+        send(Server::sockS, temp.c_str(), temp.length(), 0);
+    }
 }
 void BaseView::input(std::string& choice, std::string help)
 {
     cout << help << endl;
-    char a[100];
-    signed long size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-    while (size==-1)
-    {
-       size = recv(Server::sockS[getId()], a, 100, MSG_PEEK );
-
-    }
-    int x = recv(Server::sockS[getId()], a, size, 0);
-    a[x-2] = '\0';
-    string str(a);
-    choice = str;
-    cout << choice << endl;
-    //getline(cin,choice);
+    getline(cin,choice);
+    send(Server::sockS, choice.c_str(), choice.length(), 0);
 }
 void BaseView::input(double& num)
 {
-    char a[100];
-    char* endptr;
-    signed long size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-    while (size == -1)
+    cin >> num;
+    while (!cin.good())
     {
-        size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin.sync();
 
+        cin >> num;
     }
-    int x = recv(Server::sockS[getId()], a, size, 0);
-    num = strtod(a, &endptr);
+    string temp = to_string(num);
+    send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
 
 
 void BaseView::input(long long int& num)
 {
-    char a[100];
-    char* endptr;
-    signed long size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-    while (size == -1)
+    cin >> num;
+    while (!cin.good())
     {
-        size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin.sync();
 
+        cin >> num;
     }
-    int x = recv(Server::sockS[getId()], a, size, 0);
-    num = strtol(a, &endptr,0);
+    string temp = to_string(num);
+    send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
 
 void BaseView::input(int& num)
 {
-
-    char a[100];
-    char* endptr;
-    signed long size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-    while (size == -1)
+    cin >> num;
+    while (!cin.good())
     {
-        size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
+        cout << "只能是数字" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cin.sync();
 
+        cin >> num;
     }
-    int x = recv(Server::sockS[getId()], a, size, 0);
-    num = strtol(a, &endptr, 0);
+    string temp = to_string(num);
+    send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
 
 

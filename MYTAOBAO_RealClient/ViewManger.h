@@ -7,11 +7,8 @@ class ViewManger
 public:
     void start();
     void setNext(std::unique_ptr<BaseView>next);
-    void setNow(std::unique_ptr<BaseView>now);
     void sleepMs(int ms);
-    static  ViewManger& getInstance(int ViewId);
-    void setId(int id);
-    int getId();
+    static  ViewManger& getInstance();
    //{
    //    static ViewManger instance;
    //    return instance;
@@ -25,16 +22,14 @@ public:
     //void toFailure();
     //void toCusResult();
     //void toBusResult();
-    ViewManger() ;
-    ~ViewManger() {};
-    ViewManger& operator=(const ViewManger& s);
-    ViewManger(const ViewManger& obj);
 protected:
 
 private:
-    int id;
     std::unique_ptr<BaseView> viewNext;
     std::unique_ptr<BaseView> viewCurrent;
-    static std::vector<ViewManger>viewS;
+    ViewManger() {};
+    ~ViewManger() {};
+    ViewManger(const ViewManger&);
+    ViewManger& operator=(const ViewManger&);
 };
 

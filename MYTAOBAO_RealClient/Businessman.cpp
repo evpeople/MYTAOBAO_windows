@@ -12,6 +12,7 @@ Businessman::Businessman(std::string name, std::string PassWd)
     totalId++;
     goodsType = 8;
     setMoney(0);
+    addGoods();
 }
 
 Businessman::Businessman()
@@ -176,6 +177,8 @@ bool Businessman::loginWithoutChecked(std::string tempUsr)
 
 bool Businessman::login(string tempUsr,string passWord)
 {
+    //todo: 更改所有的登录操作。所有从文件读取的操作。
+    //todo: 啥都不用改，只有展示个人信息用改。
     isLogin = true;
     string inPath = Businessman::storageAddress + tempUsr + ".usr";
     ifstream fin;
@@ -259,6 +262,7 @@ void Businessman::addGoods()
         cout << "输入0，是贩卖书，输入1是贩卖电子产品，输入2是贩卖衣服,其余输入是退出商品添加" << endl;
         long long int temp;
         input(temp);
+        cin.get();
         switch ((GOODS)temp)
         {
         case GOODS::BOOK:
@@ -274,8 +278,9 @@ void Businessman::addGoods()
             cout << "请输入" << name << "的仓库存量" << endl;
             input(remain);
             cout << "请输入" << name << "的描述" << endl;
+            cin.get();
             input(des);
-            busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName() }));
+            //busSGooods.push_back(unique_ptr<BaseGoods>(new Book{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             break;
         }
@@ -292,8 +297,9 @@ void Businessman::addGoods()
             cout << "请输入" << name << "的仓库存量" << endl;
             input(remain);
             cout << "请输入" << name << "的描述" << endl;
+            cin.get();
             input(des);
-            busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName() }));
+            //busSGooods.push_back(unique_ptr<BaseGoods>(new Cloths{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             break;
         }
@@ -312,7 +318,7 @@ void Businessman::addGoods()
             input(remain);
             cout << "请输入" << name << "的描述" << endl;
             input(des);
-            busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,getUsrName() }));
+            //busSGooods.push_back(unique_ptr<BaseGoods>(new EleProduct{ remain,price,name,des,getUsrName() }));
             cout << name << "添加完毕" << endl;
             //cout << busSGooods[0]->getDescription();
             break;
