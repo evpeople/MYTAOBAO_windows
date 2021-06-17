@@ -20,7 +20,7 @@ void ViewManger::start()
         cin.ignore(1000, '\n');
         cin.sync();
         viewCurrent = std::move(viewNext);
-        Server::loadGoods();
+        //Server::loadGoods();
         viewCurrent->show();
     }
 }

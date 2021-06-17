@@ -40,4 +40,5 @@ protected:
 private:
     static std::string logoAddress;
     static std::string goodsAddress;
+    inline static bool flag = false;
 };
