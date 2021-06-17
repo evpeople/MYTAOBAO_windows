@@ -6,30 +6,6 @@
 typedef std::vector<std::unique_ptr<BaseGoods>> vupOfBaseGoods;
 enum class USRTYPE { businessman, customer, newUsr
 };
-//std::ostream& operator<<(std::ostream& os, const USRTYPE& ec)
-//{
-//	switch (ec)
-//	{
-//	case USRTYPE::businessman:
-//		os << "bussinessman";
-//		break;
-//	case USRTYPE::customer:
-//		os << "customer";
-//		break;
-//	case USRTYPE::newUsr:
-//		os << "newUsr";
-//		break;
-//	default:
-//		break;
-//	}
-//
-//	return os;
-//}
-//std::ostream& operator<<(std::ostream& os, const USRTYPE& ec)
-//{
-//	os << static_cast<std::underlying_type<USRTYPE>::type>(ec);
-//	return os;
-//}
 class BaseUsr
 {
 public:

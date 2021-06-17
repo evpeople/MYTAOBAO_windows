@@ -30,12 +30,9 @@ protected:
     static void input(long long int& num);
     static  void input(int& k);
 
-    //std::unique_ptr<Businessman>Bus(new Businessman()) ;
     inline static std::unique_ptr<BaseUsr> Usr = nullptr;
     inline static std::unordered_map<std::string,Json::Value>GoodSearchFromName;
     inline static std::unordered_map<std::string,std::vector<Json::Value>>GoodSearchFromType;
-    //inline static std::unique_ptr<Businessman> Bus{ std::make_unique<Businessman>() };//出问题是是这个static
-    //inline static std::unique_ptr<Customer>Cus{ std::make_unique<Customer>() };
 private:
     static std::string logoAddress;
     static std::string goodsAddress;
