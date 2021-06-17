@@ -147,10 +147,8 @@ void BaseView::showGoods()
     //    BaseView::flag = true;
     //}
 
-
     ifstream fin;
     fin.open(goodsPath);
-
 
     int lenOfString = 20;
     if (fin.is_open())
@@ -212,7 +210,6 @@ void BaseView::showGoods()
 
         cout << "\n\n\n\n\n\n\n" << endl;
         fin.close();
-
     }
 }
 

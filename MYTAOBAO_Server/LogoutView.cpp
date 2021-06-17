@@ -18,7 +18,10 @@ void LogoutView::viewInput()
     {
         viewManger.setNext(make_unique<MainView>());
     }
-    closesocket(Server::sockS[getId()]);
+    else
+    {
+        closesocket(Server::sockS[getId()]);
+    }
 }
 
 bool LogoutView::dealInput(std::string name, std::string pass, int choice)

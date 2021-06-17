@@ -113,6 +113,15 @@ void BaseView::showGoods()
     string goodsPath = goodsAddress + "defalutGoods.json";
     ifstream fin;
     fin.open(goodsPath);
+    string buffer;
+    // while (!fin.eof()) {
+    //     fin >> buffer;
+    //     send(Server::sockS[getId()], buffer.c_str(), buffer.size(), 0);
+    //    }
+    //
+    //
+    //
+    //send(Server::sockS[getId()], "########", 9, 0);
     int lenOfString = 20;
     if (fin.is_open())
     {
@@ -140,39 +149,35 @@ void BaseView::showGoods()
         //auto t=GoodSearchFromName.find("Effective C++");
        //cout <<"\n" << x.toStyledString()<<GoodSearchFromName.size();
         size_t randNumber = rand() % 10;
-        send(Server::sockS[getId()], to_string(randNumber).c_str(), to_string(randNumber).size(), 0);
+        char xA[50];
         int total = 7;
 
         cout << "名字";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            send(Server::sockS[getId()], goodsOfUsr[i]["name"].asString().c_str(), goodsOfUsr[i]["name"].asString().size(), 0);
             cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["name"].asString();
         }
         cout << endl << "价钱";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            send(Server::sockS[getId()], goodsOfUsr[i]["price"].asString().c_str(), goodsOfUsr[i]["price"].asString().size(), 0);
             cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["price"].asDouble();
         }
         cout << endl << "剩余量";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            send(Server::sockS[getId()], goodsOfUsr[i]["remain"].asString().c_str(), goodsOfUsr[i]["remain"].asString().size(), 0);
             cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["remain"].asInt64();
         }
         cout << endl << "类型";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            send(Server::sockS[getId()], goodsOfUsr[i]["type"].asString().c_str(), goodsOfUsr[i]["type"].asString().size(), 0);
             cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["type"].asString();
         }
         cout << endl << "描述";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
-            send(Server::sockS[getId()], goodsOfUsr[i]["description"].asString().c_str(), goodsOfUsr[i]["description"].asString().size(), 0);
             cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["description"].asString();
         }
+
         cout << endl;
 
         cout << "\n\n\n\n\n\n\n" << endl;

@@ -20,7 +20,7 @@ void LogoutView::viewInput()
         viewManger.setNext(make_unique<MainView>());
     }
     else
-    {   
+    {
         closesocket(Server::sockS);
     }
 }
