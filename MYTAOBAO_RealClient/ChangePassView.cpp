@@ -25,7 +25,7 @@ void ChangePassView::viewInput()
     {
         char temp[30];
         recv(Server::sockS, temp, 30, 0);
-        if (temp[0]-'0'==1)
+        if (temp[0] - '0' == 1)
         {
             input(pass, "ÄãµÄÐÂÃÜÂë");
 
@@ -41,7 +41,6 @@ void ChangePassView::viewInput()
                 break;
             }
         }
-
     }
     viewManger.sleepMs(500);
     viewManger.setNext(make_unique<MainView>());

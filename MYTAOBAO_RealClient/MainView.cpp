@@ -32,5 +32,4 @@ void MainView::viewInput()
     default:
         break;
     }
-
 }

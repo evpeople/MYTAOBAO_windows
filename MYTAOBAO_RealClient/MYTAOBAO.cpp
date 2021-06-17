@@ -13,16 +13,14 @@
 #include<json/json.h>
 #include "Server.h"
 #include <WinSock2.h>
-#pragma comment(lib, "ws2_32.lib")  
-
-
+#pragma comment(lib, "ws2_32.lib")
 
 int main()
 {
     WSADATA wsaData;
     WSAStartup(MAKEWORD(2, 2), &wsaData);
     SOCKET sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-    
+
     sockaddr_in sockAddr;
     memset(&sockAddr, 0, sizeof(sockAddr));
     sockAddr.sin_family = PF_INET;
@@ -32,7 +30,7 @@ int main()
     bind(sock, (SOCKADDR*)&sockAddr, sizeof(SOCKADDR));
     std::cout << "欢迎来到我的淘宝世界！！！";
     connect(sock, (SOCKADDR*)&sockAddr, sizeof(SOCKADDR));
-    
+
     Server a = Server();
     a.sockAdd = sockAddr;
     a.sockS = sock;
@@ -40,7 +38,7 @@ int main()
     a.start(1);
     //    while (1)
 //    {
-//        
+//
 //        cin >> event;
 //    }
 }
@@ -48,7 +46,7 @@ int main()
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
 
-// 入门使用技巧: 
+// 入门使用技巧:
 //   1. 使用解决方案资源管理器窗口添加/管理文件
 //   2. 使用团队资源管理器窗口连接到源代码管理
 //   3. 使用输出窗口查看生成输出和其他消息

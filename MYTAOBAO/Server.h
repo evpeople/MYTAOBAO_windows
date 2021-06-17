@@ -4,7 +4,7 @@
 #include<unordered_map>
 #include"ViewManger.h"
 #include"BaseView.h"
-enum class EVENT { login=1, signUp=2, changePassWord, showMoney, addGoods, showGoods, searchGoods, changeGoods };
+enum class EVENT { login = 1, signUp = 2, changePassWord, showMoney, addGoods, showGoods, searchGoods, changeGoods };
 enum class LOGINEVENT { login, getIn, changePassWord, showMoney, addGoods, showGoods, searchGoods, changeGoods };
 class Server
 {
@@ -17,13 +17,12 @@ public:
     void static loadGoods();
     inline static std::unordered_map<std::string, Json::Value>GoodSearchFromName;
     inline static std::unordered_map<std::string, std::vector<Json::Value>>GoodSearchFromType;
-    inline static std::string GoodPath="";
+    inline static std::string GoodPath = "";
     ~Server();//±£´æÊý¾Ý¡£
 private:
     static std::string Path;
     std::unique_ptr<BaseView>ptrView;
     ViewManger& viewManger = ViewManger::getInstance();
 
-	//std::unordered_map<char, EVENT>event_map;
+    //std::unordered_map<char, EVENT>event_map;
 };
-

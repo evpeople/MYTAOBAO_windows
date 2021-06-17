@@ -20,11 +20,10 @@ void ChangePassView::viewInput()
 
     string pass;
     input(pass, "ÄãÔ­±¾µÄÃÜÂë");
-    
+
     while (true)
     {
-
-        if (Usr->getUsrName()!="0"&&Usr->auth(pass))
+        if (Usr->getUsrName() != "0" && Usr->auth(pass))
         {
             string temp = "1yyyyyyyyyyyyyyyyyyyyyyyyy";
             send(Server::sockS[getId()], temp.c_str(), temp.size(), 0);

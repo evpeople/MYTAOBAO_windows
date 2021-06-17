@@ -2,7 +2,6 @@
 #include"ViewManger.h"
 #include"Views.h"
 
-
 #include<iostream>
 using namespace std;
 void DisCountView::show()
@@ -25,10 +24,9 @@ void DisCountView::viewInput()
     dealInput(choice, discount);
     cout << "´òÕÛÍê±Ï" << endl;
     viewManger.setNext(make_unique<BusResultView>());
-    
 }
 
-bool DisCountView::dealInput(int choice,double discount)
+bool DisCountView::dealInput(int choice, double discount)
 {
     Usr->discount(choice, discount);
     return false;

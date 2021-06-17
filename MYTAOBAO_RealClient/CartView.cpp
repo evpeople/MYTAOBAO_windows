@@ -23,7 +23,7 @@ void CartView::viewInput()
     cin.get();
     enum class CHOICEEVENT
     {
-        ADD= 1,MIN ,TOTAL, SHOW,BUY,CLEARCART,MAKE
+        ADD = 1, MIN, TOTAL, SHOW, BUY, CLEARCART, MAKE
     };
     switch ((CHOICEEVENT)choice)
     {
@@ -47,7 +47,7 @@ void CartView::viewInput()
         cout << "重置购物车完成" << endl;
         break;
     case CHOICEEVENT::TOTAL:
-    {   
+    {
         char a[2001];
         int len = recv(Server::sockS, a, 2000, 0);
         a[len] = '\0';
@@ -55,8 +55,8 @@ void CartView::viewInput()
         cout << "总价是" << x;
         viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
-    }   
-        break;
+    }
+    break;
     case CHOICEEVENT::SHOW:
         cout << "购物车的详情" << endl;
         showCart();
@@ -85,11 +85,10 @@ bool CartView::dealInput(std::string name, std::string pass, int choice)
     return false;
 }
 
-
 void CartView::showCart()
 {
     char a[2001];
-    int len=recv(Server::sockS, a, 2000, 0);
+    int len = recv(Server::sockS, a, 2000, 0);
     a[len] = '\0';
     string x(a);
     cout << x;
@@ -99,16 +98,16 @@ void CartView::showCart()
 void CartView::buyAll()
 {
     char a[31];
-    int len=recv(Server::sockS, a, 30, 0);
+    int len = recv(Server::sockS, a, 30, 0);
     a[len] = '\0';
     string x(a);
-    cout << x<<endl;
+    cout << x << endl;
 }
 
 void CartView::addGoods()
 {
     char a[21];
-    int len=recv(Server::sockS, a, 20, 0);
+    int len = recv(Server::sockS, a, 20, 0);
     a[len] = '\0';
     string x(a);
     cout << x << endl;

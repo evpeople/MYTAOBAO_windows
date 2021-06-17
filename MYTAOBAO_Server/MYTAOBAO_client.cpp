@@ -15,23 +15,21 @@
 #include "Server.h"
 #pragma comment(lib, "Ws2_32.lib")
 
-
 using namespace std;
 void startServer();
 int main()
 {
-        WSADATA wsaData;
-        WSAStartup(MAKEWORD(2, 2), &wsaData);
+    WSADATA wsaData;
+    WSAStartup(MAKEWORD(2, 2), &wsaData);
     std::cout << "欢迎来到我的淘世界！！！";
-    
-    
+
     SOCKET listenSocket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
     sockaddr_in sockAddr;
-    memset(&sockAddr, 0, sizeof(sockAddr));  
-    sockAddr.sin_family = PF_INET;  
+    memset(&sockAddr, 0, sizeof(sockAddr));
+    sockAddr.sin_family = PF_INET;
 
-     inet_pton(AF_INET,"127.0.0.1", &sockAddr.sin_addr);
-    sockAddr.sin_port = htons(3234);  
+    inet_pton(AF_INET, "127.0.0.1", &sockAddr.sin_addr);
+    sockAddr.sin_port = htons(3234);
     bind(listenSocket, (SOCKADDR*)&sockAddr, sizeof(SOCKADDR));
     listen(listenSocket, 20);
 
@@ -46,11 +44,9 @@ int main()
         t.detach();
     }
 
-    
-
     //    while (1)
 //    {
-//        
+//
 //        cin >> event;
 //    }
 }
@@ -62,7 +58,7 @@ void startServer()
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
 
-// 入门使用技巧: 
+// 入门使用技巧:
 //   1. 使用解决方案资源管理器窗口添加/管理文件
 //   2. 使用团队资源管理器窗口连接到源代码管理
 //   3. 使用输出窗口查看生成输出和其他消息

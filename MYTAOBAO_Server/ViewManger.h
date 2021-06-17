@@ -12,20 +12,20 @@ public:
     static  ViewManger& getInstance(int ViewId);
     void setId(int id);
     int getId();
-   //{
-   //    static ViewManger instance;
-   //    return instance;
-   //}
-    //void toMain();
-    //void toLogin();
-    //void toLogout();
-    //void toSignUp();
-    //void toCustomer();
-    //void toBusinessman();
-    //void toFailure();
-    //void toCusResult();
-    //void toBusResult();
-    ViewManger() ;
+    //{
+    //    static ViewManger instance;
+    //    return instance;
+    //}
+     //void toMain();
+     //void toLogin();
+     //void toLogout();
+     //void toSignUp();
+     //void toCustomer();
+     //void toBusinessman();
+     //void toFailure();
+     //void toCusResult();
+     //void toBusResult();
+    ViewManger();
     ~ViewManger() {};
     ViewManger& operator=(const ViewManger& s);
     ViewManger(const ViewManger& obj);
@@ -37,4 +37,3 @@ private:
     std::unique_ptr<BaseView> viewCurrent;
     static std::vector<ViewManger>viewS;
 };
-

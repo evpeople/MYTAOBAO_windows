@@ -28,13 +28,13 @@ void SignUpView::viewInput()
 
     while (true)
     {
-        input(name,"请输入用户名");
+        input(name, "请输入用户名");
         //cin >> name;
         int len = 0;
         char temp[200];
-        len = recv(Server::sockS, temp, 40,0);
+        len = recv(Server::sockS, temp, 40, 0);
         int x = temp[0] - '0';
-        if (x==0)
+        if (x == 0)
         {
             temp[0] = ' ';
             temp[len] = '\0';
@@ -69,7 +69,6 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
     {
     case PEOPLETYPE::BUS:
     {
-           
         Usr = std::move(make_unique<Businessman>(name, pass));
         //Usr->addGoods();
         //Usr->storage();

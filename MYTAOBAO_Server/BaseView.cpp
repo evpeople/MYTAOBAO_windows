@@ -32,7 +32,7 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
     cout << help << endl;
     //send(Server::sockS[getId()], help.c_str(), help.length(), 0);
     char  a[lenOfOneNumber];
-    int temp = recv(Server::sockS[getId()], a, lenOfOneNumber,0 );
+    int temp = recv(Server::sockS[getId()], a, lenOfOneNumber, 0);
     choice = a[0] - '0';
 }
 void BaseView::input(std::string& choice, std::string help)
@@ -40,10 +40,9 @@ void BaseView::input(std::string& choice, std::string help)
     cout << help << endl;
     char a[101];
     signed long size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-    while (size==-1)
+    while (size == -1)
     {
-       size = recv(Server::sockS[getId()], a, 100, MSG_PEEK );
-
+        size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
     }
     int x = recv(Server::sockS[getId()], a, size, 0);
     a[x] = '\0';
@@ -60,12 +59,10 @@ void BaseView::input(double& num)
     while (size == -1)
     {
         size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-
     }
     int x = recv(Server::sockS[getId()], a, size, 0);
     num = strtod(a, &endptr);
 }
-
 
 void BaseView::input(long long int& num)
 {
@@ -75,27 +72,23 @@ void BaseView::input(long long int& num)
     while (size == -1)
     {
         size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-
     }
     int x = recv(Server::sockS[getId()], a, size, 0);
-    num = strtol(a, &endptr,0);
+    num = strtol(a, &endptr, 0);
 }
 
 void BaseView::input(int& num)
 {
-
     char a[100];
     char* endptr;
     signed long size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
     while (size == -1)
     {
         size = recv(Server::sockS[getId()], a, 100, MSG_PEEK);
-
     }
     int x = recv(Server::sockS[getId()], a, size, 0);
     num = strtol(a, &endptr, 0);
 }
-
 
 void BaseView::showLogo()
 {
@@ -126,8 +119,8 @@ void BaseView::showGoods()
         Json::CharReaderBuilder reader;
         JSONCPP_STRING errs;
 
-        Json::Value root ,goodsOfUsr;
-       
+        Json::Value root, goodsOfUsr;
+
         if (!Json::parseFromStream(reader, fin, &root, &errs))
         {
             cout << errs << endl;
@@ -136,9 +129,9 @@ void BaseView::showGoods()
         std::string output;
         for (Json::ValueIterator itr = goodsOfUsr.begin(); itr != goodsOfUsr.end(); itr++)
         {
-            string name=(*itr)["name"].asString();
+            string name = (*itr)["name"].asString();
             string type = (*itr)["type"].asString();
-            Json::Value value=*itr;
+            Json::Value value = *itr;
             //由于unordermap插入同样的键时会覆盖最后的，所以计算时是正确的。
             //GoodSearchFromName.insert(make_pair(name,value));
             GoodSearchFromName[name] = value;
@@ -146,45 +139,44 @@ void BaseView::showGoods()
         }
         //auto t=GoodSearchFromName.find("Effective C++");
        //cout <<"\n" << x.toStyledString()<<GoodSearchFromName.size();
-       size_t randNumber = rand() % 10;
-       send(Server::sockS[getId()], to_string(randNumber).c_str(), to_string(randNumber).size(), 0);
+        size_t randNumber = rand() % 10;
+        send(Server::sockS[getId()], to_string(randNumber).c_str(), to_string(randNumber).size(), 0);
         int total = 7;
-        
+
         cout << "名字";
-        for (size_t i = randNumber; i <total+randNumber; i++)
+        for (size_t i = randNumber; i < total + randNumber; i++)
         {
             send(Server::sockS[getId()], goodsOfUsr[i]["name"].asString().c_str(), goodsOfUsr[i]["name"].asString().size(), 0);
-            cout<<std::left<<"\t"  <<setw(lenOfString)<< goodsOfUsr[i]["name"].asString();
+            cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["name"].asString();
         }
-        cout <<endl<<"价钱";
-        for (size_t i = randNumber; i <total +randNumber;i++)
+        cout << endl << "价钱";
+        for (size_t i = randNumber; i < total + randNumber; i++)
         {
             send(Server::sockS[getId()], goodsOfUsr[i]["price"].asString().c_str(), goodsOfUsr[i]["price"].asString().size(), 0);
-            cout <<std::left<< "\t" << setw(lenOfString) << goodsOfUsr[i]["price"].asDouble();
+            cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["price"].asDouble();
         }
-        cout << endl<<"剩余量";
+        cout << endl << "剩余量";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
             send(Server::sockS[getId()], goodsOfUsr[i]["remain"].asString().c_str(), goodsOfUsr[i]["remain"].asString().size(), 0);
-            cout<<std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["remain"].asInt64();
+            cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["remain"].asInt64();
         }
-        cout << endl<<"类型";
+        cout << endl << "类型";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
             send(Server::sockS[getId()], goodsOfUsr[i]["type"].asString().c_str(), goodsOfUsr[i]["type"].asString().size(), 0);
-            cout <<std::left<< "\t" << setw(lenOfString) << goodsOfUsr[i]["type"].asString();
+            cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["type"].asString();
         }
-        cout << endl<<"描述";
+        cout << endl << "描述";
         for (size_t i = randNumber; i < total + randNumber; i++)
         {
             send(Server::sockS[getId()], goodsOfUsr[i]["description"].asString().c_str(), goodsOfUsr[i]["description"].asString().size(), 0);
-            cout << std::left<<"\t" << setw(lenOfString) << goodsOfUsr[i]["description"].asString();
+            cout << std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["description"].asString();
         }
         cout << endl;
 
-        cout << "\n\n\n\n\n\n\n" << endl;   
+        cout << "\n\n\n\n\n\n\n" << endl;
         fin.close();
-
     }
 }
 

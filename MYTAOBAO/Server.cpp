@@ -26,17 +26,15 @@ Server::Server()
         }
         Businessman::setAddress(root["busmanAddress"].asString());
         Customer::setAddress(root["usrAddress"].asString());
-        BaseView::setAddress(root["logoAddress"].asString(),root["goodsAddress"].asString());
-        GoodPath=root["goodsAddress"].asString();
+        BaseView::setAddress(root["logoAddress"].asString(), root["goodsAddress"].asString());
+        GoodPath = root["goodsAddress"].asString();
         fin.close();
     }
     else
     {
         cout << "配置文件不存在" << endl;
     }
-
 }
-
 
 void Server::start()
 {
@@ -60,7 +58,7 @@ void Server::start()
             default:
                 break;
             }*/
-            if (!test->login("low","ss"))
+            if (!test->login("low", "ss"))
             {
                 cout << "再重来一遍吧" << endl;
                 break;
@@ -68,63 +66,62 @@ void Server::start()
             switch (test->getType())
             {
             case USRTYPE::customer:
-            {   
-               bool in = true;
-
-            while (in)
             {
-                cout << "输入0为查看个人信息\n输入1为购买商品\n输入2为登出\n";
-                int choice;
-                
-                cin >> choice;
-                enum class CUSTOMERLOGIN
+                bool in = true;
+
+                while (in)
                 {
-                    PERSONAL, GOODS, LOGOUT
-                };
-                cin.clear();
-                cin.ignore();
-                switch ((CUSTOMERLOGIN)choice)
-                {
-                case CUSTOMERLOGIN::PERSONAL:
-                    test->balance();
-                    break;
-                case CUSTOMERLOGIN::GOODS:
-                {
+                    cout << "输入0为查看个人信息\n输入1为购买商品\n输入2为登出\n";
                     int choice;
-                    cout << "输入0为查看商品，输入1为搜索商品，输入2为购买商品\n";
+
                     cin >> choice;
-                    enum class BUY { SEARCH=0, FIND, BUY };
+                    enum class CUSTOMERLOGIN
+                    {
+                        PERSONAL, GOODS, LOGOUT
+                    };
                     cin.clear();
                     cin.ignore();
-                    switch ((BUY)choice)
+                    switch ((CUSTOMERLOGIN)choice)
                     {
-                    case BUY::BUY:
-                        test->buySomeThing(10.00);
+                    case CUSTOMERLOGIN::PERSONAL:
+                        test->balance();
                         break;
-                    case BUY::FIND:
-                        break;
-                    case BUY::SEARCH:
+                    case CUSTOMERLOGIN::GOODS:
+                    {
+                        int choice;
+                        cout << "输入0为查看商品，输入1为搜索商品，输入2为购买商品\n";
+                        cin >> choice;
+                        enum class BUY { SEARCH = 0, FIND, BUY };
+                        cin.clear();
+                        cin.ignore();
+                        switch ((BUY)choice)
+                        {
+                        case BUY::BUY:
+                            test->buySomeThing(10.00);
+                            break;
+                        case BUY::FIND:
+                            break;
+                        case BUY::SEARCH:
+                            break;
+                        default:
+                            break;
+                        }
+                    }
+                    break;
+                    case CUSTOMERLOGIN::LOGOUT:
+                        in = false;
                         break;
                     default:
+                        in = false;
                         break;
                     }
                 }
                 break;
-                case CUSTOMERLOGIN::LOGOUT:
-                    in = false;
-                    break;
-                default:
-                    in = false;
-                    break;
-                }
-            }
-            break;
             }
             case USRTYPE::businessman:
             default:
                 break;
             }
-
         }
         break;
         case EVENT::signUp:
@@ -205,7 +202,6 @@ void Server::start(int i)
 
     viewManger.setNext(make_unique<MainView>());
     viewManger.start();
-
 }
 bool Server::check(string usrId)
 {
@@ -226,7 +222,6 @@ bool Server::check(string usrId)
 
 void Server::loadGoods()
 {
-
     string goodsPath = GoodPath + "defalutGoods.json";
     ifstream fin;
     fin.open(goodsPath);
@@ -260,4 +255,3 @@ void Server::loadGoods()
 Server::~Server()
 {
 }
-

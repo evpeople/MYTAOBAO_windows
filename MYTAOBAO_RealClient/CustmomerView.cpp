@@ -8,7 +8,7 @@ void CustmomerView::show()
 {
     showGoods();
     char a[80];
-    int x=recv(Server::sockS,a, 30, 0);
+    int x = recv(Server::sockS, a, 30, 0);
     a[x] = '\0';
     string temp(a);
     cout << "ÓÃ»§Ãû" << temp << endl;

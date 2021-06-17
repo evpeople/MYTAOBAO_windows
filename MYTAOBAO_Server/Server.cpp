@@ -7,7 +7,6 @@
 #include"Views.h"
 #include <mutex>
 
-
 //todo: 每次创建一个新的进程时，创建一个线程，也就是阻塞在等待连接建立
 //todo: 不采用多线程，反而，遍历数组，doSomeThing
 using namespace std;
@@ -29,17 +28,15 @@ Server::Server()
         }
         Businessman::setAddress(root["busmanAddress"].asString());
         Customer::setAddress(root["usrAddress"].asString());
-        BaseView::setAddress(root["logoAddress"].asString(),root["goodsAddress"].asString());
-        GoodPath=root["goodsAddress"].asString();
+        BaseView::setAddress(root["logoAddress"].asString(), root["goodsAddress"].asString());
+        GoodPath = root["goodsAddress"].asString();
         fin.close();
     }
     else
     {
         cout << "配置文件不存在" << endl;
     }
-
 }
-
 
 void Server::start()
 {}
@@ -48,7 +45,7 @@ void Server::start(int i)
     exclusive2.lock();
     id = totalid;
     totalid++;
-    ViewManger& viewOne= ViewManger::getInstance(id);
+    ViewManger& viewOne = ViewManger::getInstance(id);
     viewS.push_back(viewOne);
     //viewManger.setId(id);
     viewOne.sleepMs(200);
@@ -61,7 +58,6 @@ void Server::start(int i)
     viewOne.setNext(std::move(View2));
     exclusive2.unlock();
     viewOne.start();
-
 }
 bool Server::check(string usrId)
 {
@@ -82,7 +78,6 @@ bool Server::check(string usrId)
 
 void Server::loadGoods()
 {
-
     string goodsPath = GoodPath + "defalutGoods.json";
     ifstream fin;
     fin.open(goodsPath);
@@ -126,4 +121,3 @@ void Server::setSocket(SOCKET tempSocket)
 Server::~Server()
 {
 }
-

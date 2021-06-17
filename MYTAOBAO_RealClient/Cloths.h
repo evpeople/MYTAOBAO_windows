@@ -13,4 +13,3 @@ private:
     static double discount;
     static std::string type;
 };
-

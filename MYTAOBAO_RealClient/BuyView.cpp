@@ -22,7 +22,7 @@ void BuyView::viewInput()
     input(choice, "1\t查询货物种类\n2\t购买\n3\t购物车\n4\t放弃剁手", regexSec);
     enum class CHOICEEVENT
     {
-        SEARCH=1,BUY,CART,GIVEUP
+        SEARCH = 1, BUY, CART, GIVEUP
     };
     switch ((CHOICEEVENT)choice)
     {
@@ -31,7 +31,7 @@ void BuyView::viewInput()
         {
             search();
             input(choice, "1\t继续查找\n2\t结束查找", regexFir);
-            if (choice==2)
+            if (choice == 2)
             {
                 break;
             }
@@ -45,7 +45,7 @@ void BuyView::viewInput()
         viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::BUY:
-        {
+    {
         Json::Value temp;
         string name;
         cin.get();
@@ -60,8 +60,8 @@ void BuyView::viewInput()
         }
         viewManger.sleepMs(500);
         viewManger.setNext(make_unique<BuyView>());
-        }
-        break;
+    }
+    break;
     default:
         viewManger.setNext(make_unique<FailureView>());
         break;
@@ -122,7 +122,6 @@ void BuyView::search()
                 }
             }
         }
-
     }
     break;
     default:
@@ -135,7 +134,7 @@ bool BuyView::buy()
     char a[20];
     int len = recv(Server::sockS, a, 20, 0);
     a[len] = '\0';
-    if (a[0]=='0')
+    if (a[0] == '0')
     {
         return false;
     }
@@ -147,12 +146,11 @@ bool BuyView::buy()
 
 void BuyView::search(std::string name, Json::Value& ansGood)
 {
-
     char x[31];
-    int len=recv(Server::sockS, x, 30, 0);
+    int len = recv(Server::sockS, x, 30, 0);
     x[len] = '\0';
 
-    if (x[0]-'0'==0&&x[1]=='y')
+    if (x[0] - '0' == 0 && x[1] == 'y')
     {
         ansGood = NULL;
         return;

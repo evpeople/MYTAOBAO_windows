@@ -15,7 +15,7 @@ void CusResultView::viewInput()
 {
     std::regex regexSec("[1234]");
     int choice;
-    ViewManger& viewManger = ViewManger::getInstance(getId()); 
+    ViewManger& viewManger = ViewManger::getInstance(getId());
     input(choice, "尊敬的客人\n1\t查看个人信息\n2\t购买商品\n3\t登出\n4\t更改密码\n", regexSec);
     enum class CHOICEEVENT
     {

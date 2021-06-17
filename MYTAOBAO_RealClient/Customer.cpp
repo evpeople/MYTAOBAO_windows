@@ -6,7 +6,6 @@
 #include <io.h>
 #include <memory>
 
-
 using namespace std;
 
 long long int Customer::totalId = 0;
@@ -24,7 +23,7 @@ Customer::Customer(string name, string PassWd)
     input(money);
     setMoney(money);
 }
-Customer::Customer(string name, string PassWd,double money)
+Customer::Customer(string name, string PassWd, double money)
     :BaseUsr{ name, PassWd }
 {
     //shoppingCart = shopCart.getCart();
@@ -39,14 +38,10 @@ Customer::Customer() :BaseUsr{ "0","0" }
     //shoppingCart = shopCart.getCart();
 }
 
-
-
 USRTYPE Customer::getType()
 {
     return Customer::type;
 }
-
-
 
 Customer::~Customer()
 {
@@ -62,7 +57,7 @@ void Customer::clearBill()
 }
 void Customer::storage()
 {
-    Json::Value temp,shoppingFartJson;
+    Json::Value temp, shoppingFartJson;
     Json::StreamWriterBuilder fwbuilder;
     temp["usrID"] = id;
     temp["usrName"] = getUsrName();
@@ -81,7 +76,6 @@ void Customer::storage()
     int serial = 0;
     //shoppingCart = shopCart.getCart();
     for_each(shopCart.getCart().begin(), shopCart.getCart().end(), [&shoppingFartJson, &serial](unique_ptr<BaseGoods>& up) {
-
         shoppingFartJson[serial]["name"] = up->getName();
         shoppingFartJson[serial]["price"] = up->getPrice();
         shoppingFartJson[serial]["remain"] = up->getRemain();//remain 为买了多少
@@ -93,15 +87,14 @@ void Customer::storage()
         });
     temp["shopping"] = shoppingFartJson;
     string outFile = Customer::storageAddress + getUsrName() + ".usr";
-    ofstream fout{ outFile ,ios_base::out};
+    ofstream fout{ outFile ,ios_base::out };
     auto jsonWriter(fwbuilder.newStreamWriter());
     jsonWriter->write(temp, &fout);
     fout.close();
 }
 //
-bool Customer::login(string tempUsr,string passWord)
+bool Customer::login(string tempUsr, string passWord)
 {
-
     string inPath = Customer::storageAddress + tempUsr + ".usr";
 
     ifstream fin;
@@ -151,11 +144,11 @@ bool Customer::login(string tempUsr,string passWord)
 void Customer::balance()
 {
     char a[701];
-    int x=recv(Server::sockS, a, 700, 0);
+    int x = recv(Server::sockS, a, 700, 0);
     a[x] = '\0';
     string b(a);
-    cout << b<< endl;
-    
+    cout << b << endl;
+
     int choice;
     input(choice);
     if (choice == 8)
@@ -167,7 +160,7 @@ void Customer::balance()
     else
     {
         cin.clear();
-        cin.ignore(1000,'\n');
+        cin.ignore(1000, '\n');
         return;
     }
 }
@@ -182,7 +175,7 @@ bool Customer::buySomeThing(double price)
     else
     {
         setMoney(getMoney() - price);
-        cout << "已购买，你还剩" << getMoney()<< "这么多钱" << endl;
+        cout << "已购买，你还剩" << getMoney() << "这么多钱" << endl;
         return true;
     }
 }
@@ -192,11 +185,10 @@ long long int Customer::getId()
     return id;
 }
 //
-bool Customer::addInShoppingCart(Json::Value& good,long long int last)
+bool Customer::addInShoppingCart(Json::Value& good, long long int last)
 {
-    shopCart.addShoppingCart(good, last,getUsrName());
+    shopCart.addShoppingCart(good, last, getUsrName());
     //last 是买多少
-
 
     //string name=good->getName();
     //double price=good->getPrice();
@@ -211,10 +203,9 @@ bool Customer::addInShoppingCart(Json::Value& good,long long int last)
     //}
     //else
     //{
-
     //    shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{last,price,name,des,getUsrName()}));
     //}
-    
+
     //good->setFreeze(last+good->getFreeze());
 
     return false;
@@ -222,7 +213,7 @@ bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 //
 void Customer::minShoppingCart(Json::Value& goods, long long int last)
 {
-    shopCart.minShoppingCart(goods, last,getUsrName());
+    shopCart.minShoppingCart(goods, last, getUsrName());
     //goods->setFreeze(goods->getFreeze()-last);
 }
 
@@ -238,7 +229,7 @@ void Customer::makeBill()
 bool Customer::buyAllThing()
 {
     bool flag = false;
-    if (getMoney()>=shopCart.calShoppingCart())
+    if (getMoney() >= shopCart.calShoppingCart())
     {
         shopCart.buyAll();
         setMoney(getMoney() - shopCart.calShoppingCart());
@@ -288,4 +279,3 @@ string Customer::getAddress()
 //Customer::~Customer()
 //{
 //}
-

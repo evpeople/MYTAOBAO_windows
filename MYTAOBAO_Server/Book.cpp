@@ -8,15 +8,13 @@ Book::Book(long long int newNumberRemain, double newPrice, std::string newName, 
 }
 double Book::getPrice()
 {
-    return getOriginalPrice()*Book::discount;
+    return getOriginalPrice() * Book::discount;
 }
 
 std::string Book::getType()
 {
     return Book::type;
 }
-
-
 
 void Book::setDiscount(double newDiscount)
 {

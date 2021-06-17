@@ -38,10 +38,9 @@ void LoginView::viewInput()
             viewManger.sleepMs(250);
             viewManger.setNext(make_unique<CusResultView>());
             break;
-            
+
         default:
             cout << "something wrong" << endl;
-
         }
     }
     else

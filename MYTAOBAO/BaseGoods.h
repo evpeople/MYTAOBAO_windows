@@ -17,7 +17,7 @@ public:
     virtual std::string getType() = 0;
     virtual std::string getDescription()final;
     virtual long long int getFreeze()final;
-            
+
     virtual void setDescription(std::string newDes)final;
     virtual void  setName(std::string newName)final;
     virtual void setFreeze(long long int freeze)final;
@@ -32,4 +32,3 @@ private:
     std::string description;
     std::string owner;
 };
-

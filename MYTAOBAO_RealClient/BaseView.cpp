@@ -27,7 +27,6 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
     string temp = to_string(choice);
     if (!regex_match(temp, regexString))
     {
-
         cin.clear();
         cin.sync();
         cin.ignore(1000, '\n');
@@ -61,7 +60,6 @@ void BaseView::input(double& num)
     send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
 
-
 void BaseView::input(long long int& num)
 {
     cin >> num;
@@ -94,7 +92,6 @@ void BaseView::input(int& num)
     send(Server::sockS, temp.c_str(), temp.length(), 0);
 }
 
-
 void BaseView::showLogo()
 {
     system("cls");
@@ -118,10 +115,10 @@ void BaseView::showGoods()
     int lenOfString = 20;
 
     char b[31];
-    int lenB=recv(Server::sockS, b, 30, 0);
+    int lenB = recv(Server::sockS, b, 30, 0);
     b[lenB] = '\0';
     string x(b);
-    int randNumber = strtol(x.c_str(), nullptr,0);
+    int randNumber = strtol(x.c_str(), nullptr, 0);
     int total = 7;
 
     cout << "Ãû×Ö";
@@ -129,7 +126,7 @@ void BaseView::showGoods()
     int len;
     for (size_t i = randNumber; i < total + randNumber; i++)
     {
-        len=recv(Server::sockS, a, 300, 0);
+        len = recv(Server::sockS, a, 300, 0);
         a[len] = '\0';
         string x(a);
         cout << std::left << "\t" << setw(lenOfString) << x;
@@ -169,7 +166,6 @@ void BaseView::showGoods()
     cout << endl;
 
     cout << "\n\n\n\n\n\n\n" << endl;
-
 }
 
 void BaseView::setAddress(string newLogoAddress, string newGoodsAddress)

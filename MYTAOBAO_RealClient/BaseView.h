@@ -6,7 +6,7 @@
 #include"Customer.h"
 #include<WinSock2.h>
 
-class BaseView 
+class BaseView
 {
     /*
     最后将处理好的数据发给控制器，让控制器进行数据处理，
@@ -18,14 +18,14 @@ class BaseView
     在show的时候，全部需要show当前的商品（就展示而言）
     */
 public:
-    virtual void show()=0 ;
-    virtual void viewInput()=0  ;
-    
+    virtual void show() = 0;
+    virtual void viewInput() = 0;
+
     void showLogo();
     void showGoods();
-    void static setAddress(std::string,std::string);
+    void static setAddress(std::string, std::string);
 protected:
-    virtual void input(int& choice, std::string help,std::regex regexString);
+    virtual void input(int& choice, std::string help, std::regex regexString);
     virtual void input(std::string& choice, std::string help);
     static void input(double& num);
     static void input(long long int& num);
@@ -33,16 +33,11 @@ protected:
 
     //std::unique_ptr<Businessman>Bus(new Businessman()) ;
     inline static std::unique_ptr<BaseUsr> Usr = nullptr;
-    inline static std::unordered_map<std::string,Json::Value>GoodSearchFromName;
-    inline static std::unordered_map<std::string,std::vector<Json::Value>>GoodSearchFromType;
+    inline static std::unordered_map<std::string, Json::Value>GoodSearchFromName;
+    inline static std::unordered_map<std::string, std::vector<Json::Value>>GoodSearchFromType;
     //inline static std::unique_ptr<Businessman> Bus{ std::make_unique<Businessman>() };//出问题是是这个static
     //inline static std::unique_ptr<Customer>Cus{ std::make_unique<Customer>() };
 private:
     static std::string logoAddress;
     static std::string goodsAddress;
-    
 };
-
-
-
-

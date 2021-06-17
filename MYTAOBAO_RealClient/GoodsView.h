@@ -5,6 +5,4 @@ class GoodsView :
 {
     virtual void show();
     virtual void viewInput();
-
 };
-

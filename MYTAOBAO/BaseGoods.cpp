@@ -23,7 +23,6 @@ void BaseGoods::setDescription(std::string newDes)
     description = newDes;
 }
 
-
 void BaseGoods::setName(std::string newname)
 {
     name = newname;
@@ -33,7 +32,6 @@ void BaseGoods::setFreeze(long long int freeze)
 {
     isFreeze = freeze;
 }
-
 
 void BaseGoods::setRemain(long long int newReamin)
 {
@@ -59,4 +57,3 @@ long long int BaseGoods::getFreeze()
 {
     return isFreeze;
 }
-

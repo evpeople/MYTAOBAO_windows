@@ -19,7 +19,7 @@ void BusinessmanView::viewInput()
     input(choice, "尊敬的商家\n1\t更改商品描述\n2\t更改商品价格\n3\t更改商品剩余量\n4\t新增商品\n", regexSec);
     string name;
     string ans;
-    if (choice>0&&choice<4)
+    if (choice > 0 && choice < 4)
     {
         cin.get();
         input(name, "输入更改的商品的名字");
@@ -27,7 +27,7 @@ void BusinessmanView::viewInput()
     //std::vector<std::unique_ptr<BaseGoods>>& temp= Usr->getGoods();
     enum class CHOICEEVENT
     {
-        DES= 1, PRICE,LAST,NEWGOOD
+        DES = 1, PRICE, LAST, NEWGOOD
     };
     switch ((CHOICEEVENT)choice)
     {
@@ -38,7 +38,7 @@ void BusinessmanView::viewInput()
         //{
             //up->setDescription(ans);
         //}
-        //});   
+        //});
         break;
     case CHOICEEVENT::NEWGOOD:
         Usr->addGoods();
@@ -59,7 +59,7 @@ void BusinessmanView::viewInput()
         //{
             //up->setOriginalPrice(newPrice);
             //cout << "成功更改" << endl;
-        //});   
+        //});
         break;
     case CHOICEEVENT::LAST:
         cout << "新剩余量是" << endl;
@@ -71,8 +71,6 @@ void BusinessmanView::viewInput()
     }
     Usr->storage();
     viewManger.setNext(make_unique<BusResultView>());
-    
-
 }
 
 void BusinessmanView::addGoods(std::vector<std::unique_ptr<BaseGoods>>& tempVec)

@@ -12,7 +12,6 @@ double shoppingCart::calShoppingCart()
 {
     double totalPrice;
     for_each(shoppingCart.begin(), shoppingCart.end(), [&totalPrice](unique_ptr<BaseGoods>& up) {
-        
         totalPrice = up->getPrice() * up->getRemain();
         //shoppingFartJson[serial]["owner"] = up->getOwner();
         //shoppingFartJson[serial]["isFreeze"] = up->getFreeze();
@@ -20,9 +19,9 @@ double shoppingCart::calShoppingCart()
     return totalPrice;
 }
 
-void shoppingCart::addShoppingCart(Json::Value& good, long long int last,string usrName)
+void shoppingCart::addShoppingCart(Json::Value& good, long long int last, string usrName)
 {
-    if (good["remain"].asInt64()<last)
+    if (good["remain"].asInt64() < last)
     {
         cout << "购买了太多，没有这么多卖" << endl;
         return;
@@ -32,23 +31,23 @@ void shoppingCart::addShoppingCart(Json::Value& good, long long int last,string 
         good["isFreeze"] = last;
     }
     int index = search(good["name"].asString());
-    if (index==-1)
+    if (index == -1)
     {
         string name = good["name"].asString();
-        double price=good["price"].asDouble();
-        string des=good["description"].asString();
+        double price = good["price"].asDouble();
+        string des = good["description"].asString();
         string owner = good["owner"].asString();
         if (good["type"].asString() == "Book")
         {
-            shoppingCart.push_back(unique_ptr<BaseGoods>(new Book{last,price,name,des,owner}));
+            shoppingCart.push_back(unique_ptr<BaseGoods>(new Book{ last,price,name,des,owner }));
         }
         else if (good["type"].asString() == "Cloths")
         {
-            shoppingCart.push_back(unique_ptr<BaseGoods>(new Cloths{last,price,name,des,owner}));
+            shoppingCart.push_back(unique_ptr<BaseGoods>(new Cloths{ last,price,name,des,owner }));
         }
         else
         {
-            shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{last,price,name,des,owner}));
+            shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{ last,price,name,des,owner }));
         }
     }
     else
@@ -67,9 +66,9 @@ void shoppingCart::minShoppingCart(Json::Value& good, long long int last, std::s
     else
     {
         shoppingCart[index]->setRemain(shoppingCart[index]->getRemain() - last);
-        if (shoppingCart[index]->getRemain()==0)
+        if (shoppingCart[index]->getRemain() == 0)
         {
-            shoppingCart.erase(shoppingCart.begin()+index);
+            shoppingCart.erase(shoppingCart.begin() + index);
         }
     }
 }
@@ -78,7 +77,6 @@ void shoppingCart::buyAll()
 {
     Businessman* tempOwner = new Businessman();
     for_each(shoppingCart.begin(), shoppingCart.end(), [&tempOwner](unique_ptr<BaseGoods>& up) {
-
         cout << "name is " << up->getName() << endl;
         cout << "the number you buy is " << up->getRemain() << endl;
         string owner = up->getOwner();
@@ -95,12 +93,11 @@ void shoppingCart::buyAll()
 void shoppingCart::show()
 {
     for_each(shoppingCart.begin(), shoppingCart.end(), [](unique_ptr<BaseGoods>& up) {
-
-        cout<<"name is "<<up->getName()<<endl;
-        cout<<"price is "<<up->getPrice()<<endl;
-        cout<<"the number you buy is " <<up->getRemain()<<endl;
-        cout<<"Type is "<<up->getType()<<endl;
-        cout<<"description is "<<up->getDescription()<<endl;
+        cout << "name is " << up->getName() << endl;
+        cout << "price is " << up->getPrice() << endl;
+        cout << "the number you buy is " << up->getRemain() << endl;
+        cout << "Type is " << up->getType() << endl;
+        cout << "description is " << up->getDescription() << endl;
         });
 }
 
@@ -108,7 +105,6 @@ void shoppingCart::makeBill()
 {
     Businessman* tempOwner = new Businessman();
     for_each(shoppingCart.begin(), shoppingCart.end(), [&tempOwner](unique_ptr<BaseGoods>& up) {
-
         cout << "Goods name is " << up->getName() << endl;
         cout << "the number Freeze is " << up->getRemain() << endl;
         string owner = up->getOwner();
@@ -125,18 +121,17 @@ void shoppingCart::clearBill()
 {
     Businessman* tempOwner = new Businessman();
     for_each(shoppingCart.begin(), shoppingCart.end(), [&tempOwner](unique_ptr<BaseGoods>& up) {
-
         cout << "Goods name is " << up->getName() << endl;
         cout << "the number Freeze is " << up->getRemain() << endl;
         string owner = up->getOwner();
         tempOwner->loginWithoutChecked(owner);
-        if ((up->getFreeze()- up->getRemain())>0)
+        if ((up->getFreeze() - up->getRemain()) > 0)
         {
-            tempOwner->setGoodsFreeze(up->getName(),up->getFreeze() - up->getRemain());
+            tempOwner->setGoodsFreeze(up->getName(), up->getFreeze() - up->getRemain());
         }
         else
         {
-            tempOwner->setGoodsFreeze(up->getName(),0);
+            tempOwner->setGoodsFreeze(up->getName(), 0);
         }
         //tempOwner->//todo: free goods
         //tempOwner->storage();
@@ -153,4 +148,3 @@ int shoppingCart::search(std::string name)
     }
     return -1;
 }
-

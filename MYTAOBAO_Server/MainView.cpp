@@ -23,7 +23,7 @@ void MainView::viewInput()
         login = 1,
         signUp = 2
     };
-        ViewManger& viewManger = ViewManger::getInstance(getId());  
+    ViewManger& viewManger = ViewManger::getInstance(getId());
     switch ((MAINEVENT)choice)
     {
     case MAINEVENT::login:
@@ -35,5 +35,4 @@ void MainView::viewInput()
     default:
         break;
     }
-
 }

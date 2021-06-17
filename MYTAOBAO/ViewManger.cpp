@@ -9,29 +9,28 @@ using namespace::std;
 
 ViewManger& ViewManger::getInstance()
 {
-	static ViewManger instance;
-	return instance;
+    static ViewManger instance;
+    return instance;
 }
 void ViewManger::start()
 {
-	while (viewNext)
-	{
-		cin.clear();
-		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-		cin.sync();
-		viewCurrent = std::move(viewNext);
-		Server::loadGoods();
-		viewCurrent->show();
-	}
+    while (viewNext)
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.sync();
+        viewCurrent = std::move(viewNext);
+        Server::loadGoods();
+        viewCurrent->show();
+    }
 }
 
 void ViewManger::setNext(std::unique_ptr<BaseView> next)
 {
-	viewNext = std::move(next);
+    viewNext = std::move(next);
 }
 
 void ViewManger::sleepMs(int ms)
 {
-	sleep_for(std::chrono::milliseconds(ms));
+    sleep_for(std::chrono::milliseconds(ms));
 }
-

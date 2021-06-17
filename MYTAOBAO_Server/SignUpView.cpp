@@ -30,7 +30,7 @@ void SignUpView::viewInput()
         if (isExist(name, choice))
         {
             string temp = "0it has been used\n";
-            send(Server::sockS[getId()], temp.c_str(), temp.size(),0);
+            send(Server::sockS[getId()], temp.c_str(), temp.size(), 0);
             cout << "\n此用户名已被占用，请您选择其他用户名" << endl;
             continue;
         }
@@ -65,7 +65,6 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
     {
     case PEOPLETYPE::BUS:
     {
-           
         Usr = std::move(make_unique<Businessman>(name, pass));
         Usr->addGoods();
         Usr->storage();

@@ -8,4 +8,3 @@ class BusinessmanView :
     void addGoods(std::vector<std::unique_ptr<BaseGoods>>& temp);
     bool dealInput(std::string name, std::string pass, int choice);
 };
-

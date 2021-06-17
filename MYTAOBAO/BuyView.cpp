@@ -21,17 +21,16 @@ void BuyView::viewInput()
     input(choice, "1\t查询货物种类\n2\t购买\n3\t购物车\n4\t放弃剁手", regexSec);
     enum class CHOICEEVENT
     {
-        SEARCH=1,BUY,CART,GIVEUP
+        SEARCH = 1, BUY, CART, GIVEUP
     };
     switch ((CHOICEEVENT)choice)
     {
     case CHOICEEVENT::SEARCH:
         while (true)
         {
-            
             search();
             input(choice, "1\t继续查找\n2\t结束查找", regexFir);
-            if (choice==2)
+            if (choice == 2)
             {
                 break;
             }
@@ -45,7 +44,7 @@ void BuyView::viewInput()
         viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::BUY:
-        {
+    {
         Json::Value temp;
         string name;
         cin.get();
@@ -58,12 +57,11 @@ void BuyView::viewInput()
                 cout << "充钱吧亲";
             }
             Usr->storage();
-            
         }
         viewManger.sleepMs(500);
         viewManger.setNext(make_unique<BuyView>());
-        }
-        break;
+    }
+    break;
     default:
         viewManger.setNext(make_unique<FailureView>());
         break;
@@ -97,10 +95,10 @@ void BuyView::search()
         for (size_t i = 0; i < GoodSearchFromType[reg].size(); i++)
         {
             cout << GoodSearchFromType[reg][i].toStyledString();
-            if (i&&i%5==0)
+            if (i && i % 5 == 0)
             {
                 input(choice, "1\t继续输出\n2\t终止输出\n", regexFir);
-                if (choice==2)
+                if (choice == 2)
                 {
                     break;
                 }

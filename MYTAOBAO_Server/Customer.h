@@ -15,11 +15,11 @@ public:
     virtual USRTYPE getType()override;
     virtual void balance()override;
     virtual bool buySomeThing(double)override;
-    virtual bool addInShoppingCart(Json::Value&good,long long int last)override;//todo: 添加到购物车
-    virtual void minShoppingCart(Json::Value&goods, long long int last);
-	virtual void showCart()override;
+    virtual bool addInShoppingCart(Json::Value& good, long long int last)override;//todo: 添加到购物车
+    virtual void minShoppingCart(Json::Value& goods, long long int last);
+    virtual void showCart()override;
     virtual void makeBill()override;
-	virtual bool buyAllThing()override;
+    virtual bool buyAllThing()override;
     virtual double calShoppingCart()override;//todo: 计算购物车的总价值
     void static setAddress(std::string newAddress);
     virtual void clearAllShopCart()override;
@@ -33,4 +33,3 @@ private:
     static long long int totalId;
     static std::string  storageAddress;
 };
-

@@ -38,10 +38,9 @@ void LoginView::viewInput()
             viewManger.sleepMs(250);
             viewManger.setNext(make_unique<CusResultView>());
             break;
-            
+
         default:
             cout << "something wrong" << endl;
-
         }
     }
     else
@@ -67,7 +66,7 @@ bool LoginView::dealInput(string name, string pass, int choice)
     }
     char a[200];
     recv(Server::sockS, a, 200, 0);
-    if (a[0]-'0'==1)
+    if (a[0] - '0' == 1)
     {
         return true;
     }

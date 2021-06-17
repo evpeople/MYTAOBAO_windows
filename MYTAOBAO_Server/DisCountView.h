@@ -7,4 +7,3 @@ class DisCountView :
     virtual void viewInput()override;
     bool dealInput(int choice, double discount);
 };
-

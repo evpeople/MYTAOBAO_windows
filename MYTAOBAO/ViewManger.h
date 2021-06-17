@@ -9,19 +9,19 @@ public:
     void setNext(std::unique_ptr<BaseView>next);
     void sleepMs(int ms);
     static  ViewManger& getInstance();
-   //{
-   //    static ViewManger instance;
-   //    return instance;
-   //}
-    //void toMain();
-    //void toLogin();
-    //void toLogout();
-    //void toSignUp();
-    //void toCustomer();
-    //void toBusinessman();
-    //void toFailure();
-    //void toCusResult();
-    //void toBusResult();
+    //{
+    //    static ViewManger instance;
+    //    return instance;
+    //}
+     //void toMain();
+     //void toLogin();
+     //void toLogout();
+     //void toSignUp();
+     //void toCustomer();
+     //void toBusinessman();
+     //void toFailure();
+     //void toCusResult();
+     //void toBusResult();
 protected:
 
 private:
@@ -32,4 +32,3 @@ private:
     ViewManger(const ViewManger&);
     ViewManger& operator=(const ViewManger&);
 };
-

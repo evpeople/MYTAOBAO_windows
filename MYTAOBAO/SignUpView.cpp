@@ -62,7 +62,6 @@ bool SignUpView::dealInput(std::string name, std::string pass, int choice)
     {
     case PEOPLETYPE::BUS:
     {
-           
         Usr = std::move(make_unique<Businessman>(name, pass));
         Usr->addGoods();
         Usr->storage();

@@ -21,7 +21,7 @@ void CartView::viewInput()
     input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t直接清空购物车(同时付钱)\n6\t清空购物车，不付钱\n7\t生成订单\n8\t回到上一界面", regexSec);
     enum class CHOICEEVENT
     {
-        ADD= 1,MIN ,TOTAL, SHOW,BUY,CLEARCART,MAKE
+        ADD = 1, MIN, TOTAL, SHOW, BUY, CLEARCART, MAKE
     };
     switch ((CHOICEEVENT)choice)
     {
@@ -46,7 +46,7 @@ void CartView::viewInput()
     case CHOICEEVENT::CLEARCART:
         cout << "重置购物车完成" << endl;
         Usr->clearAllShopCart();
-         //todo: 文件保存覆盖（）freeze的debug
+        //todo: 文件保存覆盖（）freeze的debug
         break;
     case CHOICEEVENT::TOTAL:
         cout << "总价是" << Usr->calShoppingCart();
@@ -64,7 +64,7 @@ void CartView::viewInput()
         Usr->buyAllThing();
         Usr->clearAllShopCart();
         Usr->storage();
-    viewManger.sleepMs(250);
+        viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::MAKE:

@@ -21,11 +21,10 @@ void ChangePassView::viewInput()
     string pass;
     cout << "请输入你原本的密码" << endl;
     cin >> pass;
-    
+
     while (true)
     {
-
-        if (Usr->getUsrName()!="0"&&Usr->auth(pass))
+        if (Usr->getUsrName() != "0" && Usr->auth(pass))
         {
             cout << "请输入您的新密码" << endl;
             cin >> pass;
@@ -36,7 +35,7 @@ void ChangePassView::viewInput()
         else
         {
             input(pass, "好好回忆你原本原本的密码，输入#则退出");
-            if (pass=="#")
+            if (pass == "#")
             {
                 break;
             }

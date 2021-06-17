@@ -22,7 +22,7 @@ void CartView::viewInput()
     cin.get();
     enum class CHOICEEVENT
     {
-        ADD= 1,MIN ,TOTAL, SHOW,BUY,CLEARCART,MAKE
+        ADD = 1, MIN, TOTAL, SHOW, BUY, CLEARCART, MAKE
     };
     switch ((CHOICEEVENT)choice)
     {
@@ -47,7 +47,7 @@ void CartView::viewInput()
     case CHOICEEVENT::CLEARCART:
         cout << "重置购物车完成" << endl;
         Usr->clearAllShopCart();
-         //todo: 文件保存覆盖（）freeze的debug
+        //todo: 文件保存覆盖（）freeze的debug
         break;
     case CHOICEEVENT::TOTAL:
         cout << "总价是" << Usr->calShoppingCart();
@@ -65,7 +65,7 @@ void CartView::viewInput()
         Usr->buyAllThing();
         Usr->clearAllShopCart();
         Usr->storage();
-    viewManger.sleepMs(250);
+        viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
         break;
     case CHOICEEVENT::MAKE:

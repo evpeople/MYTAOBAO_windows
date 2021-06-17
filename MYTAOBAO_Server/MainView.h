@@ -7,4 +7,3 @@ public:
     virtual void show()override;
     virtual void viewInput()override;
 };
-

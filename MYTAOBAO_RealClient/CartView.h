@@ -1,6 +1,6 @@
 #pragma once
 #include"BaseView.h"
-class CartView:
+class CartView :
     public BaseView
 {
     virtual void show()override;
@@ -11,9 +11,8 @@ private:
     void buyAll();
     void addGoods();
     void minGoods();
-    bool dealBuy();//todo: 整合消费车支付订单，扣除转移钱财。remain为买了多少,钱没打到 
+    bool dealBuy();//todo: 整合消费车支付订单，扣除转移钱财。remain为买了多少,钱没打到
     //todo: 钱用户充值后没保存
     //todo: 所有页面的回退
     void search(std::string, Json::Value& ansGood);
 };
-

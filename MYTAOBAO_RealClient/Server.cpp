@@ -26,17 +26,15 @@ Server::Server()
         }
         Businessman::setAddress(root["busmanAddress"].asString());
         Customer::setAddress(root["usrAddress"].asString());
-        BaseView::setAddress(root["logoAddress"].asString(),root["goodsAddress"].asString());
-        GoodPath=root["goodsAddress"].asString();
+        BaseView::setAddress(root["logoAddress"].asString(), root["goodsAddress"].asString());
+        GoodPath = root["goodsAddress"].asString();
         fin.close();
     }
     else
     {
         cout << "配置文件不存在" << endl;
     }
-
 }
-
 
 void Server::start()
 {
@@ -47,7 +45,6 @@ void Server::start(int i)
 
     viewManger.setNext(make_unique<MainView>());
     viewManger.start();
-
 }
 bool Server::check(string usrId)
 {
@@ -68,7 +65,6 @@ bool Server::check(string usrId)
 
 void Server::loadGoods()
 {
-
     string goodsPath = GoodPath + "defalutGoods.json";
     ifstream fin;
     fin.open(goodsPath);
@@ -102,4 +98,3 @@ void Server::loadGoods()
 Server::~Server()
 {
 }
-
