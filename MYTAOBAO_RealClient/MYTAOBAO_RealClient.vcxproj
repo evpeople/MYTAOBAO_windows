@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3a711407-5c09-435d-958f-88b5d4372389}</ProjectGuid>
-    <RootNamespace>MYTAOBAOclient</RootNamespace>
+    <ProjectGuid>{c3bb307a-7e68-4836-846b-2d83383a1b8f}</ProjectGuid>
+    <RootNamespace>MYTAOBAORealClient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,7 +88,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,6 +162,7 @@
     <ClCompile Include="MainView.cpp" />
     <ClCompile Include="MakeBillView.cpp" />
     <ClCompile Include="MYTAOBAO_client.cpp" />
+    <ClCompile Include="MYTAOBAO_RealClient.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="shoppingCart.cpp" />
     <ClCompile Include="SignUpView.cpp" />
