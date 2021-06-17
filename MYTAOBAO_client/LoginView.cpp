@@ -22,10 +22,8 @@ void LoginView::viewInput()
     std::regex regexFir("[12]");
     std::regex regexSec("[1234]");
     input(choice, "1\t以商人身份登录\n2\t以顾客身份登录\n", regexFir);
-    std::cout << "请输入用户名" << endl;
-    cin >> name;
-    cout << "请输入密码" << endl;
-    cin >> password;
+    input(name, "请输入用户名");
+    input(password, "请输入密码");
     if (dealInput(name, password, choice))
     {
         switch ((PEOPLETYPE)choice)
@@ -58,10 +56,12 @@ bool LoginView::dealInput(string name, string pass, int choice)
     {
     case PEOPLETYPE::BUS:
         Usr = std::move(make_unique<Businessman>());
+        Usr->setViewId(getId());
         return Usr->login(name, pass);
         break;
     case PEOPLETYPE::CUS:
         Usr = std::move(make_unique<Customer>());
+        Usr->setViewId(getId());
         return Usr->login(name, pass);
         break;
     default:

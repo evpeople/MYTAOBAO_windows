@@ -77,9 +77,6 @@ void ViewManger::start()
 {
 	while (viewNext)
 	{
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cin.sync();
 			id = viewCurrent->getId();
 		
 		viewCurrent = std::move(viewNext);

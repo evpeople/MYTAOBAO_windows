@@ -22,13 +22,13 @@ public:
     inline static std::unordered_map<std::string, Json::Value>GoodSearchFromName;
     inline static std::unordered_map<std::string, std::vector<Json::Value>>GoodSearchFromType;
     inline static std::string GoodPath="";
+    inline static std::vector<SOCKET>sockS;
+    inline static std::vector<SOCKADDR>sockAdd;
     
     ~Server();//±£´æÊý¾Ý¡£
 private:
     static std::string Path;
     std::unique_ptr<BaseView>ptrView;
-    inline static std::vector<SOCKET>sockS;
-    inline static std::vector<SOCKADDR>sockAdd;
     inline static int totalid = 0;
     inline static std::vector<ViewManger>viewS;
     int id;

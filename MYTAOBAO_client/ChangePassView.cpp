@@ -19,16 +19,14 @@ void ChangePassView::viewInput()
     ViewManger& viewManger = ViewManger::getInstance(getId());
 
     string pass;
-    cout << "请输入你原本的密码" << endl;
-    cin >> pass;
+    input(pass, "你原本的密码");
     
     while (true)
     {
 
         if (Usr->getUsrName()!="0"&&Usr->auth(pass))
         {
-            cout << "请输入您的新密码" << endl;
-            cin >> pass;
+            input(pass, "你的新密码");
             Usr->changePassWord(pass);
             break;
         }

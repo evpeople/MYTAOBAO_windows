@@ -48,7 +48,6 @@ void BuyView::viewInput()
         {
         Json::Value temp;
         string name;
-        cin.get();
         input(name, "你要购买的商品的名字");
         search(name, temp);
         if (temp)
@@ -80,7 +79,6 @@ void BuyView::search()
     int choice;
     std::regex regexFir("[12]");
     input(choice, "1\t按照名称查询\n2\t按照类别查询\n", regexFir);
-    cin.get();
     enum class CHOICEEVENT
     {
         NAME = 1, TYPE

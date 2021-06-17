@@ -16,6 +16,8 @@ void MainView::viewInput()
     int sd = getId();
     std::regex txt_regex("[12]");
     input(choice, "1\tµÇÂ¼\n2\t×¢²á\n", txt_regex);
+    cout << "###########" << endl;
+    //cout << a[1]<<"sa" << choice << "sadas" << endl;
     enum class MAINEVENT
     {
         login = 1,

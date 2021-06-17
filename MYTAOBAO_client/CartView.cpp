@@ -19,7 +19,6 @@ void CartView::viewInput()
     //std::regex regexFir("[12]");
     std::regex regexSec("[12345678]");
     input(choice, "1\t向购物车增加商品\n2\t向购物车减少商品\n3\t计算购物车总额\n4\t展示购物车\n5\t直接清空购物车(同时付钱)\n6\t清空购物车，不付钱\n7\t生成订单\n8\t回到上一界面", regexSec);
-    cin.get();
     enum class CHOICEEVENT
     {
         ADD= 1,MIN ,TOTAL, SHOW,BUY,CLEARCART,MAKE

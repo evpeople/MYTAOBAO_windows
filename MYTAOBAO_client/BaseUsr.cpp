@@ -1,4 +1,5 @@
 #include "BaseUsr.h"
+#include"Server.h"
 #include<iostream>
 #include<fstream>
 #include <openssl/sha.h>
@@ -73,6 +74,17 @@ bool BaseUsr::auth( string passwd)
  double BaseUsr::calShoppingCart()
  {
      return 0.0;
+ }
+
+ int BaseUsr::getViewId()
+ {
+     return ViewId;
+ }
+
+
+ void BaseUsr::setViewId(int newId)
+ {
+     ViewId = newId;
  }
 
 void BaseUsr::setUsrName( string newName)
@@ -175,30 +187,59 @@ void BaseUsr::showCart()
 {
 }
 
-void BaseUsr::inputDouble(double& num)
+void BaseUsr::input(double& num)
 {
-    cin >> num;
-    while (!cin.good())
+    char a[100];
+    char* endptr;
+    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+    while (size == -1)
     {
-        cout << "只能是数字" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-        cin.sync();
+        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
 
-        cin >> num;
     }
+    int x = recv(Server::sockS[getViewId()], a, size, 0);
+    num = strtod(a, &endptr);
+}
+void BaseUsr::input(long long int& num)
+{
+    char a[100];
+    char* endptr;
+    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+    while (size == -1)
+    {
+        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+
+    }
+    int x = recv(Server::sockS[getViewId()], a, size, 0);
+    num = strtol(a, &endptr, 0);
 }
 
-void BaseUsr::inputLLint(long long int& num)
+void BaseUsr::input(int& num)
 {
-    cin >> num;
-    while (!cin.good())
+    char a[100];
+    char* endptr;
+    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+    while (size == -1)
     {
-        cout << "只能是数字" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-        cin.sync();
+        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
 
-        cin >> num;
     }
+    int x = recv(Server::sockS[getViewId()], a, size, 0);
+    num = strtol(a, &endptr, 0);
+}
+
+void BaseUsr::input(std::string& words)
+{
+    char a[100];
+    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+    while (size == -1)
+    {
+        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
+
+    }
+    int x = recv(Server::sockS[getViewId()], a, size, 0);
+    a[x - 2] = '\0';
+    string str(a);
+    words = str;
+    cout << words << endl;
 }

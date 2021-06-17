@@ -25,9 +25,7 @@ void SignUpView::viewInput()
 
     while (true)
     {
-        std::cout << "请输入用户名" << endl;
-        cin.get();
-        getline(cin, name);
+        input(name, "请输入用户名");
         //cin >> name;
         if (isExist(name, choice))
         {
@@ -39,10 +37,8 @@ void SignUpView::viewInput()
 
     while (true)
     {
-        cout << "请输入密码" << endl;
-        cin >> password;
-        cout << "请再次确认您的密码" << endl;
-        cin >> password2;
+        input(password, "请输入密码");
+        input(password2, "请再次输入密码");
         if (password != password2)
         {
             cout << "两次密码不同，请重新注册" << endl;

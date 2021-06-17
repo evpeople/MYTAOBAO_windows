@@ -15,7 +15,6 @@ public:
     virtual USRTYPE getType()override;
     virtual void balance()override;
     virtual bool buySomeThing(double)override;
-    virtual long long int getId();
     virtual bool addInShoppingCart(Json::Value&good,long long int last)override;//todo: 添加到购物车
     virtual void minShoppingCart(Json::Value&goods, long long int last);
 	virtual void showCart()override;
@@ -28,7 +27,6 @@ public:
     std::string static getAddress();
     ~Customer();
 private:
-    void inputDouble(double& num);
     long long int id;
     static USRTYPE type;
     shoppingCart shopCart;

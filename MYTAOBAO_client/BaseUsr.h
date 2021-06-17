@@ -43,6 +43,10 @@ public:
 	virtual bool addInShoppingCart(Json::Value&good,long long int last);
     virtual void minShoppingCart(Json::Value&goods, long long int last);
 	virtual void showCart();
+	void input(double& num);
+	void input(long long int& num);
+	void input(int& num);
+	void input(std::string& words);
 	virtual void discount(int kind, double Discount);
 	virtual bool changePassWord(std::string pass)final;
 	virtual bool buyAllThing();
@@ -58,11 +62,10 @@ public:
 	virtual void setMoney(double newMoney)final;
 	virtual double getMoney()final;
     virtual double calShoppingCart();
-	
+	virtual int getViewId()final;
+	virtual void setViewId(int viewId)final;
 	std::string tosting();
 protected:
-	void inputDouble(double& num);
-	void inputLLint(long long int& num);
 	virtual std::string encryp(const  std::string passwd)final;
 	std::string getUsrPassWord();
 	void setUsrName(std::string newName);
@@ -73,4 +76,5 @@ private:
 	std::string usrPassWord;
 	double money;
 	bool isLogin;
+	int ViewId;
 };

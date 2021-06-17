@@ -21,7 +21,6 @@ void BusinessmanView::viewInput()
     string ans;
     if (choice>0&&choice<4)
     {
-        cin.get();
         input(name, "输入更改的商品的名字");
     }
     std::vector<std::unique_ptr<BaseGoods>>& temp= Usr->getGoods();

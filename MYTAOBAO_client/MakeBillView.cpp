@@ -30,7 +30,6 @@ void MakeBillView::viewInput()
         std::regex regexSec("[12]");
         std::regex regexFir("^[0-9]*$");
         input(choice, "1\t结账\n2\t直接退出\n", regexSec);
-        cin.get();
         switch ((CHOICEEVENT)choice)
         {
         case CHOICEEVENT::BUY:

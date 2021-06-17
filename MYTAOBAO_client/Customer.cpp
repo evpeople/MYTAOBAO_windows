@@ -3,6 +3,7 @@
 #include <iostream>
 #include <io.h>
 #include <memory>
+#include"Server.h"
 
 
 using namespace std;
@@ -19,7 +20,7 @@ Customer::Customer(string name, string PassWd)
     //shoppingCart = shopCart.getCart();
     cout << "您想充值多少钱" << endl;
     double money;
-    inputDouble(money);
+    input(money);
     setMoney(money);
 }
 Customer::Customer(string name, string PassWd,double money)
@@ -50,18 +51,6 @@ Customer::~Customer()
 {
 }
 
-void Customer::inputDouble(double& num)
-{
-        cin >> num;
-        while (!cin.good()||num<0)
-        {
-            cout << "只能是数字，且不能为负数，请重新输入" << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-            cin.sync();
-            cin >> num;
-        }
-}
 void Customer::clearAllShopCart()
 {
     shopCart.getCart().clear();
@@ -161,20 +150,22 @@ bool Customer::login(string tempUsr,string passWord)
 void Customer::balance()
 {
     cout << "你现在还剩" << getMoney()<< "元钱，充值请输入8" << endl;
+    
     int choice;
-    cin >> choice;
+    input(choice);
+
+
     if (choice == 8)
     {
         cout << "请输入充值多少钱" << endl;
         double money;
-        inputDouble(money);
+        input(money);
 
         setMoney(getMoney() + money);
     }
     else
     {
-        cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
+        
         return;
     }
 }
@@ -194,10 +185,6 @@ bool Customer::buySomeThing(double price)
     }
 }
 
-long long int Customer::getId()
-{
-    return id;
-}
 //
 bool Customer::addInShoppingCart(Json::Value& good,long long int last)
 {

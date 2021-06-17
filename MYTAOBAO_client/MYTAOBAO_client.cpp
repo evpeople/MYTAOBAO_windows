@@ -45,7 +45,6 @@ int main()
         thread t(startServer);
         t.detach();
     }
-    char ad[200]; 
 
     
 
