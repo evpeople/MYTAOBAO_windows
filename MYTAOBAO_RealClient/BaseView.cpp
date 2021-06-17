@@ -6,6 +6,7 @@
 #include<random>
 #include<iomanip>
 #include<json/json.h>
+#include"Server.h"
 using namespace std;
 
 string BaseView::logoAddress = ".";
@@ -24,14 +25,14 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
 
     cin >> choice;
     string temp = to_string(choice);
-    if (!regex_match(temp,regexString))
+    if (!regex_match(temp, regexString))
     {
-        
+
         cin.clear();
         cin.sync();
-        cin.ignore(1000,'\n');
+        cin.ignore(1000, '\n');
         cout << "\n错误的输入，请注意" << endl;
-        input(choice,help,regexString);
+        input(choice, help, regexString);
     }
     else
     {
@@ -41,7 +42,7 @@ void BaseView::input(int& choice, std::string help, std::regex regexString)
 void BaseView::input(std::string& choice, std::string help)
 {
     cout << help << endl;
-    getline(cin,choice);
+    getline(cin, choice);
     send(Server::sockS, choice.c_str(), choice.length(), 0);
 }
 void BaseView::input(double& num)
@@ -114,69 +115,61 @@ void BaseView::showLogo()
 void BaseView::showGoods()
 {
     system("cls");
-    string goodsPath = goodsAddress + "defalutGoods.json";
-    ifstream fin;
-    fin.open(goodsPath);
     int lenOfString = 20;
-    if (fin.is_open())
+
+    char b[31];
+    int lenB=recv(Server::sockS, b, 30, 0);
+    b[lenB] = '\0';
+    string x(b);
+    int randNumber = strtol(x.c_str(), nullptr,0);
+    int total = 7;
+
+    cout << "名字";
+    char a[301];
+    int len;
+    for (size_t i = randNumber; i < total + randNumber; i++)
     {
-        Json::CharReaderBuilder reader;
-        JSONCPP_STRING errs;
-
-        Json::Value root ,goodsOfUsr;
-       
-        if (!Json::parseFromStream(reader, fin, &root, &errs))
-        {
-            cout << errs << endl;
-        }
-        goodsOfUsr = root["goods"];
-        std::string output;
-        for (Json::ValueIterator itr = goodsOfUsr.begin(); itr != goodsOfUsr.end(); itr++)
-        {
-            string name=(*itr)["name"].asString();
-            string type = (*itr)["type"].asString();
-            Json::Value value=*itr;
-            //由于unordermap插入同样的键时会覆盖最后的，所以计算时是正确的。
-            //GoodSearchFromName.insert(make_pair(name,value));
-            GoodSearchFromName[name] = value;
-            GoodSearchFromType[type].push_back(value);
-        }
-        //auto t=GoodSearchFromName.find("Effective C++");
-       //cout <<"\n" << x.toStyledString()<<GoodSearchFromName.size();
-       size_t randNumber = rand() % 10;
-        int total = 7;
-        
-        cout << "名字";
-        for (size_t i = randNumber; i <total+randNumber; i++)
-        {
-            cout<<std::left<<"\t"  <<setw(lenOfString)<< goodsOfUsr[i]["name"].asString();
-        }
-        cout <<endl<<"价钱";
-        for (size_t i = randNumber; i <total +randNumber;i++)
-        {
-            cout <<std::left<< "\t" << setw(lenOfString) << goodsOfUsr[i]["price"].asDouble();
-        }
-        cout << endl<<"剩余量";
-        for (size_t i = randNumber; i < total + randNumber; i++)
-        {
-            cout<<std::left << "\t" << setw(lenOfString) << goodsOfUsr[i]["remain"].asInt64();
-        }
-        cout << endl<<"类型";
-        for (size_t i = randNumber; i < total + randNumber; i++)
-        {
-            cout <<std::left<< "\t" << setw(lenOfString) << goodsOfUsr[i]["type"].asString();
-        }
-        cout << endl<<"描述";
-        for (size_t i = randNumber; i < total + randNumber; i++)
-        {
-            cout << std::left<<"\t" << setw(lenOfString) << goodsOfUsr[i]["description"].asString();
-        }
-        cout << endl;
-
-        cout << "\n\n\n\n\n\n\n" << endl;   
-        fin.close();
-
+        len=recv(Server::sockS, a, 300, 0);
+        a[len] = '\0';
+        string x(a);
+        cout << std::left << "\t" << setw(lenOfString) << x;
     }
+    cout << endl << "价钱";
+    for (size_t i = randNumber; i < total + randNumber; i++)
+    {
+        len = recv(Server::sockS, a, 300, 0);
+        a[len] = '\0';
+        string x(a);
+        cout << std::left << "\t" << setw(lenOfString) << x;
+    }
+    cout << endl << "剩余量";
+    for (size_t i = randNumber; i < total + randNumber; i++)
+    {
+        len = recv(Server::sockS, a, 300, 0);
+        a[len] = '\0';
+        string x(a);
+        cout << std::left << "\t" << setw(lenOfString) << x;
+    }
+    cout << endl << "类型";
+    for (size_t i = randNumber; i < total + randNumber; i++)
+    {
+        len = recv(Server::sockS, a, 300, 0);
+        a[len] = '\0';
+        string x(a);
+        cout << std::left << "\t" << setw(lenOfString) << x;
+    }
+    cout << endl << "描述";
+    for (size_t i = randNumber; i < total + randNumber; i++)
+    {
+        len = recv(Server::sockS, a, 300, 0);
+        a[len] = '\0';
+        string x(a);
+        cout << std::left << "\t" << setw(lenOfString) << x;
+    }
+    cout << endl;
+
+    cout << "\n\n\n\n\n\n\n" << endl;
+
 }
 
 void BaseView::setAddress(string newLogoAddress, string newGoodsAddress)
