@@ -185,26 +185,16 @@ void BaseUsr::showCart()
 
 void BaseUsr::input(double& num)
 {
-    char a[100];
+    char a[101];
     char* endptr;
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
-    {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
+    int x = recv(Server::sockS[getViewId()], a, 100, 0);
     num = strtod(a, &endptr);
 }
 void BaseUsr::input(long long int& num)
 {
-    char a[100];
+    char a[101];
     char* endptr;
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
-    {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
+    int x = recv(Server::sockS[getViewId()], a, 100, 0);
     num = strtol(a, &endptr, 0);
 }
 
@@ -212,25 +202,15 @@ void BaseUsr::input(int& num)
 {
     char a[100];
     char* endptr;
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
-    {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
+    int x = recv(Server::sockS[getViewId()], a,99, 0);
     num = strtol(a, &endptr, 0);
 }
 
 void BaseUsr::input(std::string& words)
 {
-    char a[100];
-    signed long size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    while (size == -1)
-    {
-        size = recv(Server::sockS[getViewId()], a, 100, MSG_PEEK);
-    }
-    int x = recv(Server::sockS[getViewId()], a, size, 0);
-    a[x - 2] = '\0';
+    char a[101];
+    signed long size = recv(Server::sockS[getViewId()], a, 100, 0);
+    a[size] = '\0';
     string str(a);
     words = str;
     cout << words << endl;

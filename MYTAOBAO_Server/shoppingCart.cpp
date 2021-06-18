@@ -13,6 +13,10 @@ vupOfBaseGoods& shoppingCart::getCart()
 double shoppingCart::calShoppingCart()
 {
     double totalPrice;
+    if (shoppingCart.empty())
+    {
+        return 0;
+    }
     for_each(shoppingCart.begin(), shoppingCart.end(), [&totalPrice](unique_ptr<BaseGoods>& up) {
         totalPrice = up->getPrice() * up->getRemain();
         //shoppingFartJson[serial]["owner"] = up->getOwner();
@@ -21,7 +25,7 @@ double shoppingCart::calShoppingCart()
     return totalPrice;
 }
 
-void shoppingCart::addShoppingCart(Json::Value& good, long long int last, string usrName, int id)
+void shoppingCart::addShoppingCart(Json::Value& good, long long int last, string usrName, int id,bool flag)
 {
     if (good["remain"].asInt64() < last)
     {
@@ -54,12 +58,18 @@ void shoppingCart::addShoppingCart(Json::Value& good, long long int last, string
             shoppingCart.push_back(unique_ptr<BaseGoods>(new EleProduct{ last,price,name,des,owner }));
         }
         cout << "添加了新种类" << endl;
-        send(Server::sockS[id], "添加了新的种类", 15, 0);
+        if (flag)
+        {
+            send(Server::sockS[id], "添加了新的种类", 15, 0);
+        }
     }
     else
     {
         shoppingCart[index]->setRemain(shoppingCart[index]->getRemain() + last);
-        send(Server::sockS[id], "增加了数量", 11, 0);
+        if (flag)
+        {
+            send(Server::sockS[id], "增加了数量", 11, 0);
+        }
     }
 }
 
@@ -73,12 +83,20 @@ void shoppingCart::minShoppingCart(Json::Value& good, long long int last, std::s
     }
     else
     {
-        send(Server::sockS[id], "已经减少了", 11, 0);
-        shoppingCart[index]->setRemain(shoppingCart[index]->getRemain() - last);
-        if (shoppingCart[index]->getRemain() == 0)
+        if ((shoppingCart[index]->getRemain() - last)<0)
         {
-            shoppingCart.erase(shoppingCart.begin() + index);
+            send(Server::sockS[id], "没这么多让你减少的", 19, 0);
         }
+        else
+        {
+            send(Server::sockS[id], "已经减少了", 11, 0);
+            shoppingCart[index]->setRemain(shoppingCart[index]->getRemain() - last);
+            if (shoppingCart[index]->getRemain() == 0)
+            {
+                shoppingCart.erase(shoppingCart.begin() + index);
+            }
+        }
+
     }
 }
 
@@ -101,13 +119,22 @@ void shoppingCart::buyAll()
 
 void shoppingCart::show(int id)
 {
-    for_each(shoppingCart.begin(), shoppingCart.end(), [&id](unique_ptr<BaseGoods>& up) {
-        string out = "name is" + up->getName() + "\nprice is" + to_string(up->getPrice()) + "\nthe number you buy is" + to_string(up->getRemain()) + "\nIts type is" + up->getType() + "\ndescription is" + up->getDescription();
-        cout << out;
-        send(Server::sockS[id], out.c_str(), out.size(), 0);
+    if (shoppingCart.empty())
+    {
+        send(Server::sockS[id], "购物车是空的", 13, 0);
         char a[20];
         recv(Server::sockS[id], a, 20, 0);
-        });
+    }
+    else
+    {
+        for_each(shoppingCart.begin(), shoppingCart.end(), [&id](unique_ptr<BaseGoods>& up) {
+            string out = "name is" + up->getName() + "\nprice is" + to_string(up->getPrice()) + "\nthe number you buy is" + to_string(up->getRemain()) + "\nIts type is" + up->getType() + "\ndescription is" + up->getDescription();
+            cout << out;
+            send(Server::sockS[id], out.c_str(), out.size(), 0);
+            char a[20];
+            recv(Server::sockS[id], a, 20, 0);
+            });
+    }
 }
 
 void shoppingCart::makeBill()

@@ -1,1 +1,575 @@
-null
+{
+	"goods" : 
+	[
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 21,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 15,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 15,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 1,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 15,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 14,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 14,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 1,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 14,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 30,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "a phone",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "2",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "a very good book",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "2",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "sd",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "2",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "sd",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "123",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "90",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "123",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "90",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 10.5,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "123",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 13,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "90",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 10.5,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "123",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 20,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		},
+		{
+			"description" : "90",
+			"isFreeze" : 0,
+			"name" : "a good book",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 10.5,
+			"remain" : 32,
+			"type" : "Book"
+		},
+		{
+			"description" : "123",
+			"isFreeze" : 0,
+			"name" : "iphone",
+			"orginPrice" : 19.0,
+			"owner" : "wz",
+			"price" : 19.0,
+			"remain" : 20,
+			"type" : "EleProduct"
+		},
+		{
+			"description" : "a good clothes",
+			"isFreeze" : 0,
+			"name" : "a clothes",
+			"orginPrice" : 21.0,
+			"owner" : "wz",
+			"price" : 21.0,
+			"remain" : 31,
+			"type" : "Cloths"
+		}
+	]
+}

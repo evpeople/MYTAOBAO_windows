@@ -1,5 +1,6 @@
 #include "CartView.h"
 #include"Views.h"
+#include"Server.h"
 #include"ViewManger.h"
 
 using namespace std;
@@ -36,7 +37,7 @@ void CartView::viewInput()
         break;
     case CHOICEEVENT::MIN:
         input(name, "请输入减少的商品的名字，并在回车后输入减少的数量");
-        //cin.get();
+        cout << "输入减少的数量" << endl;
         BaseView::input(number);
         Usr->minShoppingCart(GoodSearchFromName[name], number);
         Usr->storage();
@@ -49,9 +50,13 @@ void CartView::viewInput()
         //todo: 文件保存覆盖（）freeze的debug
         break;
     case CHOICEEVENT::TOTAL:
-        cout << "总价是" << Usr->calShoppingCart();
+    {    
+        double x = Usr->calShoppingCart();
+        cout << "总价是" << x;
+        send(Server::sockS[getId()], to_string(x).c_str(), to_string(x).size(), 0);
         viewManger.sleepMs(250);
         viewManger.setNext(make_unique<CartView>());
+    }   
         break;
     case CHOICEEVENT::SHOW:
         cout << "购物车的详情" << endl;

@@ -117,7 +117,7 @@ bool Customer::login(string tempUsr, string passWord)
 
         for (size_t i = 0; i < root["shopping"].size(); i++)
         {
-            shopCart.addShoppingCart(root["shopping"][i], root["shopping"][i]["remain"].asInt64(), root["shopping"][i]["owner"].asString(), getViewId());
+            shopCart.addShoppingCart(root["shopping"][i], root["shopping"][i]["remain"].asInt64(), root["shopping"][i]["owner"].asString(), getViewId(),false);
         }
 
         fin.close();
@@ -144,8 +144,9 @@ bool Customer::login(string tempUsr, string passWord)
 void Customer::balance()
 {
     cout << "你现在还剩" << getMoney() << "元钱，充值请输入8" << endl;
-    string tempX = "你现在还剩" + to_string(getMoney()) + "元钱，充值请输入8";
-
+    string tempX = "你现在还剩" + to_string(getMoney()) + "元钱";
+    char a[20];
+    recv(Server::sockS[getViewId()], a, 20, 0);
     send(Server::sockS[getViewId()], tempX.c_str(), tempX.size(), 0);
     int choice;
     input(choice);
@@ -182,7 +183,7 @@ bool Customer::buySomeThing(double price)
 //
 bool Customer::addInShoppingCart(Json::Value& good, long long int last)
 {
-    shopCart.addShoppingCart(good, last, getUsrName(), getViewId());
+    shopCart.addShoppingCart(good, last, getUsrName(), getViewId(),true);
     //last 是买多少
 
     //string name=good->getName();
@@ -227,9 +228,9 @@ bool Customer::buyAllThing()
     bool flag = false;
     if (getMoney() >= shopCart.calShoppingCart())
     {
-        shopCart.buyAll();
         send(Server::sockS[getViewId()], "全买了，挺好的", 15, 0);
         setMoney(getMoney() - shopCart.calShoppingCart());
+        shopCart.buyAll();
         flag = true;
     }
     else

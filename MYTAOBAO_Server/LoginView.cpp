@@ -70,12 +70,12 @@ bool LoginView::dealInput(string name, string pass, int choice)
     }
     if (flag)
     {
-        string temp = "1True you login success";
+        string temp = "1111True you login success";
         send(Server::sockS[getId()], temp.c_str(), temp.size(), 0);
     }
     else
     {
-        string temp = "0True you login fail";
+        string temp = "00000True you login fail";
         send(Server::sockS[getId()], temp.c_str(), temp.size(), 0);
     }
     return flag;
